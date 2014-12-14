@@ -1,0 +1,14 @@
+#! /bin/bash
+
+errFile=/tmp/err.err
+rmFile=~/bin/run/11-get-temp_rrd
+
+renice 19 -p $$ >/dev/null
+ionice -c 3 -p $$
+
+# Check for the presence of the file to be removed.
+if [ -e $rmFile ]; then
+    # Remove the file.
+    rm $rmFile
+    logger -p local7.info -t 00-update-scripts "Script removed ($$)"
+fi
