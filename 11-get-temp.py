@@ -1,8 +1,6 @@
 #! /usr/bin/python
 
 import sys, commands, time
-import os
-os.nice(20)
 
 def main():
   # Everybody! Remember where we parked! -Capt. Kirk
@@ -10,7 +8,7 @@ def main():
 
   # Define output file
   f = file('/tmp/11-t-cpu.csv', 'a')
-  #Redefine system output to our file
+  # Redefine system output to our file
   sys.stdout = f
 
   # Read the CPU temperature

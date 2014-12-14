@@ -1,8 +1,5 @@
 #! /bin/bash
 
-renice 19 -p $$ >/dev/null
-ionice -c 3 -p $$
-
 xml=/tmp/status.xml
 
 #raspberry
@@ -12,7 +9,6 @@ hostname >> $xml
 echo "    </name>" >> $xml
 echo "    <df>" >> $xml
 df -h >> $xml
-# | sed ':a;N;$!ba;s/\n/\&lt;br \/\&gt;/g'
 echo "    </df>" >> $xml
 echo "    <temperature>" >> $xml
 /opt/vc/bin/vcgencmd measure_temp >> $xml

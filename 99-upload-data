@@ -3,17 +3,10 @@
 MOUNTPOINT=/mnt/share1
 MOUNTDRIVE=10.0.1.220:/srv/array1/dataspool
 HOST="rbian"
-errFile=/tmp/err.err
 xml=/tmp/status.xml
-
-renice 19 -p $$ >/dev/null
-ionice -c 3 -p $$
 
 # Mount the share containing the data
 sudo mount $MOUNTDRIVE $MOUNTPOINT
-
-# Wait for the mount to stabilise
-sleep 1
 
 # Check if the drive actually got mounted or not
 if grep -qs '/mnt/share1 ' /proc/mounts; then
@@ -39,5 +32,3 @@ if grep -qs '/mnt/share1 ' /proc/mounts; then
     # Unmount the drive again
     sudo umount $MOUNTPOINT
 fi
-
-#logger -p local7.info -t 99-upload-data "Data uploaded ($$)"

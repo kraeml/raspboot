@@ -3,16 +3,9 @@
 MOUNTPOINT=/mnt/share1
 MOUNTDRIVE=10.0.1.220:/srv/array1/rbin
 HOST="rbian"
-errFile=/tmp/err.err
-
-renice 19 -p $$ >/dev/null
-ionice -c 3 -p $$
 
 # Mount the share containing the scripts
 sudo mount $MOUNTDRIVE $MOUNTPOINT
-
-# Wait for the mount to stabilise
-sleep 1
 
 # Check if the drive actually got mounted or not
 if grep -qs '/mnt/share1 ' /proc/mounts; then

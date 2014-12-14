@@ -1,8 +1,6 @@
 #! /usr/bin/python
 
 import sys, commands, time
-import os
-os.nice(20)
 
 def main():
   # Everybody! Remember where we parked! -Capt. Kirk
@@ -10,7 +8,7 @@ def main():
 
   # Define output file
   f = file('/tmp/12-load-cpu.csv', 'a')
-  #Redefine system output to our file
+  # Redefine system output to our file
   sys.stdout = f
 
   # Get the time and date in human-readable form...
@@ -25,7 +23,7 @@ def main():
   # Print the data
   print '{0}, {1}, {2}'.format(outDate, outUxDate, outHistLoad)
 
-  # CLose the file
+  # Close the file
   f.close()
 
   # Re-set the stdout
