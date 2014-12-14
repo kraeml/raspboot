@@ -1,0 +1,43 @@
+#! /bin/bash
+
+MOUNTPOINT=/mnt/share1
+MOUNTDRIVE=10.0.1.220:/srv/array1/dataspool
+HOST="rbian"
+errFile=/tmp/err.err
+xml=/tmp/status.xml
+
+renice 19 -p $$ >/dev/null
+ionice -c 3 -p $$
+
+# Mount the share containing the data
+sudo mount $MOUNTDRIVE $MOUNTPOINT
+
+# Wait for the mount to stabilise
+sleep 1
+
+# Check if the drive actually got mounted or not
+if grep -qs '/mnt/share1 ' /proc/mounts; then
+    # It's mounted.
+	# Check for the presence of the 'host.lock' file.
+	# If it exists wait upto 10 seconds for it to go away.
+	x=0
+	while [ "$x" -lt 10 -a  -e $MOUNTPOINT/$HOST/host.lock ]; do
+	   x=$((x+1))
+	   sleep 1
+	done
+	if [ ! -e $MOUNTPOINT/$HOST/host.lock ]; then
+	  # Create our own lock
+	  touch $MOUNTPOINT/$HOST/client.lock
+	  # move the data
+	  mv /tmp/*.csv $MOUNTPOINT/$HOST/
+	  mv $xml $MOUNTPOINT/$HOST/
+          mv /tmp/*.err $MOUNTPOINT/$HOST/ 2>/dev/null
+	  # remove the lock
+          touch $MOUNTPOINT/$HOST/host.lock
+	  rm $MOUNTPOINT/$HOST/client.lock
+	fi
+    # Unmount the drive again
+    sudo umount $MOUNTPOINT
+fi
+
+#logger -p local7.info -t 99-upload-data "Data uploaded ($$)"
