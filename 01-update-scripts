@@ -1,0 +1,10 @@
+#! /bin/bash
+
+minute=$(date "+%M")
+
+if [ minute -eq "00" ]; then
+  echo $(date) >> /tmp/dt.txt
+fi
+# Update the git scripts
+#cd /home/pi/bin/gitrun
+#git fetch origin && git reset --hard origin/test && git clean -f -d
