@@ -2,7 +2,7 @@
 
 MOUNTPOINT=/mnt/share1
 MOUNTDRIVE=10.0.1.220:/srv/array1/dataspool
-HOST="rbian"
+HOST=$(hostname)
 xml=/tmp/status.xml
 
 # Mount the share containing the data
