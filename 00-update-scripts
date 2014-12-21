@@ -2,7 +2,7 @@
 
 MOUNTPOINT=/mnt/share1
 MOUNTDRIVE=10.0.1.220:/srv/array1/rbin
-HOST="rbian"
+HOST=$(hostname)
 
 # Mount the share containing the scripts
 sudo mount $MOUNTDRIVE $MOUNTPOINT
