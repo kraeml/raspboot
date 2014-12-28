@@ -1,0 +1,6 @@
+#! /bin/bash
+
+pushd /home/pi/gitbin
+source ./01-update-scripts
+
+./11-get-temp & ./12-get-load & ./13-get-nettraffic & ./14-get-memory & ./31-xml-status & wait
