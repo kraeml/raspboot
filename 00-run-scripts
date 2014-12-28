@@ -2,9 +2,9 @@
 
 logfile=/tmp/gitbin/gitbin.err
 
-pushd /home/pi/gitbin
+pushd /home/pi/gitbin 2>$logfile 1>&2
 
-echo "" > $logfile
+echo "" 2>$logfile 1>&2
 
 ./01-update-scripts | tee -a $logfile | logger -p local7.info -t 01-update-scripts
 
@@ -12,4 +12,4 @@ echo "" > $logfile
 
 ./99-upload-data 2>$logfile 1>&2
 
-popd
+popd 2>$logfile 1>&2
