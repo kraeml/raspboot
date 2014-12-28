@@ -7,7 +7,7 @@ def main():
   orig_stdout = sys.stdout
 
   # Define output file
-  f = file('/tmp/12-load-cpu.csv', 'a')
+  f = file('/tmp/gitbin/12-load-cpu.csv', 'a')
   # Redefine system output to our file
   sys.stdout = f
 

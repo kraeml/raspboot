@@ -1,6 +1,6 @@
 #! /bin/bash
 
-xml=/tmp/status.xml
+xml=/tmp/gitbin/status.xml
 
 #raspberry
 echo "  <server>" > $xml

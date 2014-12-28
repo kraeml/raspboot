@@ -3,32 +3,27 @@
 MOUNTPOINT=/mnt/share1
 MOUNTDRIVE=10.0.1.220:/srv/array1/dataspool
 HOST=$(hostname)
-xml=/tmp/status.xml
+xml=/tmp/gitbin/status.xml
 
 # Mount the share containing the data
 sudo mount $MOUNTDRIVE $MOUNTPOINT
 
 # Check if the drive actually got mounted or not
 if grep -qs '/mnt/share1 ' /proc/mounts; then
-    # It's mounted.
+  # It's mounted.
+	# Set our lock
+	touch $MOUNTPOINT/$HOST/client.lock
 	# Check for the presence of the 'host.lock' file.
-	# If it exists wait upto 10 seconds for it to go away.
-	x=0
-	while [ "$x" -lt 10 -a  -e $MOUNTPOINT/$HOST/host.lock ]; do
-	   x=$((x+1))
-	   sleep 1
-	done
+	# If it exists, do nothing.
 	if [ ! -e $MOUNTPOINT/$HOST/host.lock ]; then
-	  # Create our own lock
-	  touch $MOUNTPOINT/$HOST/client.lock
 	  # move the data
-	  mv /tmp/*.csv $MOUNTPOINT/$HOST/
-	  mv $xml $MOUNTPOINT/$HOST/
-          mv /tmp/*.err $MOUNTPOINT/$HOST/ 2>/dev/null
+	  #mv /tmp/gitbin/*.csv $MOUNTPOINT/$HOST/
+	  #mv $xml $MOUNTPOINT/$HOST/
+    #mv /tmp/gitbin/*.err $MOUNTPOINT/$HOST/ 2>/dev/null
 	  # remove the lock
-          touch $MOUNTPOINT/$HOST/host.lock
-	  rm $MOUNTPOINT/$HOST/client.lock
+    rm $MOUNTPOINT/$HOST/client.lock
+		logger -t gitbin "upload complete"
 	fi
-    # Unmount the drive again
-    sudo umount $MOUNTPOINT
+  # Unmount the drive again
+  sudo umount $MOUNTPOINT
 fi

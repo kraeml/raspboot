@@ -1,6 +1,12 @@
 #! /bin/bash
 
-pushd /home/pi/gitbin
-source ./01-update-scripts
+logfile=/tmp/gitbin/gitbin.err
 
-./11-get-temp & ./12-get-load & ./13-get-nettraffic & ./14-get-memory & ./31-xml-status & wait
+pushd /home/pi/gitbin
+./01-update-scripts | tee -a $logfile | logger -p local7.info -t 01-update-scripts
+
+./11-get-temp & ./12-get-load & ./13-get-nettraffic & ./14-get-memory & ./31-xml-status & wait 2>$logfile 1>&2
+
+./99-upload-data 2>$logfile 1>&2
+
+popd
