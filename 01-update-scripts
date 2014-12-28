@@ -4,7 +4,8 @@ minute=$(date "+%M")
 
 if [ $minute -eq "42" ]; then
   # Update the git scripts once every hour
-  cd /home/pi/bin/gitrun
+  pushd /home/pi/bin/gitrun
   git fetch origin && git reset --hard origin/master && git clean -f -d
   chmod 744 *
+  popd
 fi
