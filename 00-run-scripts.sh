@@ -3,11 +3,11 @@
 logfile=/tmp/gitbin.err
 CLNT=$(hostname)
 
-# Change PWD to the binaries directory
-pushd /home/pi/gitbin
-
 # Timestamp the logfile
 echo $(date)
+
+# Change PWD to the binaries directory
+pushd /home/pi/gitbin
 
 # Boot detection
 if [ ! -e /tmp/gitbin.reboot ]; then
