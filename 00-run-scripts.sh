@@ -8,7 +8,7 @@ pushd /home/pi/gitbin
 
 # Boot detection
 if [ ! -e /tmp/gitbin.reboot ]; then
-  ./02-post-boot
+  ./02-post-boot.sh
   if [ -e /home/pi/bin/bootmail.py ]; then
     /home/pi/bin/bootmail.py
   fi
