@@ -19,7 +19,7 @@ if grep -qs '/mnt/share1 ' /proc/mounts; then
 		# move the data
 		mv /tmp/gitbin/*.csv $MOUNTPOINT/$HOST/
 		mv $xml $MOUNTPOINT/$HOST/
-		mv /tmp/gitbin/*.err $MOUNTPOINT/$HOST/ 2>/dev/null
+		cp /tmp/gitbin/*.err $MOUNTPOINT/$HOST/ 2>/dev/null
 		# remove the lock
 		rm $MOUNTPOINT/$HOST/client.lock
 	fi
