@@ -24,6 +24,15 @@ if [ $CLNT == "rbups" ]; then
   ./16-get-upsstate.py 2>$logfile 1>&2
 fi
 
+case "$CLNT" in
+  rbups )   echo "UPS monitor" >> $logfile
+            ;;
+  rbian )   echo "raspberry testbench" >> $logfile
+            ;;
+  * )       echo "undefined client" >> $logfile
+            ;;
+esac
+
 # Upload the data
 ./99-upload-data.sh 2>$logfile 1>&2
 
