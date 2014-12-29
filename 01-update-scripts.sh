@@ -10,11 +10,4 @@ if [ $minute -eq "42" ]; then
   git status
   # Set permissions
   chmod 744 *
-
-  if [ ! -e ~/.rsyncd.secret ]; then
-    sudo mount /mnt/backup
-    cp /mnt/backup/rbmain/.rsyncd.secret ~/.rsyncd.secret
-    cp /mnt/backup/rbmain/bin/* ~/bin/
-    sudo umount /mnt/backup
-  fi
 fi

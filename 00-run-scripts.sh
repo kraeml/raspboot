@@ -5,6 +5,7 @@ CLNT=$(hostname)
 
 # Boot detection
 if [ ! -e /tmp/gitbin.reboot ]; then
+  ./02-post-boot
   if [ -e /home/pi/bin/bootmail.py ]; then
     /home/pi/bin/bootmail.py
   fi
