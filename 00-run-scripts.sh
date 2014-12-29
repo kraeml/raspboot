@@ -21,7 +21,7 @@ pushd /home/pi/gitbin
 ./01-update-scripts.sh | tee -a $logfile | logger -p local7.info -t 01-update-scripts
 
 # Execute the common scripts in parallel
-./11-get-temp.py & ./12-get-load.py & ./13-get-nettraffic.py & ./14-get-memory.py & ./31-xml-status.sh & wait
+./11-get-temp.py & ./12-get-load.py & ./13-get-nettraffic.py & ./14-get-memory.py & wait
 
 # Execute client-specific scripts
 case "$CLNT" in
@@ -34,6 +34,8 @@ case "$CLNT" in
             ;;
 esac
 
+# Create the XML-file last
+./31-xml-status.sh
 # Upload the data
 ./99-upload-data.sh
 
