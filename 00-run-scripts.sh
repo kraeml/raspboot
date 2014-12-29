@@ -3,6 +3,12 @@
 logfile=/tmp/gitbin.err
 CLNT=$(hostname)
 
+# Boot detection
+if [ ! -e /tmp/boot.flag ]
+  bootmail.py
+  touch /tmp/boot.flag
+fi
+
 # Timestamp the logfile
 echo $(date)
 
