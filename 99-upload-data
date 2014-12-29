@@ -16,12 +16,12 @@ if grep -qs '/mnt/share1 ' /proc/mounts; then
 	# Check for the presence of the 'host.lock' file.
 	# If it exists, do nothing.
 	if [ ! -e $MOUNTPOINT/$HOST/host.lock ]; then
-	  # move the data
-	  #mv /tmp/gitbin/*.csv $MOUNTPOINT/$HOST/
-	  #mv $xml $MOUNTPOINT/$HOST/
-    #mv /tmp/gitbin/*.err $MOUNTPOINT/$HOST/ 2>/dev/null
-	  # remove the lock
-    rm $MOUNTPOINT/$HOST/client.lock
+		# move the data
+		mv /tmp/gitbin/*.csv $MOUNTPOINT/$HOST/
+		mv $xml $MOUNTPOINT/$HOST/
+		mv /tmp/gitbin/*.err $MOUNTPOINT/$HOST/ 2>/dev/null
+		# remove the lock
+		rm $MOUNTPOINT/$HOST/client.lock
 	fi
   # Unmount the drive again
   sudo umount $MOUNTPOINT
