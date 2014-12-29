@@ -4,11 +4,11 @@ logfile=/tmp/gitbin.err
 CLNT=$(hostname)
 
 # Boot detection
-if [ ! -e /tmp/boot.flag ]
+if [ ! -e /tmp/gitbin.reboot ]
   if [ -e /home/pi/bin/bootmail.py ]
     /home/pi/bin/bootmail.py
   fi
-  touch /tmp/boot.flag
+  cat whoami > /tmp/gitbin.reboot
 fi
 
 # Timestamp the logfile
