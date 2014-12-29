@@ -9,7 +9,3 @@ if [ $minute -eq "42" ]; then
   chmod 744 *
   #popd
 fi
-
-if [ ! -d /tmp/gitbin ]; then
-  mkdir /tmp/gitbin
-fi

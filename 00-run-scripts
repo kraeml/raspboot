@@ -2,6 +2,11 @@
 
 logfile=/tmp/gitbin/gitbin.err
 
+
+if [ ! -d /tmp/gitbin ]; then
+  mkdir /tmp/gitbin
+fi
+
 echo "" >$logfile
 
 pushd /home/pi/gitbin 2>$logfile 1>&2
