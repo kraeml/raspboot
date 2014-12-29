@@ -1,11 +1,11 @@
 #! /bin/bash
 
-logfile=/tmp/gitbin/gitbin.err
+logfile=/tmp/gitbin.err
 CLNT=$(hostname)
 
-if [ ! -d /tmp/gitbin ]; then
-  mkdir /tmp/gitbin
-fi
+#if [ ! -d /tmp/gitbin ]; then
+#  mkdir /tmp/gitbin
+#fi
 
 # Create an empty logfile
 echo "" > $logfile
