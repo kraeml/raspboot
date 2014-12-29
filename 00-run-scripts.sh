@@ -5,7 +5,9 @@ CLNT=$(hostname)
 
 # Boot detection
 if [ ! -e /tmp/boot.flag ]
-  bootmail.py
+  if [ -e /home/pi/bin/bootmail.py ]
+    /home/pi/bin/bootmail.py
+  fi
   touch /tmp/boot.flag
 fi
 
