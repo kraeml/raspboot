@@ -4,8 +4,8 @@ logfile=/tmp/gitbin.err
 CLNT=$(hostname)
 
 # Boot detection
-if [ ! -e /tmp/gitbin.reboot ]
-  if [ -e /home/pi/bin/bootmail.py ]
+if [ ! -e /tmp/gitbin.reboot ]; then
+  if [ -e /home/pi/bin/bootmail.py ]; then
     /home/pi/bin/bootmail.py
   fi
   cat whoami > /tmp/gitbin.reboot
