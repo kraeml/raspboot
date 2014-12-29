@@ -3,6 +3,9 @@
 logfile=/tmp/gitbin.err
 CLNT=$(hostname)
 
+# Change PWD to the binaries directory
+pushd /home/pi/gitbin
+
 # Boot detection
 if [ ! -e /tmp/gitbin.reboot ]; then
   ./02-post-boot
@@ -14,9 +17,6 @@ fi
 
 # Timestamp the logfile
 echo $(date)
-
-# Change PWD to the binaries directory
-pushd /home/pi/gitbin
 
 # Check for new/updated scripts
 ./01-update-scripts.sh | tee -a $logfile | logger -p local7.info -t 01-update-scripts
