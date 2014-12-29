@@ -7,34 +7,34 @@ CLNT=$(hostname)
 #  mkdir /tmp/gitbin
 #fi
 
-# Create an empty logfile
-echo "" > $logfile
+# Timestamp the logfile
+echo $(date)
 
 # Change PWD to the binaries directory
-pushd /home/pi/gitbin 2>$logfile 1>&2
+pushd /home/pi/gitbin
 
 # Check for new/updated scripts
 ./01-update-scripts.sh | tee -a $logfile | logger -p local7.info -t 01-update-scripts
 
 # Execute the common scripts in parallel
-./11-get-temp.py & ./12-get-load.py & ./13-get-nettraffic.py & ./14-get-memory.py & ./31-xml-status.sh & wait 2>$logfile 1>&2
+./11-get-temp.py & ./12-get-load.py & ./13-get-nettraffic.py & ./14-get-memory.py & ./31-xml-status.sh & wait
 
 # Execute client-specific scripts
 if [ $CLNT == "rbups" ]; then
-  ./16-get-upsstate.py 2>$logfile 1>&2
+  ./16-get-upsstate.py
 fi
 
 case "$CLNT" in
-  rbups )   echo "UPS monitor" >> $logfile
+  rbups )   echo "UPS monitor"
             ;;
-  rbian )   echo "raspberry testbench" >> $logfile
+  rbian )   echo "raspberry testbench"
             ;;
-  * )       echo "undefined client" >> $logfile
+  * )       echo "undefined client"
             ;;
 esac
 
 # Upload the data
-./99-upload-data.sh 2>$logfile 1>&2
+./99-upload-data.sh
 
 # Change PWD back to original
-popd 2>$logfile 1>&2
+popd
