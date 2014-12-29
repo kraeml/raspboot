@@ -1,7 +1,7 @@
 #! /bin/bash
 
 logfile=/tmp/gitbin/gitbin.err
-
+HOST=$(hostname)
 
 if [ ! -d /tmp/gitbin ]; then
   mkdir /tmp/gitbin
@@ -14,6 +14,10 @@ pushd /home/pi/gitbin 2>$logfile 1>&2
 ./01-update-scripts | tee -a $logfile | logger -p local7.info -t 01-update-scripts
 
 ./11-get-temp & ./12-get-load & ./13-get-nettraffic & ./14-get-memory & ./31-xml-status & wait 2>$logfile 1>&2
+
+if [ $ == "rbups" ]; then
+  ./16-get-upsstate 2>$logfile 1>&2
+fi
 
 ./99-upload-data 2>$logfile 1>&2
 
