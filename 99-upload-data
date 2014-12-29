@@ -22,7 +22,6 @@ if grep -qs '/mnt/share1 ' /proc/mounts; then
     #mv /tmp/gitbin/*.err $MOUNTPOINT/$HOST/ 2>/dev/null
 	  # remove the lock
     rm $MOUNTPOINT/$HOST/client.lock
-		logger -t gitbin "upload complete"
 	fi
   # Unmount the drive again
   sudo umount $MOUNTPOINT
