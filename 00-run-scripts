@@ -3,10 +3,6 @@
 logfile=/tmp/gitbin.err
 CLNT=$(hostname)
 
-#if [ ! -d /tmp/gitbin ]; then
-#  mkdir /tmp/gitbin
-#fi
-
 # Timestamp the logfile
 echo $(date)
 
