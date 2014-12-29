@@ -20,8 +20,15 @@ def main():
   outHistLoad = outHistLoad.replace(" ",", ")
   outHistLoad = outHistLoad.replace("/",", ")
 
+  outCpu = commands.getoutput("vmstat 1 2").splitlines()[3].split()
+  outCpuUS = outCpu[12]
+  outCpuSY = outCpu[13]
+  outCpuID = outCpu[14]
+  outCpuWA = outCpu[15]
+  outCpuST = "NaN"
+
   # Print the data
-  print '{0}, {1}, {2}'.format(outDate, outUxDate, outHistLoad)
+  print '{0}, {1}, {2}, {3}, {4}, {5}, {6}, {7}'.format(outDate, outUxDate, outHistLoad, outCpuUS, outCpuSY, outCpuID, outCpuWA, outCpuST)
 
   # Close the file
   f.close()
