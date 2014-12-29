@@ -16,16 +16,13 @@ pushd /home/pi/gitbin
 ./11-get-temp.py & ./12-get-load.py & ./13-get-nettraffic.py & ./14-get-memory.py & ./31-xml-status.sh & wait
 
 # Execute client-specific scripts
-if [ $CLNT == "rbups" ]; then
-  ./16-get-upsstate.py
-fi
-
 case "$CLNT" in
   rbups )   echo "UPS monitor"
+            ./16-get-upsstate.py
             ;;
-  rbian )   echo "raspberry testbench"
+  rbian )   echo "Raspberry testbench"
             ;;
-  * )       echo "undefined client"
+  * )       echo "!! undefined client !!"
             ;;
 esac
 
