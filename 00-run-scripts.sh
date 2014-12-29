@@ -6,6 +6,9 @@ CLNT=$(hostname)
 # Change PWD to the binaries directory
 pushd /home/pi/gitbin
 
+# Timestamp the logfile
+echo $(date)
+
 # Boot detection
 if [ ! -e /tmp/gitbin.reboot ]; then
   ./02-post-boot.sh
@@ -14,9 +17,6 @@ if [ ! -e /tmp/gitbin.reboot ]; then
   fi
   whoami > /tmp/gitbin.reboot
 fi
-
-# Timestamp the logfile
-echo $(date)
 
 # Check for new/updated scripts
 ./01-update-scripts.sh | tee -a $logfile | logger -p local7.info -t 01-update-scripts
