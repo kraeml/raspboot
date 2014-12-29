@@ -1,7 +1,7 @@
 #! /bin/bash
 
 logfile=/tmp/gitbin/gitbin.err
-HOST=$(hostname)
+CLNT=$(hostname)
 
 if [ ! -d /tmp/gitbin ]; then
   mkdir /tmp/gitbin
@@ -15,7 +15,7 @@ pushd /home/pi/gitbin 2>$logfile 1>&2
 
 ./11-get-temp.py & ./12-get-load.py & ./13-get-nettraffic.py & ./14-get-memory.py & ./31-xml-status.sh & wait 2>$logfile 1>&2
 
-if [ $HOST == "rbups" ]; then
+if [ $CLNT == "rbups" ]; then
   ./16-get-upsstate.py 2>$logfile 1>&2
 fi
 
