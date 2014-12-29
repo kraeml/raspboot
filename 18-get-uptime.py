@@ -21,7 +21,7 @@ def main():
 
 
     # Print the data
-    print '{0}, {1}, {2}, {3}'.format(outDate, outUxDate, uptime[1], uptime[2])
+    print '{0}, {1}, {2}, {3}'.format(outDate, outUxDate, uptime[0], uptime[1])
 
     # Close the file
     f.close()
