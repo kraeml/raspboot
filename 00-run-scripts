@@ -15,7 +15,7 @@ pushd /home/pi/gitbin 2>$logfile 1>&2
 
 ./11-get-temp & ./12-get-load & ./13-get-nettraffic & ./14-get-memory & ./31-xml-status & wait 2>$logfile 1>&2
 
-if [ $ == "rbups" ]; then
+if [ $HOST == "rbups" ]; then
   ./16-get-upsstate 2>$logfile 1>&2
 fi
 
