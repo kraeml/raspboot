@@ -7,7 +7,7 @@ if [ $minute -eq "42" ]; then
   # All output is logged by `logger`
   git fetch origin && git reset --hard origin/master && git clean -f -d
   # Log current status
-  git status
+  #git status
   # Set permissions
   chmod 744 *
 fi
