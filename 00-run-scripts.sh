@@ -11,7 +11,7 @@ pushd /home/pi/gitbin
 
 # Boot detection
 if [ ! -e /tmp/gitbin.reboot ]; then
-  ./02-post-boot.sh | tee -a $logfile | logger -p local7.info -t 02-post-boot
+  ./01-post-boot.sh | tee -a $logfile | logger -p local7.info -t 01-post-boot
   if [ -e /home/pi/bin/bootmail.py ]; then
     /home/pi/bin/bootmail.py
   fi
@@ -19,7 +19,7 @@ if [ ! -e /tmp/gitbin.reboot ]; then
 fi
 
 # Check for new/updated scripts
-./01-update-scripts.sh | tee -a $logfile | logger -p local7.info -t 01-update-scripts
+./02-update-scripts.sh | tee -a $logfile | logger -p local7.info -t 02-update-scripts
 
 # Execute the common scripts in parallel
 ./11-get-temp.py & ./12-get-load.py & ./13-get-nettraffic.py & ./14-get-memory.py & wait
