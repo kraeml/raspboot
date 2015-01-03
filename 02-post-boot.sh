@@ -46,7 +46,10 @@ if [ ! -e /home/pi/.firstboot ]; then
   done
 
   # 4. Modify server specific configuration files
-  # ---
+  echo "Additional packages installation..."
+  if [ -e ./$clientname/mod-files.sh ]; then
+    source ./$clientname/mod-files.sh
+  fi
 
   # Place flag
   touch /home/pi/.firstboot
