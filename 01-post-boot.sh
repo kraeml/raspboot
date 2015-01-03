@@ -18,6 +18,10 @@ if [ ! -e ~/bin/.rsyncd.secret ]; then
   chmod -R 0755 ~/bin
 fi
 
+if [ -e /home/pi/bin/bootmail.py ]; then
+  /home/pi/bin/bootmail.py
+fi
+
 # Additional scripts to be executed on the first boot after install.
 # This makes the installer more uniform and easier to maintain regardless of
 # the use.
