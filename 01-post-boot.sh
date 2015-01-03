@@ -46,7 +46,7 @@ if [ ! -e /home/pi/.firstboot ]; then
     g=$(echo $(basename $f) | sed 's/@/\//g')
     echo $f " --> " $g
     # path must already exist for this to work:
-    cp $f /$g
+    sudo cp $f /$g
   done
 
   # 4. Modify server specific configuration files
