@@ -8,7 +8,7 @@ if [ ! -d ~/bin ]; then
 fi
 
 # Download the contents of the ~/bin directory
-# We use the .rsyncd.secret file as a flag.
+# We use the `.rsyncd.secret` file as a flag.
 if [ ! -e ~/bin/.rsyncd.secret ]; then
   sudo mount /mnt/backup
   cp /mnt/backup/rbmain/bin/* ~/bin/
@@ -31,6 +31,7 @@ if [ ! -e /home/pi/.firstboot ]; then
   sudo apt-get -yuV upgrade
 
   # 2. Install server specific-packages
+  echo "Additional packages installation..."
   if [ -e ./$clientname/add-packages.sh ]; then
     source ./$clientname/add-packages.sh
   fi
@@ -38,7 +39,6 @@ if [ ! -e /home/pi/.firstboot ]; then
   # 3. Install server specific configuration files
   echo "Copy configuration files..."
   for f in ./$clientname/config/*; do
-    # following must be busybox sh  compatible! Cant use bash replacements :-(
     g=$(echo $(basename $f) | sed 's/@/\//g')
     echo $f " --> " $g
     # path must already exist for this to work:
