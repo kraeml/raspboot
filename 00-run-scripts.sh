@@ -11,7 +11,7 @@ pushd /home/pi/gitbin
 
 # Boot detection
 if [ ! -e /tmp/gitbin.reboot ]; then
-  ./02-post-boot.sh
+  ./02-post-boot.sh | tee -a $logfile | logger -p local7.info -t 02-post-boot
   if [ -e /home/pi/bin/bootmail.py ]; then
     /home/pi/bin/bootmail.py
   fi
