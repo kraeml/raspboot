@@ -1,7 +1,10 @@
 echo "Installing extra packages..."
-sudo apt-get -yuV install cups cups-pdf cups-driver-gutenprint hplip-cups
-echo "Pausing..."
+sudo apt-get -yuV install cups hplip-cups openprinting-ppds
+echo "Pausing... (1) "
 sleep 60
-sudo apt-get -yuV install openprinting-ppds python-cups python-daemon python-pkg-resources
+sudo apt-get -yuV cups-pdf cups-driver-gutenprint
+echo "Pausing... (2) "
+sleep 60
+sudo apt-get -yuV install python-cups python-daemon python-pkg-resources
 echo "Done..."
 sleep 60
