@@ -4,12 +4,14 @@
 
 # Check if the ~/bin directory exists
 if [ ! -d ~/bin ]; then
+  echo "Create ~/bin ..."
   mkdir ~/bin
 fi
 
 # Download the contents of the ~/bin directory
 # We use the `.rsyncd.secret` file as a flag.
 if [ ! -e ~/bin/.rsyncd.secret ]; then
+  echo "Populate ~/bin ..."
   sudo mount /mnt/backup
   cp /mnt/backup/rbmain/bin/* ~/bin/
   sudo umount /mnt/backup
@@ -19,6 +21,7 @@ if [ ! -e ~/bin/.rsyncd.secret ]; then
 fi
 
 if [ -e /home/pi/bin/bootmail.py ]; then
+  echo "Boot detection mail..."
   /home/pi/bin/bootmail.py
 fi
 
@@ -26,6 +29,7 @@ fi
 # This makes the installer more uniform and easier to maintain regardless of
 # the use.
 if [ ! -e /home/pi/.firstboot ]; then
+  echo "First boot detected..."
   clientname=$(hostname)
 
   # 1. Update the system
