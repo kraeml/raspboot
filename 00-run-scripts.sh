@@ -12,7 +12,7 @@ pushd /home/pi/gitbin
 # Boot detection
 if [ ! -e /tmp/gitbin.reboot ]; then
   whoami > /tmp/gitbin.reboot
-  ./01-post-boot.sh | tee -a $logfile | logger -p local7.info -t 01-post-boot
+  ./01-post-boot.sh | tee -a /tmp/post-boot.log | logger -p local7.info -t 01-post-boot
 fi
 
 # Check for new/updated scripts
