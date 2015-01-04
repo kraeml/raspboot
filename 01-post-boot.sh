@@ -27,7 +27,8 @@ echo "Boot detection mail..."
 # This makes the installer more uniform and easier to maintain regardless of
 # the use.
 if [ ! -e /home/pi/.firstboot ]; then
-  echo "First boot detected..."
+  echo -n "First boot detected on "
+  echo $(date)
   clientname=$(hostname)
 
   # 1. Update the system
@@ -60,5 +61,6 @@ if [ ! -e /home/pi/.firstboot ]; then
   # Place flag
   touch /home/pi/.firstboot
   sudo shutdown -r +1 "Installation completed. Please log off now."
-  echo "Installation completed!"
+  echo -n "Installation completed on "
+  echo $(date)
 fi
