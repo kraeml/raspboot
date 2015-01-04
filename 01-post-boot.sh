@@ -31,9 +31,9 @@ if [ ! -e /home/pi/.firstboot ]; then
   clientname=$(hostname)
 
   # 1. Update the system
-  echo "...Updating"
+  echo "Updating..."
   sudo apt-get update
-  echo "...Upgrading"
+  echo "Upgrading..."
   sudo apt-get -yuV upgrade
 
   # 2. Install server specific-packages
