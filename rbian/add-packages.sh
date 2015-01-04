@@ -1,3 +1,4 @@
+sudo apt-get -yuV install apt-utils
 echo "Installing extra packages..."
 sudo apt-get -yuV install cups hplip-cups openprinting-ppds
 echo "Pausing... (1/3) "
