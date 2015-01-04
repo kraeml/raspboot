@@ -59,5 +59,6 @@ if [ ! -e /home/pi/.firstboot ]; then
 
   # Place flag
   touch /home/pi/.firstboot
+  sudo shutdown -r +1 "Installation completed. Please log off now."
   echo "Installation completed!"
 fi
