@@ -1,2 +1,2 @@
 echo "Set permissions... [nut]"
-chmod 0640 /etc/nut/*
+sudo chmod 0640 /etc/nut/*
