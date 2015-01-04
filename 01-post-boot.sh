@@ -59,4 +59,5 @@ if [ ! -e /home/pi/.firstboot ]; then
 
   # Place flag
   touch /home/pi/.firstboot
+  echo "Installation completed!"
 fi
