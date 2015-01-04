@@ -9,5 +9,5 @@ if [ $minute -eq "42" ]; then
   # Log current status
   #git status
   # Set permissions
-  chmod 744 *
+  chmod -R 744 *
 fi
