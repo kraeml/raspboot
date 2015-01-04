@@ -2,8 +2,8 @@
 *%%%% PPD file for HP Officejet 6500 e710n-z with CUPS.
 *%%%% Created by the CUPS PPD Compiler CUPS v1.5.3.
 *%%%%
-*%%%% Creaded on 03JAN2014 for Raspberry Pi
-*%%%% 
+*%%%% Created on 04JAN2014 for Raspberry Pi
+*%%%%
 *% (c) 2008 Copyright Hewlett-Packard Development Company, LP
 *FormatVersion: "4.3"
 *FileVersion: "hpcups 3.12.6"
@@ -387,7 +387,7 @@
 *CloseUI: *ColorModel
 *OpenUI *MediaType/Media Type: PickOne
 *OrderDependency: 10 AnySetup *MediaType
-*DefaultMediaType: Automatic
+*DefaultMediaType: Plain
 *MediaType Automatic/Automatic: "<</MediaType(Automatic)/cupsMediaType -1>>setpagedevice"
 *MediaType Plain/Plain Paper: "<</MediaType(Plain)/cupsMediaType 0>>setpagedevice"
 *MediaType Glossy/Photo Paper: "<</MediaType(Glossy)/cupsMediaType 3>>setpagedevice"
@@ -410,7 +410,7 @@
 *OpenGroup: InstallableOptions/Installable Options
 *OpenUI *OptionDuplex/Duplexer Installed: Boolean
 *OrderDependency: 10 AnySetup *OptionDuplex
-*DefaultOptionDuplex: False
+*DefaultOptionDuplex: True
 *OptionDuplex False/Not Installed: ""
 *OptionDuplex True/Installed: ""
 *CloseUI: *OptionDuplex
