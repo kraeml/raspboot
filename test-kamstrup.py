@@ -1,6 +1,7 @@
 #! /usr/bin/python
 
 import sys, serial, re, commands, time
+import curses
 
 port = serial.Serial()
 port.baudrate = 9600
@@ -86,6 +87,13 @@ def getelectrastring ():
   return (out)
 
 if __name__ == "__main__":
+  #init the curses screen
+  stdscr = curses.initscr()
+  #use cbreak to not require a return key press
+  curses.cbreak()
+  print "press q to quit"
+  quit=False
+  # loop
   for cnt in range(0, 120):
     time.sleep(8)
     secs = int(commands.getoutput("date +%S"))
@@ -96,3 +104,8 @@ if __name__ == "__main__":
       outDate = commands.getoutput("date '+%F %H:%M:%S'")
       # Print the data
       print '{0}, {1}'.format(outDate, outElectra)
+
+    c = stdscr.getch()
+    print curses.keyname(c),
+    if curses.keyname(c)=="q" :
+      exit()
