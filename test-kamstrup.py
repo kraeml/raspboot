@@ -97,7 +97,6 @@ def getelectrastring ():
       if (line[0] == '1-0:1.7.0'):
         powerin = int(float(line[1]) * 1000)
 
-
   out = '{0}, {1}, {2}, {3}'.format(status, electra1in, electra2in, powerin)
   return (out)
 
