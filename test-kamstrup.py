@@ -135,7 +135,7 @@ if __name__ == "__main__":
   #f = file('~/test-electra.csv', 'a')
   #Redefine system output to our file
   #sys.stdout = f
-  for cnt in range(0, 12)
+  for cnt in range(0, 12):
     outElectra = getelectrastring()
 
     # Get the time and date in human-readable form...
