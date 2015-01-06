@@ -135,7 +135,7 @@ if __name__ == "__main__":
   #f = file('~/test-electra.csv', 'a')
   #Redefine system output to our file
   #sys.stdout = f
-  for cnt in range(0, 12):
+  for cnt in range(0, 120):
     secs = int(commands.getoutput("date +%S"))
     if (secs > 15):
       outElectra = getelectrastring()
