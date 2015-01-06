@@ -1,6 +1,6 @@
 #! /usr/bin/python
 
-import sys, serial, re, commands
+import sys, serial, re, commands, time
 
 port = serial.Serial()
 port.baudrate = 9600
@@ -136,6 +136,7 @@ if __name__ == "__main__":
   #Redefine system output to our file
   #sys.stdout = f
   for cnt in range(0, 120):
+    time.sleep(8)
     secs = int(commands.getoutput("date +%S"))
     if (secs > 15):
       outElectra = getelectrastring()
