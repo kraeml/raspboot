@@ -137,7 +137,7 @@ if __name__ == "__main__":
   #sys.stdout = f
   for cnt in range(0, 12):
     secs = int(commands.getoutput("date +%S"))
-    if (secs < 15):
+    if (secs > 15):
       outElectra = getelectrastring()
 
       # Get the time and date in human-readable form...
