@@ -70,14 +70,7 @@ def gettelegram():
 
 def getelectrastring ():
 
-  electra1in = "NaN"
-  electra2in = "NaN"
-  electra1out = "NaN"
-  electra2out = "NaN"
-  tarif = "NaN"
-  swits = "NaN"
   powerin = "NaN"
-  powerout = "NaN"
 
   telegram, status = gettelegram()
 
@@ -85,19 +78,11 @@ def getelectrastring ():
     for element in range(0, len(telegram) - 1):
       line =  re.split( '[\(\*\)]', telegram[element] )
 
-      #['1-0:1.8.1', '00175.402', 'kWh', '']
-      if (line[0] == '1-0:1.8.1'):
-        electra1in = int(float(line[1]) * 1000)
-
-      #['1-0:1.8.2', '00136.043', 'kWh', '']
-      if (line[0] == '1-0:1.8.2'):
-        electra2in = int(float(line[1]) * 1000)
-
       #['1-0:1.7.0', '0000.32', 'kW', '']
       if (line[0] == '1-0:1.7.0'):
         powerin = int(float(line[1]) * 1000)
 
-  out = '{0}, {1}, {2}, {3}'.format(status, electra1in, electra2in, powerin)
+  out = '{0}, {1}'.format(status, powerin)
   return (out)
 
 if __name__ == "__main__":
