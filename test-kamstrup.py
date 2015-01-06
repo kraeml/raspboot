@@ -136,15 +136,16 @@ if __name__ == "__main__":
   #Redefine system output to our file
   #sys.stdout = f
   for cnt in range(0, 12):
-    outElectra = getelectrastring()
+    secs = commands.getoutput("date +%S").int()
+    if (secs < 15):
+      outElectra = getelectrastring()
 
-    # Get the time and date in human-readable form...
-    outDate = commands.getoutput("date '+%F %H:%M:%S'")
-    # ... and machine-readable form (UNIX-epoch)
-    #outUxDate = commands.getoutput("date +%s")
+      # Get the time and date in human-readable form...
+      outDate = commands.getoutput("date '+%F %H:%M:%S'")
+      # ... and machine-readable form (UNIX-epoch)
 
-    # Print the data
-    print '{0}, {1}'.format(outDate, outElectra)
+      # Print the data
+      print '{0}, {1}'.format(outDate, outElectra)
 
   # CLose the file
   #f.close()
