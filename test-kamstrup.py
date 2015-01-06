@@ -123,7 +123,7 @@ def getelectrastring ():
       #['0-0:96.13.0', '', '']
          # not recorded
 
-  out = '{0}, {1}, {2}'.format(electra1in, electra2in, powerin)
+  out = '{0}, {1}, {2}, {3}'.format(status, electra1in, electra2in, powerin)
   return (out)
 
 if __name__ == "__main__":
