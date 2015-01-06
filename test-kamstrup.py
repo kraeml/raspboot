@@ -91,31 +91,31 @@ def getelectrastring ():
         electra2in = int(float(line[1]) * 1000)
 
       #['1-0:2.8.1', '00000.000', 'kWh', '']
-      if (line[0] == '1-0:2.8.1'):
-        electra1out = int(float(line[1]) * 1000)
+      #if (line[0] == '1-0:2.8.1'):
+      #  electra1out = int(float(line[1]) * 1000)
 
       #['1-0:2.8.2', '00000.000', 'kWh', '']
-      if (line[0] == '1-0:2.8.2'):
-        electra2out = int(float(line[1]) * 1000)
+      #if (line[0] == '1-0:2.8.2'):
+      #  electra2out = int(float(line[1]) * 1000)
 
       #['0-0:96.14.0', '0002', '']
-      if (line[0] == '0-0:96.14.0'):
-        tarif = int(line[1])
+      #if (line[0] == '0-0:96.14.0'):
+      #  tarif = int(line[1])
 
       #['1-0:1.7.0', '0000.32', 'kW', '']
       if (line[0] == '1-0:1.7.0'):
         powerin = int(float(line[1]) * 1000)
 
       #['1-0:2.7.0', '0000.00', 'kW', '']
-      if (line[0] == '1-0:2.7.0'):
-        powerout = int(float(line[1]) * 1000)
+      #if (line[0] == '1-0:2.7.0'):
+      #  powerout = int(float(line[1]) * 1000)
 
       #['0-0:17.0.0', '999', 'A', '']
          # not recorded
 
       #['0-0:96.3.10', '1', '']
-      if (line[0] == '0-0:96.3.10'):
-        swits = int(line[1])
+      #if (line[0] == '0-0:96.3.10'):
+      #  swits = int(line[1])
 
       #['0-0:96.13.1', '', '']
          # not recorded
@@ -123,13 +123,13 @@ def getelectrastring ():
       #['0-0:96.13.0', '', '']
          # not recorded
 
-  out = '{0}, {1}, {2}, {3}, {4}, {5}, {6}, {7}'.format(electra1in, electra2in, powerin, electra1out, electra2out, powerout, tarif, swits)
+  out = '{0}, {1}, {2}'.format(electra1in, electra2in, powerin)
   return (out)
 
 if __name__ == "__main__":
 
   # Everybody! Remember where we parked! -Capt. Kirk
-  orig_stdout = sys.stdout
+  # orig_stdout = sys.stdout
 
   # Define output file
   #f = file('~/test-electra.csv', 'a')
@@ -141,10 +141,10 @@ if __name__ == "__main__":
   # Get the time and date in human-readable form...
   outDate = commands.getoutput("date '+%F %H:%M:%S'")
   # ... and machine-readable form (UNIX-epoch)
-  outUxDate = commands.getoutput("date +%s")
+  #outUxDate = commands.getoutput("date +%s")
 
   # Print the data
-  print '{0}, {1}, {2}'.format(outDate, outUxDate, outElectra)
+  print '{0}, {1}'.format(outDate, outElectra)
 
   # CLose the file
   #f.close()
