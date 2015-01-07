@@ -80,7 +80,7 @@ def getelectrastring ():
 
       #['1-0:1.7.0', '0000.32', 'kW', '']
       if (line[0] == '1-0:1.7.0'):
-        powerin = int(float(line[1]) * 1000)
+        powerin = float(line[1]) * 1000
 
   out = '{0}, {1}'.format(status, powerin)
   return (out)
