@@ -21,7 +21,7 @@ def main():
   syslog = commands.getoutput("wc -l /var/log/syslog").split()[0]
 
   # Print the data
-  print '{0}, {1}, {2}, {3}, {4}'.format(outDate, outUxDate, kernlog, messlog, syslog))
+  print '{0}, {1}, {2}, {3}, {4}'.format(outDate, outUxDate, kernlog, messlog, syslog)
 
   # Close the file
   f.close()
