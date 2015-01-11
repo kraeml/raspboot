@@ -1,4 +1,3 @@
-sudo apt-get -yuV install apt-utils
 echo "Installing extra packages..."
 sudo apt-get -yuV install cups
 echo "Pausing... (1/4) "
