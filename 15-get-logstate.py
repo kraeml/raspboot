@@ -7,7 +7,7 @@ def main():
   orig_stdout = sys.stdout
 
   # Define output file
-  f = file('/tmp/15-cnt-loglines.tmp', 'a')
+  f = file('/tmp/15-cnt-loglines.csv', 'a')
   # Redefine system output to our file
   sys.stdout = f
 
