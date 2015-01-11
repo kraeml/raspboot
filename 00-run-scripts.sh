@@ -19,7 +19,7 @@ fi
 # Check for new/updated scripts
 ./02-update-scripts.sh 2>&1 | tee -a $logfile | logger -p local7.info -t 02-update-scripts
 # Execute the common scripts in parallel
-./11-get-temp.py & ./12-get-load.py & ./13-get-nettraffic.py & ./14-get-memory.py & wait
+./11-get-temp.py & ./12-get-load.py & ./13-get-nettraffic.py & ./14-get-memory.py & ./15-get-logstate.py & wait
 
 # Execute client-specific scripts
 case "$CLNT" in
