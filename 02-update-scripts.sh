@@ -8,6 +8,7 @@ if [ $minute -eq "42" ]; then
   git fetch origin && git reset --hard origin/dev && git clean -f -d
   # Log current status
   #git status
+  python -m compileall .
   # Set permissions
   chmod -R 744 *
 fi
