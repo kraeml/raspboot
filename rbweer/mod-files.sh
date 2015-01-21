@@ -20,3 +20,5 @@ sudo sed -i 's/\#cron/cron/' /etc/rsyslog.conf
 # +  psk="..."
 # +  key_mgmt=WPA-PSK
 # +}
+
+# http://raspberrypi.stackexchange.com/questions/15153/i-get-wifi-timouts-with-the-rt2800usb-driver
