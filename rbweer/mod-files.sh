@@ -10,6 +10,7 @@ sudo sed -i 's/\#cron/cron/' /etc/rsyslog.conf
 # + iface wlan0 inet manual
 # + wpa-roam /etc/wpa_supplicant/wpa_supplicant.conf
 # + iface default inet dhcp
+# + post-up iwconfig wlan0 power off
 
 #/etc/wpa_supplicant/wpa_supplicant.conf
 # + ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
