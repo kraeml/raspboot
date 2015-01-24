@@ -4,14 +4,9 @@ echo "Modifying installation..."
 sudo sed -i 's/auth\,authpriv\.none/cron\,auth\,authpriv\.none/' /etc/rsyslog.conf
 sudo sed -i 's/\#cron/cron/' /etc/rsyslog.conf
 
-#/etc/wpa_supplicant/wpa_supplicant.conf
-# + ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
-# + update_config=1
-# +
-# + network={
-# +  ssid="..."
-# +  psk="..."
-# +  key_mgmt=WPA-PSK
-# +}
+# Install information about the wifi-network
+sudo cp /home/pi/bin/wpa.conf /etc/wpa_supplicant/wpa_supplicant.conf
 
 # http://raspberrypi.stackexchange.com/questions/15153/i-get-wifi-timouts-with-the-rt2800usb-driver
+
+# apt/sources.list add: non-free
