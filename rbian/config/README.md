@@ -1,3 +1,10 @@
+This is the license for the file lib@firmware@rt2870.bin which is the
+RT2870 driver v0.33:
+
+ieee80211 phy0: rt2x00lib_request_firmware: Info - Firmware detected - version: 0.33
+
+This version is required to reduce output to /var/log and improve WIFI connectivity.
+
 /**************************************************************************
  * Ralink Tech Inc.
  * 5F., No.36, Taiyuan St., Jhubei City,
@@ -22,4 +29,3 @@
  * 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  *                                                                       *
  *************************************************************************/
-
