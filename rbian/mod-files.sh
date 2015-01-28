@@ -6,5 +6,3 @@ sudo sed -i 's/\#cron/cron/' /etc/rsyslog.conf
 
 # Install information about the wifi-network
 sudo cp /home/pi/bin/wpa.conf /etc/wpa_supplicant/wpa_supplicant.conf
-
-# http://raspberrypi.stackexchange.com/questions/15153/i-get-wifi-timouts-with-the-rt2800usb-driver
