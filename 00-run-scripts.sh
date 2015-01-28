@@ -4,7 +4,7 @@ logfile=/tmp/gitbin.err
 CLNT=$(hostname)
 
 # Timestamp the logfile
-echo $(date)
+date
 
 # Change PWD to the binaries directory
 pushd /home/pi/gitbin
