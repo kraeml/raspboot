@@ -4,6 +4,7 @@ RT2870 driver v0.33:
 ieee80211 phy0: rt2x00lib_request_firmware: Info - Firmware detected - version: 0.33
 
 This version is required to reduce output to /var/log and improve WIFI connectivity.
+http://raspberrypi.stackexchange.com/questions/15153/i-get-wifi-timouts-with-the-rt2800usb-driver
 
 /**************************************************************************
  * Ralink Tech Inc.
