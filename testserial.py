@@ -22,10 +22,9 @@ dt = commands.getoutput("date '+%F %H:%M:%S'")
 
 ser = serial.Serial('/dev/ttyACM0', 9600, timeout=100)
 # close the port if we accidentaly left it open previously
-ser.close()
-ser.open()
+
 # get data
-line = ser.readline()
+line = ser.readline().split()
 ser.flush()
 ser.close()
 
@@ -34,7 +33,7 @@ orig_stdout = sys.stdout
 f = file('/tmp/testser.txt', 'a')
 # Redefine system output to our file
 sys.stdout = f
-print '{0}, {1}'.format(dt, line)
+print '{0}, {1}'.format(dt, line[0])
 f.close()
 # Re-set the stdout
 sys.stdout = orig_stdout
