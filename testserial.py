@@ -8,6 +8,8 @@ def gettelegram(cmd):
   abort = 0
   # countdown counter used to prevent infinite loops
   loops2go = 10
+  #
+  telegram = "NaN";
 
   while abort == 0:
     try:
@@ -38,8 +40,7 @@ def gettelegram(cmd):
 if __name__ == "__main__":
   telegram, status = gettelegram("V")
   dt = commands.getoutput("date '+%F %H:%M:%S'")
-
-  f = file('/tmp/testser.txt', 'a')
-  f.write('{0}, {1}\n'.format(dt, telegram))
-  #print '{0}, {1}'.format(dt, telegram)
-  f.close()
+  if status == 1:
+    f = file('/tmp/testser.txt', 'a')
+    f.write('{0}, {1}\n'.format(dt, telegram))
+    f.close()
