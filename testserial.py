@@ -1,46 +1,30 @@
 #!/usr/bin/python
 import serial, commands, sys
 
-port = serial.Serial('/dev/ttyACM0', 9600, timeout=5)
+port = serial.Serial('/dev/ttyACM0', 9600, timeout=1)
 
 def gettelegram(cmd):
   # flag used to exit the while-loop
   abort = 0
   # countdown counter used to prevent infinite loops
   loops2go = 10
-  # storage space for the telegram
-  telegram = []
-  # end of line delimiter
-  delim = "\x0a"
-
-  #try:
-  #  port.open()
-  #  serial.XON
-  #except:
-  #  abort == 4
-  #  # open error terminates immediately
-  #  return telegram, abort
 
   while abort == 0:
     try:
-      print loops2go
-      port.flush()
       port.write(cmd)
-      line = port.readline()
-      print line
-      # this doesn't seem to work
-      #line = str(port.readline()).strip()
-      #line = "".join(iter(lambda:port.read(1),delim)).strip()
+      line = port.readline().strip().split()
     except:
       # read error, terminate prematurely
       abort = 2
 
-    #if line[0] == "!":
-    #  abort = 1
+    if line[0] == cmd:
+      if line [len(line) - 1] == "!"
+        telegram = line[1]
+        abort = 1
 
-    if line != "":
-       telegram = line
-       abort = 1
+    #if line != "":
+    #   telegram = line
+    #   abort = 1
 
     loops2go = loops2go - 1
     if loops2go < 0:
@@ -66,7 +50,7 @@ def gettelegram(cmd):
   return (telegram, abort)
 
 if __name__ == "__main__":
-  telegram, status = gettelegram("v")
+  telegram, status = gettelegram("V")
   dt = commands.getoutput("date '+%F %H:%M:%S'")
 
   #port.write("v")
