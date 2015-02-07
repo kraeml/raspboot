@@ -12,7 +12,7 @@ def gettelegram(cmd):
   while abort == 0:
     try:
       port.write(cmd)
-      line = port.readline().strip().split()
+      line = port.readline()
     except:
       # read error, terminate prematurely
       abort = 2
