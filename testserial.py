@@ -7,7 +7,7 @@ def gettelegram(cmd):
   # flag used to exit the while-loop
   abort = 0
   # countdown counter used to prevent infinite loops
-  loops2go = 40
+  loops2go = 10
   # storage space for the telegram
   telegram = []
   # end of line delimiter
@@ -23,9 +23,11 @@ def gettelegram(cmd):
 
   while abort == 0:
     try:
+      print loops2go
       port.flush()
       port.write(cmd)
       line = port.readline()
+      print line
       # this doesn't seem to work
       #line = str(port.readline()).strip()
       #line = "".join(iter(lambda:port.read(1),delim)).strip()
@@ -35,15 +37,14 @@ def gettelegram(cmd):
 
     #if line[0] == "!":
     #  abort = 1
-    telegram = line
-    abort =1
 
-    #if line != "":
-    #   telegram.append(line)
+    if line != "":
+       telegram = line
+       abort = 1
 
-    #loops2go = loops2go - 1
-    #if loops2go < 0:
-    #  abort = 3
+    loops2go = loops2go - 1
+    if loops2go < 0:
+      abort = 3
 
   # test for correct start of telegram
   #if telegram[0][0] != "/":
