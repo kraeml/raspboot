@@ -26,10 +26,11 @@ case "$CLNT" in
   rbups )   echo "UPS monitor"
             ./16-get-upsstate.py
             ;;
-  rbelec )   echo "Electricity monitor"
+  rbelec )  echo "Electricity monitor"
             ./17-get-electra.py
             ;;
   rbian )   echo "Raspberry testbench"
+            ./testserial.py
             ;;
   * )       echo "!! undefined client !!"
             ;;

@@ -20,7 +20,7 @@ if [ ! -e ~/bin/.rsyncd.secret ]; then
   chmod    0740 ~/bin/.rsyncd.secret
 fi
 
-echo "Boot detection mail..."
+echo "Boot detection mail... "$(date)
 /home/pi/bin/bootmail.py
 
 # Additional scripts to be executed on the first boot after install.
