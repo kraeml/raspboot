@@ -23,8 +23,9 @@ def gettelegram(cmd):
       line = line.strip().split()
       if line[0] == cmd:
         if line[-1] == "!":
-          for item in range(1,len(line)-2):
-            telegram = ', {0}'.format(line[item])
+          telegram = ""
+          for item in range(1,len(line)-1):
+            telegram = telegram + ' {0}'.format(line[item])
           abort = 1
 
     loops2go = loops2go - 1
@@ -41,7 +42,7 @@ def gettelegram(cmd):
 if __name__ == "__main__":
   telegram, status = gettelegram("T")
   time.sleep(2)
-  telegram, status = gettelegram("T")
+  telegram, status = gettelegram("R")
   dt = commands.getoutput("date '+%F %H:%M:%S'")
   if status == 1:
     f = file('/tmp/testser.txt', 'a')
