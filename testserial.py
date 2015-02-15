@@ -38,7 +38,7 @@ def gettelegram(cmd):
   return (telegram, abort)
 
 if __name__ == "__main__":
-  telegram, status = gettelegram("V")
+  telegram, status = gettelegram("T")
   dt = commands.getoutput("date '+%F %H:%M:%S'")
   if status == 1:
     f = file('/tmp/testser.txt', 'a')
