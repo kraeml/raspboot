@@ -46,5 +46,5 @@ if __name__ == "__main__":
   dt = commands.getoutput("date '+%F %H:%M:%S'")
   if status == 1:
     f = file('/tmp/testser.txt', 'a')
-    f.write('{0}{1}\n'.format(dt, telegram))
+    f.write('{0},{1}\n'.format(dt, telegram))
     f.close()
