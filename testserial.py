@@ -40,9 +40,9 @@ def gettelegram(cmd):
   return (telegram, abort)
 
 if __name__ == "__main__":
-  telegram, status = gettelegram("T")
+  telegram, status = gettelegram("S")
   time.sleep(2)
-  telegram, status = gettelegram("R")
+  telegram, status = gettelegram("A")
   dt = commands.getoutput("date '+%F %H:%M:%S'")
   if status == 1:
     f = file('/tmp/testser.txt', 'a')
