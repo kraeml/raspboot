@@ -1,7 +1,7 @@
 #!/usr/bin/python
 import serial, commands, sys, time
 
-port = serial.Serial('/dev/ttyACM0', 9600, timeout=1)
+port = serial.Serial('/dev/ttyACM0', 9600, timeout=10)
 
 def gettelegram(cmd):
   # flag used to exit the while-loop
