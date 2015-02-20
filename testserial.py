@@ -57,14 +57,16 @@ def graphs():
   # 7 = HeatIndex
   # 8 = Voltage
   X = C[:,1]
+  x_extrema = [min(X),max(X)]
   Y = C[:,2]
-  (a,b)= np.polyfit(X,Y,1)
-  cc = np.corrcoef(X,Y)[0,1]
+  ab = np.polyfit(X,Y,1)
+  fit = np.poly1d(ab)
+  r2 = np.corrcoef(X,Y)[0,1]
 
   pl.close()
-  pl.plot(X,Y, 'bo')
-  pl.plot(X,(a*X+b), ':r')
-  pl.title('TMP36 vs. DS18B20 ({0})'.format(cc))
+  pl.plot(X,Y,'b+', x_extrema,fit(x_extrema),'b-')
+  #pl.plot(X,(a*X+b), ':r')
+  pl.title('TMP36 vs. DS18B20 (R2={0})'.format(r2))
   pl.xlabel("T(tmp36)")
   pl.ylabel("T(ds18b20)")
   pl.savefig('/tmp/C12.png')
