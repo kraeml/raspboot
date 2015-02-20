@@ -65,9 +65,9 @@ def graphs():
   pl.close()
   pl.plot(X,Y, 'bo')
   pl.plot(X,(a*X+b), ':r')
-  pl.title = 'TMP36 vs. DS18B20 ({0})'.format(cc)
-  pl.xlabel=("T(tmp36)")
-  pl.ylabel=("T(ds18b20)")
+  pl.title('TMP36 vs. DS18B20 ({0})'.format(cc))
+  pl.xlabel("T(tmp36)")
+  pl.ylabel("T(ds18b20)")
 
   pl.savefig('/tmp/C12.png')
 
@@ -79,9 +79,9 @@ def graphs():
   pl.close()
   pl.plot(X,Y, 'bo')
   pl.plot(X,(a*X+b), ':r')
-  pl.title= 'DS18B20 vs. DHT22 ({0})'.format(cc)
-  pl.xlabel=("T(ds18b20)")
-  pl.ylabel=("T(dht22)")
+  pl.title('DS18B20 vs. DHT22 ({0})'.format(cc))
+  pl.xlabel("T(ds18b20)")
+  pl.ylabel("T(dht22)")
 
   pl.savefig('/tmp/C23.png')
 
@@ -93,9 +93,9 @@ def graphs():
   pl.close()
   pl.plot(X,Y, 'bo')
   pl.plot(X,(a*X+b), ':r')
-  pl.title = 'TMP36 vs. DHT22 ({0})'.format(cc)
-  pl.xlabel=("T(tmp36)")
-  pl.ylabel=("T(dht22)")
+  pl.title('TMP36 vs. DHT22 ({0})'.format(cc))
+  pl.xlabel("T(tmp36)")
+  pl.ylabel("T(dht22)")
 
   pl.savefig('/tmp/C13.png')
 
@@ -107,11 +107,11 @@ def graphs():
   pl.close()
   pl.plot(X,Y, 'bo')
   pl.plot(X,(a*X+b), ':r')
-  pl.title = 'DewPoint vs. DewPoint2 ({0})'.format(cc)
-  pl.xlabel=("T(dp1)")
-  pl.ylabel=("T(dp2)")
+  pl.title('DewPoint vs. DewPoint2 ({0})'.format(cc))
+  pl.xlabel("Dewpoint(1)")
+  pl.ylabel("Dewpoint(2)")
 
-  pl.savefig('/tmp/C56.png')
+  pl.savefig('/tmp/C56.png', )
 
   return
 
