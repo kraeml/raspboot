@@ -67,12 +67,14 @@ def graphs():
   r2 = np.corrcoef(X,Y)[0,1]
   pl.plot(X,Y,'b.', label='TMP36 vs. DS18B20')
   pl.plot(x_extrema,fit(x_extrema),'b:')
+
   Y = C[:,3]
   ab = np.polyfit(X,Y,1)
   fit = np.poly1d(ab)
   r2 = np.corrcoef(X,Y)[0,1]
   pl.plot(X,Y,'r.', label='TMP36 vs. DHT22')
   pl.plot(x_extrema,fit(x_extrema),'r:')
+
   X = C[:,2]
   ab = np.polyfit(X,Y,1)
   fit = np.poly1d(ab)
@@ -83,51 +85,8 @@ def graphs():
   pl.title('Sensor correlations')
   pl.xlabel("x")
   pl.ylabel("y")
+  pl.legend(loc='upper left')
   pl.savefig('/tmp/C123.png')
-
-
-
-  X = C[:,1]
-  x_extrema = [min(X),max(X)]
-  Y = C[:,2]
-  ab = np.polyfit(X,Y,1)
-  fit = np.poly1d(ab)
-  r2 = np.corrcoef(X,Y)[0,1]
-
-  pl.close()
-  pl.plot(X,Y,'b.', x_extrema,fit(x_extrema),'b:')
-  pl.title('TMP36 vs. DS18B20 (R2={0})'.format(r2))
-  pl.xlabel("T(tmp36)")
-  pl.ylabel("T(ds18b20)")
-  pl.savefig('/tmp/C12.png')
-
-  X = C[:,2]
-  x_extrema = [min(X),max(X)]
-  Y = C[:,3]
-  ab= np.polyfit(X,Y,1)
-  fit = np.poly1d(ab)
-  r2 = np.corrcoef(X,Y)[0,1]
-
-  pl.close()
-  pl.plot(X,Y,'b.', x_extrema,fit(x_extrema),'b:')
-  pl.title('DS18B20 vs. DHT22 (R2={0})'.format(r2))
-  pl.xlabel("T(ds18b20)")
-  pl.ylabel("T(dht22)")
-  pl.savefig('/tmp/C23.png')
-
-  X = C[:,1]
-  x_extrema = [min(X),max(X)]
-  Y = C[:,3]
-  ab = np.polyfit(X,Y,1)
-  fit = np.poly1d(ab)
-  r2 = np.corrcoef(X,Y)[0,1]
-
-  pl.close()
-  pl.plot(X,Y,'b.', x_extrema,fit(x_extrema),'b:')
-  pl.title('TMP36 vs. DHT22 (R2={0})'.format(r2))
-  pl.xlabel("T(tmp36)")
-  pl.ylabel("T(dht22)")
-  pl.savefig('/tmp/C13.png')
 
   X = C[:,5]
   x_extrema = [min(X),max(X)]
@@ -148,7 +107,7 @@ def graphs():
 
   pl.close()
   pl.plot(D,C[:,1], '.r', label='TMP36')
-  pl.plot(D,C[:,2], '.g', label='DS18.')
+  pl.plot(D,C[:,2], '.g', label='DS18*')
   pl.plot(D,C[:,3], '.b', label='DHT22')
   pl.title('Temperature trends')
   pl.ylabel('T [degC]')
