@@ -1,5 +1,5 @@
 #!/usr/bin/python
-import serial, commands, sys, time
+import serial, commands, sys, time, numpy
 
 port = serial.Serial('/dev/ttyACM0', 9600, timeout=10)
 
@@ -38,6 +38,40 @@ def gettelegram(cmd):
   # abort == 3 no valid data after several attempts
 
   return (telegram, abort)
+
+def graphs()
+  C12=numpy.loadtxt('/tmp/testser.txt',delimiter=',',usecols=(1,2))
+  C13=numpy.loadtxt('/tmp/testser.txt',delimiter=',',usecols=(1,3))
+  C23=numpy.loadtxt('/tmp/testser.txt',delimiter=',',usecols=(2,3))
+  C56=numpy.loadtxt('/tmp/testser.txt',delimiter=',',usecols=(5,6))
+
+  X = C12[:,0]
+  Y = C12[:,1]
+  title = "TMP36 vs. DS18B20"
+  (a,b)= numpy.polyfit(X,Y,1)
+  cc = numpy.corrcoef(X,Y)[0,1]
+
+  savefig('C12.png', bbox_inches='tight')
+
+  X = C23[:,0]
+  Y = C23[:,1]
+  title "DS18B20 vs. DHT22"
+  (a,b)= numpy.polyfit(X,Y,1)
+  cc = numpy.corrcoef(X,Y)[0,1]
+
+  X = C13[:,0]
+  Y = C13[:,1]
+  title = "TMP36 vs. DHT22"
+  (a,b)= numpy.polyfit(X,Y,1)
+  cc = numpy.corrcoef(X,Y)[0,1]
+
+  X = C56[:,0]
+  Y = C56[:,1]
+  title = "DewPoint vs. DewPoint2"
+  (a,b)= numpy.polyfit(X,Y,1)
+  cc = numpy.corrcoef(X,Y)[0,1]
+
+  return
 
 if __name__ == "__main__":
   telegram, status = gettelegram("S")
