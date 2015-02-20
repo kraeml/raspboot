@@ -84,14 +84,14 @@ def graphs():
   r2 = np.corrcoef(A1,A3)[0,1]
   pl.plot(A1,A3,'r.', label='TMP36 vs. DHT22')
   pl.plot(A1_extrema,fit(A1_extrema),'r:')
-  pl.annotate('{0}'.format(r2) , xy=(min(A1)+0.5,fit(min(A1))) )
+  pl.annotate('{0}'.format(r2) , xy=(min(A1)+0.5,fit(min(A1))), size=6 )
 
   ab = np.polyfit(A3,A2,1)
   fit = np.poly1d(ab)
   r2 = np.corrcoef(A3,A2)[0,1]
   pl.plot(A3,A2,'g.', label='DHT22 vs. DS18B20')
   pl.plot(A3_extrema,fit(A3_extrema),'g:')
-  pl.annotate('{0}'.format(r2) , xy=(min(A3)+0.5,fit(min(A3))) )
+  pl.annotate('{0}'.format(r2) , xy=(min(A3)+0.5,fit(min(A3))), size=6 )
 
   pl.title('Sensor correlations')
   pl.xlabel("x")
@@ -110,7 +110,7 @@ def graphs():
   pl.title('DewPoint vs. DewPoint2')
   pl.xlabel("Dewpoint(1)")
   pl.ylabel("Dewpoint(2)")
-  pl.annotate('{0}'.format(r2) , xy=(min(A5)+0.5,fit(min(A6))) )
+  pl.annotate('{0}'.format(r2) , xy=(min(A5)+0.5,fit(min(A6))), size=6 )
   pl.grid(True)
   pl.savefig('/tmp/C56.png')
 
