@@ -72,14 +72,15 @@ def graphs():
   pl.savefig('/tmp/C12.png')
 
   X = C[:,2]
+  x_extrema = [min(X),max(X)]
   Y = C[:,3]
-  (a,b)= np.polyfit(X,Y,1)
-  cc = np.corrcoef(X,Y)[0,1]
+  ab= np.polyfit(X,Y,1)
+  fit = np.poly1d(ab)
+  r2 = np.corrcoef(X,Y)[0,1]
 
   pl.close()
-  pl.plot(X,Y, 'bo')
-  pl.plot(X,(a*X+b), ':r')
-  pl.title('DS18B20 vs. DHT22 ({0})'.format(cc))
+  pl.plot(X,Y,'b+', x_extrema,fit(x_extrema),'b+')
+  pl.title('DS18B20 vs. DHT22 (R2={0})'.format(r2))
   pl.xlabel("T(ds18b20)")
   pl.ylabel("T(dht22)")
   pl.savefig('/tmp/C23.png')
