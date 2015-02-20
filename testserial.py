@@ -67,6 +67,7 @@ def graphs():
   r2 = np.corrcoef(X,Y)[0,1]
   pl.plot(X,Y,'b.', label='TMP36 vs. DS18B20')
   pl.plot(x_extrema,fit(x_extrema),'b:')
+  #pl.annotate(str(r2), )
 
   Y = C[:,3]
   ab = np.polyfit(X,Y,1)
@@ -86,7 +87,7 @@ def graphs():
   pl.xlabel("x")
   pl.ylabel("y")
   pl.grid(True)
-  pl.legend(loc='upper left')
+  pl.legend(loc='upper left', prop={'size':8})
   pl.savefig('/tmp/C123.png')
 
   X = C[:,5]
@@ -102,7 +103,7 @@ def graphs():
   pl.xlabel("Dewpoint(1)")
   pl.ylabel("Dewpoint(2)")
   pl.grid(True)
-  pl.savefig('/tmp/C56.png', )
+  pl.savefig('/tmp/C56.png')
 
 
   D = matplotlib.dates.num2date(C[:,0])
@@ -114,7 +115,7 @@ def graphs():
   pl.title('Temperature trends')
   pl.ylabel('T [degC]')
   pl.grid(True)
-  pl.legend(loc='upper left')
+  pl.legend(loc='upper left', prop={'size':8})
   pl.gcf().autofmt_xdate()
   pl.savefig('/tmp/D1.png')
 
@@ -132,7 +133,7 @@ def graphs():
   pl.title('Dewpoint trends')
   pl.ylabel('T [degC]')
   pl.grid(True)
-  pl.legend(loc='upper left')
+  pl.legend(loc='upper left', prop={'size':8})
   pl.gcf().autofmt_xdate()
   pl.savefig('/tmp/D3.png')
 
