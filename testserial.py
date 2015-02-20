@@ -85,6 +85,7 @@ def graphs():
   pl.title('Sensor correlations')
   pl.xlabel("x")
   pl.ylabel("y")
+  pl.grid(True)
   pl.legend(loc='upper left')
   pl.savefig('/tmp/C123.png')
 
@@ -100,6 +101,7 @@ def graphs():
   pl.title('DewPoint vs. DewPoint2 (R2={0})'.format(r2))
   pl.xlabel("Dewpoint(1)")
   pl.ylabel("Dewpoint(2)")
+  pl.grid(True)
   pl.savefig('/tmp/C56.png', )
 
 
