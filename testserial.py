@@ -77,21 +77,21 @@ def graphs():
   r2 = np.corrcoef(A1,A2)[0,1]
   pl.plot(A1,A2,'b.', label='TMP36 vs. DS18B20')
   pl.plot(A1_extrema,fit(A1_extrema),'b:')
-  pl.annotate('{0}'.format(r2) , xy=(min(A1)+0.5,fit(min(A1))) )
+  pl.annotate('{0}'.format(r2) , xy=(min(A1)+0.5,fit(min(A1))), size=6, color='b' )
 
   ab = np.polyfit(A1,A3,1)
   fit = np.poly1d(ab)
   r2 = np.corrcoef(A1,A3)[0,1]
   pl.plot(A1,A3,'r.', label='TMP36 vs. DHT22')
   pl.plot(A1_extrema,fit(A1_extrema),'r:')
-  pl.annotate('{0}'.format(r2) , xy=(min(A1)+0.5,fit(min(A1))), size=6 )
+  pl.annotate('{0}'.format(r2) , xy=(min(A1)+0.5,fit(min(A1))), size=6, color='r' )
 
   ab = np.polyfit(A3,A2,1)
   fit = np.poly1d(ab)
   r2 = np.corrcoef(A3,A2)[0,1]
   pl.plot(A3,A2,'g.', label='DHT22 vs. DS18B20')
   pl.plot(A3_extrema,fit(A3_extrema),'g:')
-  pl.annotate('{0}'.format(r2) , xy=(min(A3)+0.5,fit(min(A3))), size=6 )
+  pl.annotate('{0}'.format(r2) , xy=(min(A3)+0.5,fit(min(A3))), size=6, color='g' )
 
   pl.title('Sensor correlations')
   pl.xlabel("x")
