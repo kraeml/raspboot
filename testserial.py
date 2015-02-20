@@ -107,7 +107,7 @@ def graphs():
   pl.close()
   pl.plot(A5,A6,'b.')
   pl.plot(A5_extrema,fit(A5_extrema),'b:')
-  pl.title('DewPoint vs. DewPoint2'
+  pl.title('DewPoint vs. DewPoint2')
   pl.xlabel("Dewpoint(1)")
   pl.ylabel("Dewpoint(2)")
   pl.annotate('{0}'.format(r2) , xy=(min(A5)+0.5,fit(min(A6))) )
