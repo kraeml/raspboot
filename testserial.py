@@ -1,6 +1,8 @@
 #!/usr/bin/python
 import matplotlib
 matplotlib.use("Agg")
+
+from matplotlib.dates import strpdate2num
 import numpy as np
 import pylab as pl
 
@@ -45,7 +47,7 @@ def gettelegram(cmd):
   return (telegram, abort)
 
 def graphs():
-  C=np.loadtxt('/tmp/testser.txt',delimiter=',')
+  C=np.loadtxt('/tmp/testser.txt',delimiter=',',converters={0:strpdate2num("%Y-%m-%d %H:%M:%S")})
   # 1 = TMP36
   # 2 = DS18B20
   # 3 = DHT22
@@ -65,7 +67,6 @@ def graphs():
   pl.title('TMP36 vs. DS18B20 ({0})'.format(cc))
   pl.xlabel("T(tmp36)")
   pl.ylabel("T(ds18b20)")
-
   pl.savefig('/tmp/C12.png')
 
   X = C[:,2]
@@ -79,7 +80,6 @@ def graphs():
   pl.title('DS18B20 vs. DHT22 ({0})'.format(cc))
   pl.xlabel("T(ds18b20)")
   pl.ylabel("T(dht22)")
-
   pl.savefig('/tmp/C23.png')
 
   X = C[:,1]
@@ -93,7 +93,6 @@ def graphs():
   pl.title('TMP36 vs. DHT22 ({0})'.format(cc))
   pl.xlabel("T(tmp36)")
   pl.ylabel("T(dht22)")
-
   pl.savefig('/tmp/C13.png')
 
   X = C[:,5]
@@ -107,8 +106,55 @@ def graphs():
   pl.title('DewPoint vs. DewPoint2 ({0})'.format(cc))
   pl.xlabel("Dewpoint(1)")
   pl.ylabel("Dewpoint(2)")
-
   pl.savefig('/tmp/C56.png', )
+
+
+  D = matplotlib.dates.num2date(C[:,0])
+
+  pl.close()
+  pl.plot(D,C[:,1], 'or', label='TMP36')
+  pl.plot(D,C[:,2], 'og', label='DS18.')
+  pl.plot(D,C[:,3], 'ob', label='DHT22')
+  pl.title('Temperature trends')
+  pl.ylabel('T [degC]')
+  pl.grid(True)
+  pl.legend(loc='upper left')
+  pl.gcf().autofmt_xdate()
+  pl.savefig('/tmp/D1.png')
+
+  pl.close()
+  pl.plot(D,C[:,4],'o')
+  pl.title('Relative humidity trend')
+  pl.ylabel('RH [%]')
+  pl.grid(True)
+  pl.gcf().autofmt_xdate()
+  pl.savefig('/tmp/D2.png')
+
+  pl.close()
+  pl.plot(D,C[:,5],'or', label='DP1')
+  pl.plot(D,C[:,6],'ob', label='DP2')
+  pl.title('Dewpoint trends')
+  pl.ylabel('T [degC]')
+  pl.grid(True)
+  pl.legend(loc='upper left')
+  pl.gcf().autofmt_xdate()
+  pl.savefig('/tmp/D3.png')
+
+  pl.close()
+  pl.plot(D,C[:,7],'ob')
+  pl.title('Heat Index trend')
+  pl.ylabel('T [degC]')
+  pl.grid(True)
+  pl.gcf().autofmt_xdate()
+  pl.savefig('/tmp/D4.png')
+
+  pl.close()
+  pl.plot(D,C[:,8],'ob')
+  pl.title('Solar charge trend')
+  pl.ylabel('Charge [V]')
+  pl.grid(True)
+  pl.gcf().autofmt_xdate()
+  pl.savefig('/tmp/D5.png')
 
   return
 
