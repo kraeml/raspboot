@@ -58,31 +58,36 @@ def graphs():
   # 8 = Voltage
 
 
+  A1 = C[:,1]
+  A1_extrema = [min(A1),max(A1)]
+  A2 = C[:,2]
+  A2_extrema = [min(A2),max(A2)]
+  A3 = C[:,3]
+  A3_extrema = [min(A3),max(A3)]
+  A4 = C[:,4]
+  A5 = C[:,5]
+  A5_extrema = [min(A5),max(A5)]
+  A6 = C[:,6]
+
   pl.close()
-  X = C[:,1]
-  x_extrema = [min(X),max(X)]
-  Y = C[:,2]
-  ab = np.polyfit(X,Y,1)
+  ab = np.polyfit(A1,A2,1)
   fit = np.poly1d(ab)
-  r2 = np.corrcoef(X,Y)[0,1]
-  pl.plot(X,Y,'b.', label='TMP36 vs. DS18B20')
-  pl.plot(x_extrema,fit(x_extrema),'b:')
+  r2 = np.corrcoef(A1,A2)[0,1]
+  pl.plot(A1,A2,'b.', label='TMP36 vs. DS18B20')
+  pl.plot(A1_extrema,fit(A1_extrema),'b:')
   #pl.annotate(str(r2), )
 
-  Y = C[:,3]
-  ab = np.polyfit(X,Y,1)
+  ab = np.polyfit(A3,A1,1)
   fit = np.poly1d(ab)
-  r2 = np.corrcoef(X,Y)[0,1]
-  pl.plot(X,Y,'r.', label='TMP36 vs. DHT22')
-  pl.plot(x_extrema,fit(x_extrema),'r:')
+  r2 = np.corrcoef(A3,A1)[0,1]
+  pl.plot(A3,A1,'r.', label='DHT22 vs. TMP36')
+  pl.plot(A3_extrema,fit(A3_extrema),'r:')
 
-  X = C[:,2]
-  x_extrema = [min(X),max(X)]
-  ab = np.polyfit(X,Y,1)
+  ab = np.polyfit(A2,A3,1)
   fit = np.poly1d(ab)
-  r2 = np.corrcoef(X,Y)[0,1]
-  pl.plot(X,Y,'g.', label='DS18B20 vs. DHT22')
-  pl.plot(x_extrema,fit(x_extrema),'g:')
+  r2 = np.corrcoef(A2,A3)[0,1]
+  pl.plot(A2,A3,'g.', label='DS18B20 vs. DHT22')
+  pl.plot(A2_extrema,fit(A2_extrema),'g:')
 
   pl.title('Sensor correlations')
   pl.xlabel("x")
@@ -91,15 +96,12 @@ def graphs():
   pl.legend(loc='upper left', prop={'size':8})
   pl.savefig('/tmp/C123.png')
 
-  X = C[:,5]
-  x_extrema = [min(X),max(X)]
-  Y = C[:,6]
-  ab = np.polyfit(X,Y,1)
-  fit = np.poly1d(ab)
-  r2 = np.corrcoef(X,Y)[0,1]
 
+  ab = np.polyfit(A5,A6,1)
+  fit = np.poly1d(ab)
+  r2 = np.corrcoef(A5,A6)[0,1]
   pl.close()
-  pl.plot(X,Y,'b.', x_extrema,fit(x_extrema),'b:')
+  pl.plot(A5,A6,'b.', A5_extrema,fit(A5_extrema),'b:')
   pl.title('DewPoint vs. DewPoint2 (R2={0})'.format(r2))
   pl.xlabel("Dewpoint(1)")
   pl.ylabel("Dewpoint(2)")
@@ -110,9 +112,9 @@ def graphs():
   D = matplotlib.dates.num2date(C[:,0])
 
   pl.close()
-  pl.plot(D,C[:,1], '.r', label='TMP36')
-  pl.plot(D,C[:,2], '.g', label='DS18*')
-  pl.plot(D,C[:,3], '.b', label='DHT22')
+  pl.plot(D,A1, '.r', label='TMP36')
+  pl.plot(D,A2, '.g', label='DS18*')
+  pl.plot(D,A3, '.b', label='DHT22')
   pl.title('Temperature trends')
   pl.ylabel('T [degC]')
   pl.grid(True)
@@ -121,7 +123,7 @@ def graphs():
   pl.savefig('/tmp/D1.png')
 
   pl.close()
-  pl.plot(D,C[:,4],'.b')
+  pl.plot(D,A4,'.b')
   pl.title('Relative humidity trend')
   pl.ylabel('RH [%]')
   pl.grid(True)
@@ -129,8 +131,8 @@ def graphs():
   pl.savefig('/tmp/D2.png')
 
   pl.close()
-  pl.plot(D,C[:,5],'.r', label='DP1')
-  pl.plot(D,C[:,6],'.b', label='DP2')
+  pl.plot(D,A5,'.r', label='DP1')
+  pl.plot(D,A6,'.b', label='DP2')
   pl.title('Dewpoint trends')
   pl.ylabel('T [degC]')
   pl.grid(True)
