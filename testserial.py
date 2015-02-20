@@ -1,5 +1,10 @@
 #!/usr/bin/python
-import serial, commands, sys, time, numpy
+import matplotlib
+matplotlib.use("Agg")
+import numpy as np
+import pylab as pl
+
+import serial, commands, sys, time
 
 port = serial.Serial('/dev/ttyACM0', 9600, timeout=10)
 
@@ -39,37 +44,70 @@ def gettelegram(cmd):
 
   return (telegram, abort)
 
-def graphs()
-  C12=numpy.loadtxt('/tmp/testser.txt',delimiter=',',usecols=(1,2))
-  C13=numpy.loadtxt('/tmp/testser.txt',delimiter=',',usecols=(1,3))
-  C23=numpy.loadtxt('/tmp/testser.txt',delimiter=',',usecols=(2,3))
-  C56=numpy.loadtxt('/tmp/testser.txt',delimiter=',',usecols=(5,6))
-
+def graphs():
+  C12=np.loadtxt('/tmp/testser.txt',delimiter=',',usecols=(1,2))
+  C13=np.loadtxt('/tmp/testser.txt',delimiter=',',usecols=(1,3))
+  C23=np.loadtxt('/tmp/testser.txt',delimiter=',',usecols=(2,3))
+  C56=np.loadtxt('/tmp/testser.txt',delimiter=',',usecols=(5,6))
+  # 1 = TMP36
+  # 2 = DS18B20
+  # 3 = DHT22
+  # 4 = RelHum
+  # 5 = DP1
+  # 6 = DP2
+  # 7 = HeatIndex
+  # 8 = Voltage
   X = C12[:,0]
   Y = C12[:,1]
-  title = "TMP36 vs. DS18B20"
-  (a,b)= numpy.polyfit(X,Y,1)
-  cc = numpy.corrcoef(X,Y)[0,1]
+  (a,b)= np.polyfit(X,Y,1)
+  cc = np.corrcoef(X,Y)[0,1]
 
-  savefig('C12.png', bbox_inches='tight')
+  pl.close()
+  pl.plot(X,Y)
+  pl.title = 'TMP36 vs. DS18B20 ({0})'.format(cc)
+  pl.xlabel=("T(tmp36)")
+  pl.ylabel=("T(ds18b20)")
+
+  pl.savefig('/tmp/C12.png', bbox_inches='tight')
 
   X = C23[:,0]
   Y = C23[:,1]
-  title "DS18B20 vs. DHT22"
-  (a,b)= numpy.polyfit(X,Y,1)
-  cc = numpy.corrcoef(X,Y)[0,1]
+  (a,b)= np.polyfit(X,Y,1)
+  cc = np.corrcoef(X,Y)[0,1]
+
+  pl.close()
+  pl.plot(X,Y)
+  pl.title= 'DS18B20 vs. DHT22 ({0})'.format(cc)
+  pl.xlabel=("T(ds18b20)")
+  pl.ylabel=("T(dht22)")
+
+  pl.savefig('/tmp/C23.png', bbox_inches='tight')
 
   X = C13[:,0]
   Y = C13[:,1]
-  title = "TMP36 vs. DHT22"
-  (a,b)= numpy.polyfit(X,Y,1)
-  cc = numpy.corrcoef(X,Y)[0,1]
+  (a,b)= np.polyfit(X,Y,1)
+  cc = np.corrcoef(X,Y)[0,1]
+
+  pl.close()
+  pl.plot(X,Y)
+  pl.title = 'TMP36 vs. DHT22 ({0})'.format(cc)
+  pl.xlabel=("T(tmp36)")
+  pl.ylabel=("T(dht22)")
+
+  pl.savefig('/tmp/C13.png', bbox_inches='tight')
 
   X = C56[:,0]
   Y = C56[:,1]
-  title = "DewPoint vs. DewPoint2"
-  (a,b)= numpy.polyfit(X,Y,1)
-  cc = numpy.corrcoef(X,Y)[0,1]
+  (a,b)= np.polyfit(X,Y,1)
+  cc = np.corrcoef(X,Y)[0,1]
+
+  pl.close()
+  pl.plot(X,Y)
+  pl.title = 'DewPoint vs. DewPoint2 ({0})'.format(cc)
+  pl.xlabel=("T(dp1)")
+  pl.ylabel=("T(dp2)")
+
+  pl.savefig('/tmp/C56.png', bbox_inches='tight')
 
   return
 
@@ -82,3 +120,6 @@ if __name__ == "__main__":
     f = file('/tmp/testser.txt', 'a')
     f.write('{0},{1}\n'.format(dt, telegram))
     f.close()
+
+  graphs()
+  
