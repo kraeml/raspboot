@@ -45,10 +45,7 @@ def gettelegram(cmd):
   return (telegram, abort)
 
 def graphs():
-  C12=np.loadtxt('/tmp/testser.txt',delimiter=',',usecols=(1,2))
-  C13=np.loadtxt('/tmp/testser.txt',delimiter=',',usecols=(1,3))
-  C23=np.loadtxt('/tmp/testser.txt',delimiter=',',usecols=(2,3))
-  C56=np.loadtxt('/tmp/testser.txt',delimiter=',',usecols=(5,6))
+  C=np.loadtxt('/tmp/testser.txt',delimiter=',')
   # 1 = TMP36
   # 2 = DS18B20
   # 3 = DHT22
@@ -57,8 +54,8 @@ def graphs():
   # 6 = DP2
   # 7 = HeatIndex
   # 8 = Voltage
-  X = C12[:,0]
-  Y = C12[:,1]
+  X = C[:,1]
+  Y = C[:,2]
   (a,b)= np.polyfit(X,Y,1)
   cc = np.corrcoef(X,Y)[0,1]
 
@@ -71,8 +68,8 @@ def graphs():
 
   pl.savefig('/tmp/C12.png')
 
-  X = C23[:,0]
-  Y = C23[:,1]
+  X = C[:,2]
+  Y = C[:,3]
   (a,b)= np.polyfit(X,Y,1)
   cc = np.corrcoef(X,Y)[0,1]
 
@@ -85,8 +82,8 @@ def graphs():
 
   pl.savefig('/tmp/C23.png')
 
-  X = C13[:,0]
-  Y = C13[:,1]
+  X = C[:,1]
+  Y = C[:,3]
   (a,b)= np.polyfit(X,Y,1)
   cc = np.corrcoef(X,Y)[0,1]
 
@@ -99,8 +96,8 @@ def graphs():
 
   pl.savefig('/tmp/C13.png')
 
-  X = C56[:,0]
-  Y = C56[:,1]
+  X = C[:,5]
+  Y = C[:,6]
   (a,b)= np.polyfit(X,Y,1)
   cc = np.corrcoef(X,Y)[0,1]
 
