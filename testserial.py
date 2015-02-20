@@ -77,6 +77,7 @@ def graphs():
   pl.plot(x_extrema,fit(x_extrema),'r:')
 
   X = C[:,2]
+  x_extrema = [min(X),max(X)]
   ab = np.polyfit(X,Y,1)
   fit = np.poly1d(ab)
   r2 = np.corrcoef(X,Y)[0,1]
