@@ -68,6 +68,8 @@ def graphs():
   A5 = C[:,5]
   A5_extrema = [min(A5),max(A5)]
   A6 = C[:,6]
+  A7 = C[:,7]
+  A8 = C[:,8]
 
   pl.close()
   ab = np.polyfit(A1,A2,1)
@@ -77,17 +79,17 @@ def graphs():
   pl.plot(A1_extrema,fit(A1_extrema),'b:')
   #pl.annotate(str(r2), )
 
-  ab = np.polyfit(A3,A1,1)
+  ab = np.polyfit(A1,A3,1)
   fit = np.poly1d(ab)
-  r2 = np.corrcoef(A3,A1)[0,1]
-  pl.plot(A3,A1,'r.', label='DHT22 vs. TMP36')
-  pl.plot(A3_extrema,fit(A3_extrema),'r:')
+  r2 = np.corrcoef(A1,A3)[0,1]
+  pl.plot(A1,A3,'r.', label='TMP36 vs. DHT22')
+  pl.plot(A1_extrema,fit(A1_extrema),'r:')
 
-  ab = np.polyfit(A2,A3,1)
+  ab = np.polyfit(A3,A2,1)
   fit = np.poly1d(ab)
-  r2 = np.corrcoef(A2,A3)[0,1]
-  pl.plot(A2,A3,'g.', label='DS18B20 vs. DHT22')
-  pl.plot(A2_extrema,fit(A2_extrema),'g:')
+  r2 = np.corrcoef(A3,A2)[0,1]
+  pl.plot(A3,A2,'g.', label='DHT22 vs. DS18B20')
+  pl.plot(A3_extrema,fit(A3_extrema),'g:')
 
   pl.title('Sensor correlations')
   pl.xlabel("x")
@@ -101,7 +103,8 @@ def graphs():
   fit = np.poly1d(ab)
   r2 = np.corrcoef(A5,A6)[0,1]
   pl.close()
-  pl.plot(A5,A6,'b.', A5_extrema,fit(A5_extrema),'b:')
+  pl.plot(A5,A6,'b.')
+  pl.plot(A5_extrema,fit(A5_extrema),'b:')
   pl.title('DewPoint vs. DewPoint2 (R2={0})'.format(r2))
   pl.xlabel("Dewpoint(1)")
   pl.ylabel("Dewpoint(2)")
@@ -141,7 +144,7 @@ def graphs():
   pl.savefig('/tmp/D3.png')
 
   pl.close()
-  pl.plot(D,C[:,7],'.b')
+  pl.plot(D,A7,'.b')
   pl.title('Heat Index trend')
   pl.ylabel('T [degC]')
   pl.grid(True)
@@ -149,7 +152,7 @@ def graphs():
   pl.savefig('/tmp/D4.png')
 
   pl.close()
-  pl.plot(D,C[:,8],'.b')
+  pl.plot(D,A8,'.b')
   pl.title('Solar charge trend')
   pl.ylabel('Charge [V]')
   pl.grid(True)
