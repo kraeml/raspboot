@@ -57,7 +57,6 @@ def graphs():
   # 7 = HeatIndex
   # 8 = Voltage
 
-
   A1 = C[:,1]
   A1_extrema = [min(A1),max(A1)]
   A2 = C[:,2]
@@ -165,6 +164,7 @@ def graphs():
   return
 
 if __name__ == "__main__":
+  time.sleep(7)
   telegram, status = gettelegram("S")
   time.sleep(2)
   telegram, status = gettelegram("A")
