@@ -41,7 +41,6 @@ def gettelegram(cmd):
   return (telegram, abort)
 
 if __name__ == "__main__":
-  time.sleep(7)
   telegram, status = gettelegram("S")
   time.sleep(2)
   telegram, status = gettelegram("A")
