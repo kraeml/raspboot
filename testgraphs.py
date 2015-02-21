@@ -140,5 +140,5 @@ def graphs():
   return
 
 if __name__ == "__main__":
-
+  time.sleep(20)
   graphs()
