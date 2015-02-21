@@ -89,7 +89,7 @@ def graphs():
   pl.grid(True)
   pl.legend(loc='upper left', prop={'size':8})
   pl.gcf().autofmt_xdate()
-  pl.savefig('/tmp/D1.png')
+  pl.savefig('/tmp/D123.png')
 
   pl.close()
   pl.plot(D,A4,'.b')
@@ -97,7 +97,7 @@ def graphs():
   pl.ylabel('RH [%]')
   pl.grid(True)
   pl.gcf().autofmt_xdate()
-  pl.savefig('/tmp/D2.png')
+  pl.savefig('/tmp/D4.png')
 
   pl.close()
   pl.plot(D,A5,'.r', label='DP1')
@@ -107,7 +107,7 @@ def graphs():
   pl.grid(True)
   pl.legend(loc='upper left', prop={'size':8})
   pl.gcf().autofmt_xdate()
-  pl.savefig('/tmp/D3.png')
+  pl.savefig('/tmp/D56.png')
 
   pl.close()
   pl.plot(D,A7,'.b')
@@ -115,7 +115,7 @@ def graphs():
   pl.ylabel('T [degC]')
   pl.grid(True)
   pl.gcf().autofmt_xdate()
-  pl.savefig('/tmp/D4.png')
+  pl.savefig('/tmp/D7.png')
 
   pl.close()
   pl.plot(D,A8,'.b')
@@ -123,7 +123,7 @@ def graphs():
   pl.ylabel('Charge [V]')
   pl.grid(True)
   pl.gcf().autofmt_xdate()
-  pl.savefig('/tmp/D5.png')
+  pl.savefig('/tmp/D8.png')
 
   return
 
