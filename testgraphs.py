@@ -12,7 +12,7 @@ os.nice(10)
 
 def graphs():
   C=np.loadtxt('/tmp/testser.txt',delimiter=',',converters={0:strpdate2num("%Y-%m-%d %H:%M:%S")})
-  # 1 = TMP36
+  # 1 = ATMEGA chip
   # 2 = DS18B20
   # 3 = DHT22
   # 4 = RelHum
@@ -20,6 +20,7 @@ def graphs():
   # 6 = DP2
   # 7 = HeatIndex
   # 8 = Voltage
+  # 9 = TMP36
 
   A1 = C[:,1]
   A1_extrema = [min(A1),max(A1)]
@@ -33,6 +34,7 @@ def graphs():
   A6 = C[:,6]
   A7 = C[:,7]
   A8 = C[:,8]
+  A9 = C[:,9]
 
   pl.close()
   ab = np.polyfit(A1,A2,1)
@@ -41,7 +43,7 @@ def graphs():
   print fit
   r2 = np.corrcoef(A1,A2)[0,1]
   print r2
-  pl.plot(A1,A2,'r.', label='TMP36 vs. DS18B20', alpha=0.7)
+  pl.plot(A1,A2,'r.', label='ATMEGA vs. DS18B20', alpha=0.7)
   pl.plot(A1_extrema,fit(A1_extrema),'c-')
   pl.annotate('{0}'.format(r2) , xy=(min(A1)+0.5,fit(min(A1))), size=6, color='r' )
 
@@ -61,9 +63,19 @@ def graphs():
   print fit
   r2 = np.corrcoef(A3,A1)[0,1]
   print r2
-  pl.plot(A3,A1,'b.', label='DHT22 vs. TMP36', alpha=0.7)
+  pl.plot(A3,A1,'b.', label='DHT22 vs. ATMEGA', alpha=0.7)
   pl.plot(A3_extrema,fit(A3_extrema),'y-')
   pl.annotate('{0}'.format(r2) , xy=(min(A3)+0.5,fit(min(A3))), size=6, color='b' )
+
+  ab = np.polyfit(A2,A9,1)
+  print ab
+  fit = np.poly1d(ab)
+  print fit
+  r2 = np.corrcoef(A2,A9)[0,1]
+  print r2
+  pl.plot(A2,A9,'y.', label='DS18B20 vs. ATMEGA', alpha=0.7)
+  pl.plot(A2_extrema,fit(A2_extrema),'b-')
+  pl.annotate('{0}'.format(r2) , xy=(min(A2)+0.5,fit(min(A2))), size=6, color='y' )
 
   pl.title('Sensor correlations')
   pl.xlabel("T(x) [degC]")
@@ -93,9 +105,10 @@ def graphs():
   D = matplotlib.dates.num2date(C[:,0])
 
   pl.close()
-  pl.plot(D,A1, '.r', label='TMP36')
+  pl.plot(D,A1, '.r', label='ATMEGA')
   pl.plot(D,A2, '.g', label='DS18B20')
   pl.plot(D,A3, '.b', label='DHT22')
+  pl.plot(D,A9, '.y', label='TMP36')
   pl.title('Temperature trends')
   pl.ylabel('T [degC]')
   pl.grid(True)
