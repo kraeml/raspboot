@@ -3,6 +3,8 @@
 import serial, commands, sys, time
 
 port = serial.Serial('/dev/ttyACM0', 9600, timeout=10)
+serial.dsrdtr = False
+time.sleep(0.5)
 
 def gettelegram(cmd):
   # flag used to exit the while-loop
@@ -41,8 +43,8 @@ def gettelegram(cmd):
   return (telegram, abort)
 
 if __name__ == "__main__":
-  telegram, status = gettelegram("S")
-  time.sleep(2)
+  #telegram, status = gettelegram("S")
+  #time.sleep(2)
   telegram, status = gettelegram("A")
   dt = commands.getoutput("date '+%F %H:%M:%S'")
   if status == 1:
