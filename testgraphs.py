@@ -45,7 +45,7 @@ def graphs():
   print r2
   pl.plot(A1,A2,'r.', label='ATMEGA vs. DS18B20', alpha=0.7)
   pl.plot(A1_extrema,fit(A1_extrema),'c-')
-  pl.annotate('{0}'.format(r2) , xy=(min(A1)+0.5,fit(min(A1))), size=6, color='r' )
+  pl.annotate('{0}'.format(r2) , xy=(min(A1)+0.5,fit(min(A1))), size=6, color='c' )
 
   ab = np.polyfit(A2,A3,1)
   print ab
@@ -55,7 +55,7 @@ def graphs():
   print r2
   pl.plot(A2,A3,'g.', label='DS18B20 vs. DHT22', alpha=0.7)
   pl.plot(A2_extrema,fit(A2_extrema),'m-')
-  pl.annotate('{0}'.format(r2) , xy=(min(A2)+0.5,fit(min(A2))), size=6, color='g' )
+  pl.annotate('{0}'.format(r2) , xy=(min(A2)+0.5,fit(min(A2))), size=6, color='m' )
 
   ab = np.polyfit(A3,A1,1)
   print ab
@@ -65,7 +65,7 @@ def graphs():
   print r2
   pl.plot(A3,A1,'b.', label='DHT22 vs. ATMEGA', alpha=0.7)
   pl.plot(A3_extrema,fit(A3_extrema),'y-')
-  pl.annotate('{0}'.format(r2) , xy=(min(A3)+0.5,fit(min(A3))), size=6, color='b' )
+  pl.annotate('{0}'.format(r2) , xy=(min(A3)+0.5,fit(min(A3))), size=6, color='y' )
 
   ab = np.polyfit(A2,A9,1)
   print ab
@@ -75,7 +75,7 @@ def graphs():
   print r2
   pl.plot(A2,A9,'y.', label='DS18B20 vs. ATMEGA', alpha=0.7)
   pl.plot(A2_extrema,fit(A2_extrema),'b-')
-  pl.annotate('{0}'.format(r2) , xy=(min(A2)+0.5,fit(min(A2))), size=6, color='y' )
+  pl.annotate('{0}'.format(r2) , xy=(min(A2)+0.5,fit(min(A2))), size=6, color='b' )
 
   pl.title('Sensor correlations')
   pl.xlabel("T(x) [degC]")
