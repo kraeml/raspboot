@@ -29,12 +29,14 @@ def graphs():
   A3 = C[:,3]
   A3_extrema = [min(A3),max(A3)]
   A4 = C[:,4]
+  A4_extrema = [min(A4),max(A4)]
   A5 = C[:,5]
   A5_extrema = [min(A5),max(A5)]
   A6 = C[:,6]
   A7 = C[:,7]
   A8 = C[:,8]
   A9 = C[:,9]
+  A9_extrema = [min(A9),max(A9)]
 
   pl.close()
   ab = np.polyfit(A1,A2,1)
@@ -47,39 +49,29 @@ def graphs():
   pl.plot(A1_extrema,fit(A1_extrema),'c-')
   pl.annotate('{0}'.format(r2) , xy=(min(A1)+0.5,fit(min(A1))), size=6, color='c' )
 
-  ab = np.polyfit(A2,A3,1)
+  ab = np.polyfit(A3,A2,1)
   print ab
   fit = np.poly1d(ab)
   print fit
-  r2 = np.corrcoef(A2,A3)[0,1]
+  r2 = np.corrcoef(A3,A2)[0,1]
   print r2
-  pl.plot(A2,A3,'g.', label='DS18B20 vs. DHT22', alpha=0.7)
-  pl.plot(A2_extrema,fit(A2_extrema),'m-')
-  pl.annotate('{0}'.format(r2) , xy=(min(A2)+0.5,fit(min(A2))), size=6, color='m' )
+  pl.plot(A3,A2,'g.', label='DHT22 vs. DB18B20', alpha=0.7)
+  pl.plot(A3_extrema,fit(A3_extrema),'m-')
+  pl.annotate('{0}'.format(r2) , xy=(min(A3)+0.5,fit(min(A3))), size=6, color='m' )
 
-  ab = np.polyfit(A3,A1,1)
+  ab = np.polyfit(A9,A2,1)
   print ab
   fit = np.poly1d(ab)
   print fit
-  r2 = np.corrcoef(A3,A1)[0,1]
+  r2 = np.corrcoef(A9,A2)[0,1]
   print r2
-  pl.plot(A3,A1,'b.', label='DHT22 vs. ATMEGA', alpha=0.7)
-  pl.plot(A3_extrema,fit(A3_extrema),'y-')
-  pl.annotate('{0}'.format(r2) , xy=(min(A3)+0.5,fit(min(A3))), size=6, color='y' )
-
-  ab = np.polyfit(A2,A9,1)
-  print ab
-  fit = np.poly1d(ab)
-  print fit
-  r2 = np.corrcoef(A2,A9)[0,1]
-  print r2
-  pl.plot(A2,A9,'y.', label='DS18B20 vs. ATMEGA', alpha=0.7)
-  pl.plot(A2_extrema,fit(A2_extrema),'b-')
-  pl.annotate('{0}'.format(r2) , xy=(min(A2)+0.5,fit(min(A2))), size=6, color='b' )
+  pl.plot(A9,A2,'b.', label='TMP36 vs. DS18B20', alpha=0.7)
+  pl.plot(A9_extrema,fit(A9_extrema),'y-')
+  pl.annotate('{0}'.format(r2) , xy=(min(A9)+0.5,fit(min(A9))), size=6, color='y' )
 
   pl.title('Sensor correlations')
   pl.xlabel("T(x) [degC]")
-  pl.ylabel("T(y) [degC]")
+  pl.ylabel("T(y),DS18B20 [degC]")
   pl.grid(True)
   pl.legend(loc='upper left', prop={'size':8})
   pl.savefig('/tmp/C123.png')
@@ -106,9 +98,9 @@ def graphs():
 
   pl.close()
   pl.plot(D,A1, '.r', label='ATMEGA')
-  pl.plot(D,A2, '.g', label='DS18B20')
-  pl.plot(D,A3, '.b', label='DHT22')
-  pl.plot(D,A9, '.y', label='TMP36')
+  pl.plot(D,A2, '.y', label='DS18B20')
+  pl.plot(D,A3, '.g', label='DHT22')
+  pl.plot(D,A9, '.b', label='TMP36')
   pl.title('Temperature trends')
   pl.ylabel('T [degC]')
   pl.grid(True)
