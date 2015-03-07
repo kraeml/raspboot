@@ -5,4 +5,4 @@ sudo sed -i 's/auth\,authpriv\.none/cron\,auth\,authpriv\.none/' /etc/rsyslog.co
 sudo sed -i 's/\#cron/cron/' /etc/rsyslog.conf
 
 # Install information about the wifi-network
-#sudo cp /home/pi/bin/wpa.conf /etc/wpa_supplicant/wpa_supplicant.conf
+sudo cp /home/pi/bin/wpa.conf /etc/wpa_supplicant/wpa_supplicant.conf

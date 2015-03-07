@@ -1,5 +1,5 @@
-#echo "Installing WIFI support..."
-#sudo apt-get -yuV install iw wireless-tools wpasupplicant
+echo "Installing WIFI support..."
+sudo apt-get -yuV install iw wireless-tools wpasupplicant
 
 echo "Installing Arduino support..."
 sudo apt-get -yuV install arduino
