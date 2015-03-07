@@ -19,6 +19,7 @@ if grep -qs '/mnt/share1 ' /proc/mounts; then
 		# move the data
 		mv /tmp/*.csv $MOUNTPOINT/$CLNT/
 		mv $xml $MOUNTPOINT/$CLNT/
+		mv /tmp/*.png $MOUNTPOINT/$CLNT/
 		cp /tmp/*.err $MOUNTPOINT/$CLNT/ 2>/dev/null
 		# remove the lock
 		rm $MOUNTPOINT/$CLNT/client.lock
