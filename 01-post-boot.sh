@@ -1,6 +1,7 @@
 #! /bin/bash
 
 # This script only gets executed if `/tmp/gitbin.reboot` is absent...
+# /tmp is in RAMFS, so everytime the server is rebooted, this script is executed.
 
 # Check if the ~/bin directory exists
 if [ ! -d ~/bin ]; then
@@ -10,6 +11,8 @@ fi
 
 # Download the contents of the ~/bin directory
 # We use the `.rsyncd.secret` file as a flag.
+# This allows a re-population of this directory in case new/updated binaries
+# need to be installed.
 if [ ! -e ~/bin/.rsyncd.secret ]; then
   echo "Populate ~/bin ..."
   sudo mount /mnt/backup
@@ -35,7 +38,7 @@ if [ ! -e /home/pi/.firstboot ]; then
   echo "Updating..."
   sudo apt-get update
   echo "Upgrading..."
-  sudo apt-get -yuV upgrade
+  #sudo apt-get -yuV upgrade
 
   # 2. Install server specific-packages
   echo "Additional packages installation..."
