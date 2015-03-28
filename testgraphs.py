@@ -6,12 +6,21 @@ from matplotlib.dates import strpdate2num
 import numpy as np
 import pylab as pl
 
-import os, time
+import os, time, headstails
 
 os.nice(10)
 
+def taildata():
+  f = headstails.FileExtremities('/tmp/testser.txt','r')
+  F = f.tail(10)
+
+  h = file('/tmp/taildata.txt','w')
+  for c in F:
+    h.write("%s" % (c) )
+  h.close()
+
 def graphs():
-  C=np.loadtxt('/tmp/testser.txt',delimiter=',',converters={0:strpdate2num("%Y-%m-%d %H:%M:%S")})
+  C=np.loadtxt('/tmp/taildata.txt',delimiter=',',converters={0:strpdate2num("%Y-%m-%d %H:%M:%S")})
   # 1 = ATMEGA chip
   # 2 = DS18B20
   # 3 = DHT22
@@ -71,7 +80,7 @@ def graphs():
   print ab
   print r2
   print ""
-  
+
   pl.title('Sensor correlations')
   pl.xlabel("T(x) [degC]")
   pl.ylabel("T(y),DS18B20 [degC]")
@@ -150,4 +159,5 @@ def graphs():
 
 if __name__ == "__main__":
   time.sleep(20)
+  taildata()
   graphs()
