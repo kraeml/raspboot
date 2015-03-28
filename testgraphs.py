@@ -63,7 +63,7 @@ def graphs():
   ab = np.polyfit(A3,A2,1)
   fit = np.poly1d(ab)
   r2 = np.corrcoef(A3,A2)[0,1]
-  pl.plot(A3,A2,'g.', label='DHT22 vs. DB18B20', alpha=0.7)
+  pl.plot(A3,A2,'g.', label='DHT22  vs. DB18B20', alpha=0.7)
   pl.plot(A3_extrema,fit(A3_extrema),'m-')
   pl.annotate('{0}'.format(r2) , xy=(min(A3)+0.5,fit(min(A3))), size=6, color='m' )
   print "DHT22 vs. DS18B20"
@@ -74,7 +74,7 @@ def graphs():
   ab = np.polyfit(A9,A2,1)
   fit = np.poly1d(ab)
   r2 = np.corrcoef(A9,A2)[0,1]
-  pl.plot(A9,A2,'b.', label='TMP36 vs. DS18B20', alpha=0.7)
+  pl.plot(A9,A2,'b.', label='TMP36  vs. DS18B20', alpha=0.7)
   pl.plot(A9_extrema,fit(A9_extrema),'y-')
   pl.annotate('{0}'.format(r2) , xy=(min(A9)+0.5,fit(min(A9))), size=6, color='y' )
   print "TMP36 vs. DS18B20"
