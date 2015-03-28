@@ -12,7 +12,8 @@ os.nice(10)
 
 def taildata():
   f = headstails.FileExtremities('/tmp/testser.txt','r')
-  F = f.tail(10)
+  # read last 600 datapoints
+  F = f.tail(600)
 
   h = file('/tmp/taildata.txt','w')
   for c in F:
