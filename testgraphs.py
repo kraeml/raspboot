@@ -42,6 +42,49 @@ def corrs():
   R2 = C[:,8]
   R3 = C[:,9]
 
+  D = matplotlib.dates.num2date(C[:,0])
+
+  pl.close()
+  print "corr.coef-a- trends"
+  print ""
+  pl.plot(D,A1, '.r', label='ATMEGA vs. DS18B20')
+  pl.plot(D,A2, '.g', label='DHT22 vs. DS18B20')
+  pl.plot(D,A3, '.b', label='TMP36 vs. DS18B20')
+  pl.title('correlation trends slope (a)')
+  pl.ylabel('a [-]')
+  pl.grid(True)
+  pl.legend(loc='upper left', prop={'size':8})
+  pl.gcf().autofmt_xdate()
+  pl.savefig('/tmp/corr-a.png')
+
+  pl.close()
+  print "corr.coef-b- trends"
+  print ""
+  pl.plot(D,A4, '.r', label='ATMEGA vs. DS18B20')
+  pl.plot(D,A5, '.g', label='DHT22 vs. DS18B20')
+  pl.plot(D,A6, '.b', label='TMP36 vs. DS18B20')
+  pl.title('correlation trends offset (b)')
+  pl.ylabel('b [-]')
+  pl.grid(True)
+  pl.legend(loc='upper left', prop={'size':8})
+  pl.gcf().autofmt_xdate()
+  pl.savefig('/tmp/corr-b.png')
+
+  pl.close()
+  print "corr.coef-R2- trends"
+  print ""
+  pl.plot(D,A1, '.r', label='ATMEGA vs. DS18B20')
+  pl.plot(D,A2, '.g', label='DHT22 vs. DS18B20')
+  pl.plot(D,A3, '.b', label='TMP36 vs. DS18B20')
+  pl.title('correlation trends R^2 (r2)')
+  pl.ylabel('r2 [-]')
+  pl.grid(True)
+  pl.legend(loc='upper left', prop={'size':8})
+  pl.gcf().autofmt_xdate()
+  pl.savefig('/tmp/corr-r.png')
+
+  return
+
 def graphs():
   C=np.loadtxt('/tmp/taildata.txt',delimiter=',',converters={0:strpdate2num("%Y-%m-%d %H:%M:%S")})
   # 1 = ATMEGA chip
