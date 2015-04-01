@@ -47,9 +47,9 @@ def corrs():
   pl.close()
   print "corr.coef-a- trends"
   print ""
-  pl.plot(D,A1, '.r', label='ATMEGA vs. DS18B20')
-  pl.plot(D,A2, '.g', label='DHT22 vs. DS18B20')
-  pl.plot(D,A3, '.b', label='TMP36 vs. DS18B20')
+  pl.plot(D,A1, '.r', label='ATMEGA')
+  pl.plot(D,A2, '.g', label='DHT22')
+  pl.plot(D,A3, '.b', label='TMP36')
   pl.title('correlation trends slope (a)')
   pl.ylabel('a [-]')
   pl.grid(True)
@@ -60,9 +60,9 @@ def corrs():
   pl.close()
   print "corr.coef-b- trends"
   print ""
-  pl.plot(D,B1, '.r', label='ATMEGA vs. DS18B20')
-  pl.plot(D,B2, '.g', label='DHT22 vs. DS18B20')
-  pl.plot(D,B3, '.b', label='TMP36 vs. DS18B20')
+  pl.plot(D,B1, '.r', label='ATMEGA')
+  pl.plot(D,B2, '.g', label='DHT22')
+  pl.plot(D,B3, '.b', label='TMP36')
   pl.title('correlation trends offset (b)')
   pl.ylabel('b [-]')
   pl.grid(True)
@@ -73,9 +73,9 @@ def corrs():
   pl.close()
   print "corr.coef-R2- trends"
   print ""
-  pl.plot(D,R1, '.r', label='ATMEGA vs. DS18B20')
-  pl.plot(D,R2, '.g', label='DHT22 vs. DS18B20')
-  pl.plot(D,R3, '.b', label='TMP36 vs. DS18B20')
+  pl.plot(D,R1, '.r', label='ATMEGA')
+  pl.plot(D,R2, '.g', label='DHT22')
+  pl.plot(D,R3, '.b', label='TMP36')
   pl.title('correlation trends R^2 (r2)')
   pl.ylabel('r2 [-]')
   pl.grid(True)
