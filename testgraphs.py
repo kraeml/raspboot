@@ -83,6 +83,8 @@ def corrs():
   pl.gcf().autofmt_xdate()
   pl.savefig('/tmp/corr-r.png')
 
+  print "Ready..."
+
   return
 
 def graphs():
@@ -247,7 +249,7 @@ def graphs():
   return
 
 if __name__ == "__main__":
-  time.sleep(20)
+  time.sleep(8)
   taildata()
   graphs()
   corrs()
