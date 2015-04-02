@@ -11,17 +11,26 @@ import os, time, headstails, commands
 os.nice(10)
 
 def taildata():
-  f = headstails.FileExtremities('/tmp/testser.txt','r')
+  fin = headstails.FileExtremities('/tmp/testser.txt','r')
   # read last 600 datapoints
-  F = f.tail(600)
+  F = fin.tail(600)
 
-  h = file('/tmp/taildata.txt','w')
+  fout = file('/tmp/taildata.txt','w')
   for c in F:
-    h.write("%s" % (c) )
-  h.close()
+    fout.write("%s" % (c) )
+  fout.close()
+
+  fin = headstails.FileExtremities('/tmp/corr.txt','r')
+  # read last 1200 datapoints
+  F = fin.tail(1200)
+
+  fout = file('/tmp/corrdata.txt','w')
+  for c in F:
+    fout.write("%s" % (c) )
+  fout.close()
 
 def corrs():
-  C=np.loadtxt('/tmp/corr.txt',delimiter=',',converters={0:strpdate2num("%Y-%m-%d %H:%M:%S")})
+  C=np.loadtxt('/tmp/corrdata.txt',delimiter=',',converters={0:strpdate2num("%Y-%m-%d %H:%M:%S")})
   # 1 = ATMEGA vs DS18B20
   # 2 = DHT22 vs. DS18B20
   # 3 = TMP36 vs. DS18B20
