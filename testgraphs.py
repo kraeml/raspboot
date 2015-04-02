@@ -258,7 +258,7 @@ def graphs():
   return
 
 if __name__ == "__main__":
-  time.sleep(8)
+  time.sleep(11)
   taildata()
   graphs()
   corrs()

@@ -40,3 +40,5 @@ esac
 ./31-xml-status.sh
 # Upload the data
 ./99-upload-data.sh
+
+date
