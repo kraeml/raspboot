@@ -11,6 +11,7 @@ import os, time, headstails, commands
 os.nice(10)
 
 def taildata():
+  print "Tailing sensor-data"
   fin = headstails.FileExtremities('/tmp/testser.txt','r')
   # read last 600 datapoints
   F = fin.tail(1200)
@@ -20,6 +21,8 @@ def taildata():
     fout.write("%s" % (c) )
   fout.close()
 
+def tailcorr():
+  print "Tailing correlation-data"
   fin = headstails.FileExtremities('/tmp/corr.txt','r')
   # read last 1200 datapoints
   F = fin.tail(1200)
@@ -30,6 +33,7 @@ def taildata():
   fout.close()
 
 def corrs():
+  print "Loading correlation-data"
   C=np.loadtxt('/tmp/corrdata.txt',delimiter=',',converters={0:strpdate2num("%Y-%m-%d %H:%M:%S")})
   # 1 = ATMEGA vs DS18B20
   # 2 = DHT22 vs. DS18B20
@@ -97,6 +101,7 @@ def corrs():
   return
 
 def graphs():
+  print "Loading sensor-data"
   C=np.loadtxt('/tmp/taildata.txt',delimiter=',',converters={0:strpdate2num("%Y-%m-%d %H:%M:%S")})
   # 1 = ATMEGA chip
   # 2 = DS18B20
@@ -261,4 +266,5 @@ if __name__ == "__main__":
   time.sleep(11)
   taildata()
   graphs()
+  tailcorr()
   corrs()
