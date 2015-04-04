@@ -13,7 +13,7 @@ os.nice(10)
 def taildata():
   print "Tailing sensor-data"
   fin = headstails.FileExtremities('/tmp/testser.txt','r')
-  # read last 600 datapoints
+  # read last 1200 datapoints
   F = fin.tail(1200)
 
   fout = file('/tmp/taildata.txt','w')
@@ -179,22 +179,22 @@ def graphs():
   pl.savefig('/tmp/C123.png')
 
 
-  ab = np.polyfit(A5,A6,1)
-  fit = np.poly1d(ab)
-  r2 = np.corrcoef(A5,A6)[0,1]
-  print "Dewpoint1 vs. Dewpoint2"
-  print ab
-  print r2
-  print ""
-  pl.close()
-  pl.plot(A5,A6,'b.')
-  pl.plot(A5_extrema,fit(A5_extrema),'b-')
-  pl.title('DewPoint vs. DewPoint2')
-  pl.xlabel("Dewpoint(1) [degC]")
-  pl.ylabel("Dewpoint(2) [degC]")
-  pl.annotate('{0}'.format(r2) , xy=(min(A5)+0.5,fit(min(A6))), size=6 )
-  pl.grid(True)
-  pl.savefig('/tmp/C56.png')
+  #ab = np.polyfit(A5,A6,1)
+  #fit = np.poly1d(ab)
+  #r2 = np.corrcoef(A5,A6)[0,1]
+  #print "Dewpoint1 vs. Dewpoint2"
+  #print ab
+  #print r2
+  #print ""
+  #pl.close()
+  #pl.plot(A5,A6,'b.')
+  #pl.plot(A5_extrema,fit(A5_extrema),'b-')
+  #pl.title('DewPoint vs. DewPoint2')
+  #pl.xlabel("Dewpoint(1) [degC]")
+  #pl.ylabel("Dewpoint(2) [degC]")
+  #pl.annotate('{0}'.format(r2) , xy=(min(A5)+0.5,fit(min(A6))), size=6 )
+  #pl.grid(True)
+  #pl.savefig('/tmp/C56.png')
 
 
   D = matplotlib.dates.num2date(C[:,0])
@@ -263,7 +263,7 @@ def graphs():
   return
 
 if __name__ == "__main__":
-  time.sleep(11)
+  # time.sleep(11)
   taildata()
   graphs()
   tailcorr()
