@@ -17,9 +17,21 @@ if grep -qs '/mnt/share1 ' /proc/mounts; then
 	# If it exists, do nothing.
 	if [ ! -e $MOUNTPOINT/$CLNT/host.lock ]; then
 		# move the data
-		mv /tmp/*.csv $MOUNTPOINT/$CLNT/
-		mv $xml $MOUNTPOINT/$CLNT/
-		mv /tmp/*.png $MOUNTPOINT/$CLNT/
+		cp /tmp/*.csv $MOUNTPOINT/$CLNT/
+		if [ $? -eq 0 ]; then
+    	echo OK
+			rm /tmp/*.csv
+		fi
+		cp $xml $MOUNTPOINT/$CLNT/
+		if [ $? -eq 0 ]; then
+			echo OK
+			rm $xml
+		fi
+		cp /tmp/*.png $MOUNTPOINT/$CLNT/
+		if [ $? -eq 0 ]; then
+			echo OK
+			rm /tmp/*.png
+		fi
 		cp /tmp/*.err $MOUNTPOINT/$CLNT/ 2>/dev/null
 		# remove the lock
 		rm $MOUNTPOINT/$CLNT/client.lock

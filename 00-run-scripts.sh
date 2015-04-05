@@ -30,7 +30,7 @@ case "$CLNT" in
             ./17-get-electra.py
             ;;
   rbian )   echo "Raspberry testbench"
-            #./testserial.py &
+            #./testserial.py
             ;;
   * )       echo "!! undefined client !!"
             ;;
@@ -40,3 +40,5 @@ esac
 ./31-xml-status.sh
 # Upload the data
 ./99-upload-data.sh
+
+date
