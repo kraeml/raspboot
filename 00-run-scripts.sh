@@ -32,6 +32,10 @@ case "$CLNT" in
   rbian )   echo "Raspberry testbench"
             #./testserial.py
             ;;
+  rxbmc )   echo "RaspBMC mediacenter"
+            ;;
+  osmc )    echo "OSMC Media Center"
+            ;;
   * )       echo "!! undefined client !!"
             ;;
 esac
