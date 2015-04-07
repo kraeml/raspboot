@@ -129,53 +129,64 @@ def graphs():
   A9 = C[:,9]
   A9_extrema = [min(A9),max(A9)]
 
+  D = matplotlib.dates.num2date(C[:,0])
+
   pl.close()
-  ab = np.polyfit(A1,A2,1)
-  fit = np.poly1d(ab)
-  r2 = np.corrcoef(A1,A2)[0,1]
+  #ab = np.polyfit(A1,A2,1)
+  A12 = np.subtract(A1,A2)
+  #fit = np.poly1d(ab)
+  #r2 = np.corrcoef(A1,A2)[0,1]
   print "ATMEGA vs. DS18B20"
-  a1 = ab[0]
-  b1 = ab[1]
-  r21 = r2
-  print a1, b1, r21
-  print ""
-  pl.plot(A1,A2,'r.', label='ATMEGA vs. DS18B20', alpha=0.7)
-  pl.plot(A1_extrema,fit(A1_extrema),'c-')
-  pl.annotate('{0}'.format(r2) , xy=(min(A1)+0.5,fit(min(A1))), size=6, color='c' )
+  #a1 = ab[0]
+  #b1 = ab[1]
+  #r21 = r2
+  #print a1, b1, r21
+  #print ""
+  #pl.plot(A1,A2,'r.', label='ATMEGA vs. DS18B20', alpha=0.7)
+  pl.plot(D,A12,'r.', label='ATMEGA vs. DS18B20', alpha=0.7)
+  #pl.plot(A1_extrema,fit(A1_extrema),'c-')
+  #pl.annotate('{0}'.format(r2) , xy=(min(A1)+0.5,fit(min(A1))), size=6, color='c' )
 
-  ab = np.polyfit(A3,A2,1)
-  fit = np.poly1d(ab)
-  r2 = np.corrcoef(A3,A2)[0,1]
+  #ab = np.polyfit(A3,A2,1)
+  A32 = np.subtract(A3,A2)
+  #fit = np.poly1d(ab)
+  #r2 = np.corrcoef(A3,A2)[0,1]
   print "DHT22 vs. DS18B20"
-  a2 = ab[0]
-  b2 = ab[1]
-  r22 = r2
-  print a2, b2, r22
-  print ""
-  pl.plot(A3,A2,'g.', label='DHT22  vs. DB18B20', alpha=0.7)
-  pl.plot(A3_extrema,fit(A3_extrema),'m-')
-  pl.annotate('{0}'.format(r2) , xy=(min(A3)+0.5,fit(min(A3))), size=6, color='m' )
+  #a2 = ab[0]
+  #b2 = ab[1]
+  #r22 = r2
+  #print a2, b2, r22
+  #print ""
+  #pl.plot(A3,A2,'g.', label='DHT22  vs. DB18B20', alpha=0.7)
+  pl.plot(D,A32,'g.', label='DHT22  vs. DB18B20', alpha=0.7)
+  #pl.plot(A3_extrema,fit(A3_extrema),'m-')
+  #pl.annotate('{0}'.format(r2) , xy=(min(A3)+0.5,fit(min(A3))), size=6, color='m' )
 
-  ab = np.polyfit(A9,A2,1)
-  fit = np.poly1d(ab)
-  r2 = np.corrcoef(A9,A2)[0,1]
+  #ab = np.polyfit(A9,A2,1)
+  A92 = np.subtract(A9,A2)
+  #fit = np.poly1d(ab)
+  #r2 = np.corrcoef(A9,A2)[0,1]
   print "TMP36 vs. DS18B20"
-  a3 = ab[0]
-  b3 = ab[1]
-  r23 = r2
-  print a3, b3, r23
-  print ""
-  pl.plot(A9,A2,'b.', label='TMP36  vs. DS18B20', alpha=0.7)
-  pl.plot(A9_extrema,fit(A9_extrema),'y-')
-  pl.annotate('{0}'.format(r2) , xy=(min(A9)+0.5,fit(min(A9))), size=6, color='y' )
+  #a3 = ab[0]
+  #b3 = ab[1]
+  #r23 = r2
+  #print a3, b3, r23
+  #print ""
+  #pl.plot(A9,A2,'b.', label='TMP36  vs. DS18B20', alpha=0.7)
+  pl.plot(D,A92,'b.', label='TMP36  vs. DS18B20', alpha=0.7)
+  #pl.plot(A9_extrema,fit(A9_extrema),'y-')
+  #pl.annotate('{0}'.format(r2) , xy=(min(A9)+0.5,fit(min(A9))), size=6, color='y' )
 
-  print "Sensor correlations graph"
+  #print "Sensor correlations graph"
+  print "Sensor differences graph"
   print ""
-  pl.title('Sensor correlations')
-  pl.xlabel("T(x) [degC]")
-  pl.ylabel("T(y),DS18B20 [degC]")
+  #pl.title('Sensor correlations')
+  pl.title('Sensor differences')
+  #pl.xlabel("T(x) [degC]")
+  pl.ylabel("T(x)-T(DS18B20) [degC]")
   pl.grid(True)
   pl.legend(loc='upper left', prop={'size':8})
+  pl.gcf().autofmt_xdate()
   pl.savefig('/tmp/C123.png')
 
 
@@ -195,9 +206,6 @@ def graphs():
   #pl.annotate('{0}'.format(r2) , xy=(min(A5)+0.5,fit(min(A6))), size=6 )
   #pl.grid(True)
   #pl.savefig('/tmp/C56.png')
-
-
-  D = matplotlib.dates.num2date(C[:,0])
 
   pl.close()
   print "Temperature trends"
@@ -266,5 +274,5 @@ if __name__ == "__main__":
   # time.sleep(11)
   taildata()
   graphs()
-  tailcorr()
-  corrs()
+  #tailcorr()
+  #corrs()
