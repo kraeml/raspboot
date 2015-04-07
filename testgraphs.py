@@ -184,7 +184,7 @@ def graphs():
 
   A112 = np.subtract(A11,A2)
   print "BMP183 vs. DS18B20"
-  pl.plot(D,A112,'m.', label='TMP36  vs. DS18B20', alpha=0.7)
+  pl.plot(D,A112,'m.', label='BMP183 vs. DS18B20', alpha=0.7)
 
   #print "Sensor correlations graph"
   print "Sensor differences graph"
@@ -203,8 +203,7 @@ def graphs():
   fit = np.poly1d(ab)
   r2 = np.corrcoef(A11,A2)[0,1]
   print "BMP183 vs DS18B20"
-  print ab
-  print r2
+  print ab[0], ab[1], r2
   print ""
   pl.close()
   pl.plot(A11,A2,'m.')
