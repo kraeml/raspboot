@@ -130,9 +130,9 @@ def graphs():
   A8 = C[:,8]
   A9 = C[:,9]
   #A9_extrema = [min(A9),max(A9)]
-  #A10 = C[:,10]
-  #A10_extrema = [min(A10),max(A10)]
-  #A11 = C[:,11]
+  A10 = C[:,10]
+  A11 = C[:,11]
+  A11_extrema = [min(A11),max(A11)]
 
   D = matplotlib.dates.num2date(C[:,0])
 
@@ -182,6 +182,10 @@ def graphs():
   #pl.plot(A9_extrema,fit(A9_extrema),'y-')
   #pl.annotate('{0}'.format(r2) , xy=(min(A9)+0.5,fit(min(A9))), size=6, color='y' )
 
+  A112 = np.subtract(A11,A2)
+  print "BMP183 vs. DS18B20"
+  pl.plot(D,A112,'m.', label='TMP36  vs. DS18B20', alpha=0.7)
+
   #print "Sensor correlations graph"
   print "Sensor differences graph"
   print ""
@@ -195,22 +199,22 @@ def graphs():
   pl.savefig('/tmp/C123.png')
 
 
-  #ab = np.polyfit(A10,A2,1)
-  #fit = np.poly1d(ab)
-  #r2 = np.corrcoef(A10,A2)[0,1]
-  #print "BMP183 vs DS18B20"
-  #print ab
-  #print r2
-  #print ""
-  #pl.close()
-  #pl.plot(A10,A2,'b.')
-  #pl.plot(A10_extrema,fit(A10_extrema),'b-')
-  #pl.title('BMP183 vs. DS18B20')
-  #pl.xlabel("T(BMP183) [degC]")
-  #pl.ylabel("T(DS18B20) [degC]")
-  #pl.annotate('{0}'.format(r2) , xy=(min(A10)+0.5,fit(min(A10))), size=6 )
-  #pl.grid(True)
-  #pl.savefig('/tmp/C56.png')
+  ab = np.polyfit(A11,A2,1)
+  fit = np.poly1d(ab)
+  r2 = np.corrcoef(A11,A2)[0,1]
+  print "BMP183 vs DS18B20"
+  print ab
+  print r2
+  print ""
+  pl.close()
+  pl.plot(A11,A2,'m.')
+  pl.plot(A11_extrema,fit(A11_extrema),'m-')
+  pl.title('BMP183 vs. DS18B20')
+  pl.xlabel("T(BMP183) [degC]")
+  pl.ylabel("T(DS18B20) [degC]")
+  pl.annotate('{0}'.format(r2) , xy=(min(A11)+0.5,fit(min(A11))), size=6 )
+  pl.grid(True)
+  pl.savefig('/tmp/C56.png')
 
   pl.close()
   print "Temperature trends"
@@ -219,6 +223,7 @@ def graphs():
   pl.plot(D,A2, '.y', label='DS18B20')
   pl.plot(D,A3, '.g', label='DHT22')
   pl.plot(D,A9, '.b', label='TMP36')
+  pl.plot(D,A11, '.m', label='BMP183')
   pl.title('Temperature trends')
   pl.ylabel('T [degC]')
   pl.grid(True)
@@ -267,6 +272,16 @@ def graphs():
   pl.grid(True)
   pl.gcf().autofmt_xdate()
   pl.savefig('/tmp/D8.png')
+
+  pl.close()
+  print "Pressure trend"
+  print""
+  pl.plot(D,A10,'.b')
+  pl.title('Pressure trend')
+  pl.ylabel('Pressure [mbara]')
+  pl.grid(True)
+  pl.gcf().autofmt_xdate()
+  pl.savefig('/tmp/D11.png')
 
   #f = file('/tmp/corr.txt', 'a')
   #od = commands.getoutput("date '+%F %H:%M:%S'")
