@@ -112,22 +112,27 @@ def graphs():
   # 7 = HeatIndex
   # 8 = Voltage
   # 9 = TMP36
+  # 10= BMP183
+  # 11= Pressure
 
   A1 = C[:,1]
-  A1_extrema = [min(A1),max(A1)]
+  #A1_extrema = [min(A1),max(A1)]
   A2 = C[:,2]
-  A2_extrema = [min(A2),max(A2)]
+  #A2_extrema = [min(A2),max(A2)]
   A3 = C[:,3]
-  A3_extrema = [min(A3),max(A3)]
+  #A3_extrema = [min(A3),max(A3)]
   A4 = C[:,4]
-  A4_extrema = [min(A4),max(A4)]
+  #A4_extrema = [min(A4),max(A4)]
   A5 = C[:,5]
-  A5_extrema = [min(A5),max(A5)]
+  #A5_extrema = [min(A5),max(A5)]
   A6 = C[:,6]
   A7 = C[:,7]
   A8 = C[:,8]
   A9 = C[:,9]
-  A9_extrema = [min(A9),max(A9)]
+  #A9_extrema = [min(A9),max(A9)]
+  #A10 = C[:,10]
+  #A10_extrema = [min(A10),max(A10)]
+  #A11 = C[:,11]
 
   D = matplotlib.dates.num2date(C[:,0])
 
@@ -190,20 +195,20 @@ def graphs():
   pl.savefig('/tmp/C123.png')
 
 
-  #ab = np.polyfit(A5,A6,1)
+  #ab = np.polyfit(A10,A2,1)
   #fit = np.poly1d(ab)
-  #r2 = np.corrcoef(A5,A6)[0,1]
-  #print "Dewpoint1 vs. Dewpoint2"
+  #r2 = np.corrcoef(A10,A2)[0,1]
+  #print "BMP183 vs DS18B20"
   #print ab
   #print r2
   #print ""
   #pl.close()
-  #pl.plot(A5,A6,'b.')
-  #pl.plot(A5_extrema,fit(A5_extrema),'b-')
-  #pl.title('DewPoint vs. DewPoint2')
-  #pl.xlabel("Dewpoint(1) [degC]")
-  #pl.ylabel("Dewpoint(2) [degC]")
-  #pl.annotate('{0}'.format(r2) , xy=(min(A5)+0.5,fit(min(A6))), size=6 )
+  #pl.plot(A10,A2,'b.')
+  #pl.plot(A10_extrema,fit(A10_extrema),'b-')
+  #pl.title('BMP183 vs. DS18B20')
+  #pl.xlabel("T(BMP183) [degC]")
+  #pl.ylabel("T(DS18B20) [degC]")
+  #pl.annotate('{0}'.format(r2) , xy=(min(A10)+0.5,fit(min(A10))), size=6 )
   #pl.grid(True)
   #pl.savefig('/tmp/C56.png')
 
@@ -263,10 +268,10 @@ def graphs():
   pl.gcf().autofmt_xdate()
   pl.savefig('/tmp/D8.png')
 
-  f = file('/tmp/corr.txt', 'a')
-  od = commands.getoutput("date '+%F %H:%M:%S'")
-  f.write('{0}, {1}, {2}, {3}, {4}, {5}, {6}, {7}, {8}, {9}\n'.format(od, a1, a2, a3, b1, b2, b3, r21, r22, r23))
-  f.close()
+  #f = file('/tmp/corr.txt', 'a')
+  #od = commands.getoutput("date '+%F %H:%M:%S'")
+  #f.write('{0}, {1}, {2}, {3}, {4}, {5}, {6}, {7}, {8}, {9}\n'.format(od, a1, a2, a3, b1, b2, b3, r21, r22, r23))
+  #f.close()
 
   return
 
