@@ -115,7 +115,7 @@ def graphs():
   # 10= BMP183
   # 11= Pressure
 
-  A1 = C[:,1]
+  #A1 = C[:,1]
   #A1_extrema = [min(A1),max(A1)]
   A2 = C[:,2]
   #A2_extrema = [min(A2),max(A2)]
@@ -138,17 +138,17 @@ def graphs():
 
   pl.close()
   #ab = np.polyfit(A1,A2,1)
-  A12 = np.subtract(A1,A2)
+  #A12 = np.subtract(A1,A2)
   #fit = np.poly1d(ab)
   #r2 = np.corrcoef(A1,A2)[0,1]
-  print "ATMEGA vs. DS18B20"
+  #print "ATMEGA vs. DS18B20"
   #a1 = ab[0]
   #b1 = ab[1]
   #r21 = r2
   #print a1, b1, r21
   #print ""
   #pl.plot(A1,A2,'r.', label='ATMEGA vs. DS18B20', alpha=0.7)
-  pl.plot(D,A12,'r.', label='ATMEGA vs. DS18B20', alpha=0.7)
+  #pl.plot(D,A12,'r.', label='ATMEGA vs. DS18B20', alpha=0.7)
   #pl.plot(A1_extrema,fit(A1_extrema),'c-')
   #pl.annotate('{0}'.format(r2) , xy=(min(A1)+0.5,fit(min(A1))), size=6, color='c' )
 
@@ -218,7 +218,7 @@ def graphs():
   pl.close()
   print "Temperature trends"
   print ""
-  pl.plot(D,A1, '.r', label='ATMEGA')
+  #pl.plot(D,A1, '.r', label='ATMEGA')
   pl.plot(D,A2, '.y', label='DS18B20')
   pl.plot(D,A3, '.g', label='DHT22')
   pl.plot(D,A9, '.b', label='TMP36')
