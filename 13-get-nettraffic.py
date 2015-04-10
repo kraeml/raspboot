@@ -36,6 +36,9 @@ def main():
       if device == "wlan0:":
           wlIn = list[line].split()[1]
           wlOut = list[line].split()[9]
+      if device == "wlan1:":
+          wlIn = list[line].split()[1]
+          wlOut = list[line].split()[9]
 
   # Print the data
   print '{0}, {1}, {2}, {3}, {4}, {5}, {6}, {7}'.format(outDate, outUxDate, loIn, loOut, etIn, etOut, wlIn, wlOut)
