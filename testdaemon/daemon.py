@@ -12,7 +12,7 @@ from libdaemon import Daemon
 class MyDaemon(Daemon):
 	def run(self):
 		cnt=0
-		limit=1000
+		limit=3
 		cycleTime = 12
 		while True:
 			startTime=time.time()
