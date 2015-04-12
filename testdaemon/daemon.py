@@ -14,16 +14,20 @@ class MyDaemon(Daemon):
 		cnt=0
 		limit=100000
 		while True:
-			startTime=datetime.datetime.now()
+			startTime=time.time()
 			# Measure and print the elapsed time
 			count = find_primes(limit)
-			elapsed=datetime.datetime.now()-startTime
+			elapsedTime=time.time()-startTime
 			f=file('/tmp/testd','a')
-			f.write('{0}, {1}\n'.format(cnt, elapsed, count))
+			f.write('{0}, {1}\n'.format(cnt, startTime, elapsedTime, count))
 			f.close
 			cnt = cnt + 1
 			limit=limit+100
-			time.sleep(10)
+			waitTime = 10 - elapsedTime
+			while waitTime <= 0:
+				waitTime = waitTime + 10
+
+			time.sleep(waitTime)
 
 # Function to search for prime numbers
 # within number range
@@ -42,7 +46,7 @@ def find_primes(upper_limit):
       count += 1
     candidate += 2
   return count
-	
+
 if __name__ == "__main__":
 	daemon = MyDaemon('/tmp/daemon-example.pid')
 	if len(sys.argv) == 2:
