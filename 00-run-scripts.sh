@@ -17,7 +17,11 @@ if [ ! -e /tmp/gitbin.reboot ]; then
 fi
 
 # Check for new/updated scripts
-./02-update-scripts.sh
+minute=$(date "+%M")
+if [ $minute -eq "42" ]; then
+  ./02-update-scripts.sh
+fi
+
 # Execute the common scripts in parallel
 ./11-get-temp.py & ./12-get-load.py & ./13-get-nettraffic.py & ./14-get-memory.py & ./15-get-logstate.py & wait
 
@@ -31,6 +35,10 @@ case "$CLNT" in
             ;;
   rbian )   echo "Raspberry testbench"
             #./testserial.py
+            ;;
+  rxbmc )   echo "RaspBMC mediacenter"
+            ;;
+  osmc )    echo "OSMC Media Center"
             ;;
   * )       echo "!! undefined client !!"
             ;;
