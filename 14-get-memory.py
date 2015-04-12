@@ -26,19 +26,19 @@ def main():
   # ref: http://serverfault.com/questions/85470/meaning-of-the-buffers-cache-line-in-the-output-of-free
   out = commands.getoutput("cat /proc/meminfo").splitlines()
   for line in range(0,len(out)-1):
-      mem = out[line].split()
-      if mem[0] == 'MemFree:':
-          outMemFree = int(mem[1])
-      elif mem[0] == 'MemTotal:':
-          outMemTotal = int(mem[1])
-      elif mem[0] == 'Buffers:':
-          outMemBuf = int(mem[1])
-      elif mem[0] == 'Cached:':
-          outMemCache = int(mem[1])
-      elif mem[0] == 'SwapTotal:':
-          outMemSwapTotal = int(mem[1])
-      elif mem[0] == "SwapFree:":
-          outMemSwapFree = int(mem[1])
+    mem = out[line].split()
+    if mem[0] == 'MemFree:':
+      outMemFree = int(mem[1])
+    elif mem[0] == 'MemTotal:':
+      outMemTotal = int(mem[1])
+    elif mem[0] == 'Buffers:':
+      outMemBuf = int(mem[1])
+    elif mem[0] == 'Cached:':
+      outMemCache = int(mem[1])
+    elif mem[0] == 'SwapTotal:':
+      outMemSwapTotal = int(mem[1])
+    elif mem[0] == "SwapFree:":
+      outMemSwapFree = int(mem[1])
 
   outMemUsed = outMemTotal - (outMemFree + outMemBuf + outMemCache)
   outMemSwapUsed = outMemSwapTotal - outMemSwapFree
