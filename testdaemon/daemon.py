@@ -30,6 +30,7 @@ if __name__ == "__main__":
 			daemon.restart()
 		elif 'foreground' == sys.argv[1]:
 			# assist with debugging.
+			print "Debug-mode started. Use <Ctrl>+C to stop."
 			daemon.run()
 		else:
 			print "Unknown command"
