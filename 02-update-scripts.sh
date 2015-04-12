@@ -13,8 +13,12 @@ chmod -R 744 *
 
 if [[ -n "$DIFFdmn" ]]; then
     logger "daemon has changed"
+    ./testdaemon/daemon.py restart
 fi
 
-if [[ -n "$DIFFlib" ]]; then 
-    logger "daemon has changed"
+if [[ -n "$DIFFlib" ]]; then
+    logger "daemonlib has changed"
+    ./testdaemon/daemon.py stop
+    sleep 1
+    ./testdaemon/daemon.py start
 fi
