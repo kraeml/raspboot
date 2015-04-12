@@ -24,7 +24,7 @@ class MyDaemon(Daemon):
 			f.close
 			cnt = cnt + 1
 			limit=limit+100
-			waitTime = cycleTime - elapsedTime
+			waitTime = cycleTime - (time.time() - startTime)
 			while waitTime <= 0:
 				waitTime = waitTime + cycleTime
 
