@@ -6,13 +6,13 @@
 
 # Adapted by M.Hendrix
 
-import sys, datetime, time, math
+import sys, time, math
 from libdaemon import Daemon
 
 class MyDaemon(Daemon):
 	def run(self):
 		cnt=0
-		limit=100000
+		limit=1000
 		cycleTime = 12
 		while True:
 			startTime=time.time()
@@ -20,11 +20,11 @@ class MyDaemon(Daemon):
 			count = find_primes(limit)
 			elapsedTime=time.time()-startTime
 			f=file('/tmp/testd','a')
-			f.write('{0}, {1}, {2}, {3}\n'.format(cnt, startTime, elapsedTime, count))
+			f.write('{0}, {1}, {2}, {3}, {4}\n'.format(cnt, limit, startTime, elapsedTime, count))
 			f.close
 			cnt = cnt + 1
 			limit=limit+100
-			waitTime = cycleTime - (time.time() - startTime)
+			waitTime = cycleTime - (time.time() - startTime) - (startTime%cycleTime)
 			while waitTime <= 0:
 				waitTime = waitTime + cycleTime
 
