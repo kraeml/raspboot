@@ -13,19 +13,20 @@ class MyDaemon(Daemon):
 	def run(self):
 		cnt=0
 		limit=100000
+		cycleTime = 12
 		while True:
 			startTime=time.time()
 			# Measure and print the elapsed time
 			count = find_primes(limit)
 			elapsedTime=time.time()-startTime
 			f=file('/tmp/testd','a')
-			f.write('{0}, {1}\n'.format(cnt, startTime, elapsedTime, count))
+			f.write('{0}, {1}, {2}, {3}\n'.format(cnt, startTime, elapsedTime, count))
 			f.close
 			cnt = cnt + 1
 			limit=limit+100
-			waitTime = 10 - elapsedTime
+			waitTime = cycleTime - elapsedTime
 			while waitTime <= 0:
-				waitTime = waitTime + 10
+				waitTime = waitTime + cycleTime
 
 			time.sleep(waitTime)
 
