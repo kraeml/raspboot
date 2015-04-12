@@ -16,8 +16,10 @@ class MyDaemon(Daemon):
 		cycleTime = 12
 		while True:
 			startTime=time.time()
+
 			# Measure and print the elapsed time
 			count = find_primes(limit)
+
 			elapsedTime=time.time()-startTime
 			f=file('/tmp/testd','a')
 			f.write('{0}, {1}, {2}, {3}, {4}\n'.format(cnt, limit, startTime, elapsedTime, count))
@@ -29,6 +31,10 @@ class MyDaemon(Daemon):
 				waitTime = waitTime + cycleTime
 
 			time.sleep(waitTime)
+
+def do_work():
+
+	return
 
 # Function to search for prime numbers
 # within number range
