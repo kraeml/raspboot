@@ -17,15 +17,18 @@ class MyDaemon(Daemon):
 		while True:
 			startTime=time.time()
 
-			# Measure and print the elapsed time
-			count = find_primes(limit)
+			#do_work()
 
-			elapsedTime=time.time()-startTime
-			f=file('/tmp/testd','a')
-			f.write('{0}, {1}, {2}, {3}, {4}\n'.format(cnt, limit, startTime, elapsedTime, count))
-			f.close
-			cnt = cnt + 1
-			limit=limit + 100
+			# Measure and print the elapsed time
+			#count = find_primes(limit)
+
+			#elapsedTime=time.time()-startTime
+			#f=file('/tmp/testd','a')
+			#f.write('{0}, {1}, {2}, {3}, {4}\n'.format(cnt, limit, startTime, elapsedTime, count))
+			#f.close
+			#cnt = cnt + 1
+			#limit=limit + 100
+
 			waitTime = cycleTime - (time.time() - startTime) - (startTime%cycleTime)
 			while waitTime <= 0:
 				waitTime = waitTime + cycleTime
