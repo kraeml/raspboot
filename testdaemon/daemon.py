@@ -14,8 +14,9 @@ class MyDaemon(Daemon):
 		cnt=0
 		while True:
 			f=file('/tmp/testd','a')
-			f.'{0}'.format(cnt)
+			f.write('{0}\n'.format(cnt))
 			f.close
+			count = count + 1
 			time.sleep(10)
 
 if __name__ == "__main__":
