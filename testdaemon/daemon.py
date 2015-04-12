@@ -25,7 +25,7 @@ class MyDaemon(Daemon):
 			f.write('{0}, {1}, {2}, {3}, {4}\n'.format(cnt, limit, startTime, elapsedTime, count))
 			f.close
 			cnt = cnt + 1
-			limit=limit + count
+			limit=limit + 100
 			waitTime = cycleTime - (time.time() - startTime) - (startTime%cycleTime)
 			while waitTime <= 0:
 				waitTime = waitTime + cycleTime
