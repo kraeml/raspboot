@@ -11,9 +11,10 @@ from libdaemon import Daemon
 
 class MyDaemon(Daemon):
 	def run(self):
+		cnt=0
 		while True:
 			f=file('/tmp/testd','a')
-			f.write(".")
+			f.'{0}'.format(cnt)
 			f.close
 			time.sleep(10)
 
