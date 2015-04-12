@@ -5,7 +5,6 @@ matplotlib.use("Agg")
 from matplotlib.dates import strpdate2num
 import numpy as np
 import pylab as pl
-
 import os, time, headstails, commands
 
 os.nice(10)
