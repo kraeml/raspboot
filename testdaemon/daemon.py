@@ -37,25 +37,26 @@ class MyDaemon(Daemon):
 
 def do_work():
 	# Read the CPU temperature
-  outTemp = commands.getoutput("cat /sys/class/thermal/thermal_zone0/temp")
-  if float(outTemp) > 75000:
-    # can't believe my sensors. Probably a glitch. Wait a while then measure again
-    time.sleep(7)
-    outTemp = commands.getoutput("cat /sys/class/thermal/thermal_zone0/temp")
-    outTemp = float(outTemp) + 0.1
+	outTemp = commands.getoutput("cat /sys/class/thermal/thermal_zone0/temp")
+	if float(outTemp) > 75000:
+	  # can't believe my sensors. Probably a glitch. Wait a while then measure again
+	  time.sleep(7)
+	  outTemp = commands.getoutput("cat /sys/class/thermal/thermal_zone0/temp")
+	  outTemp = float(outTemp) + 0.1
 
-  # Get the time and date in human-readable form...
-  outDate = commands.getoutput("date '+%F %H:%M:%S'")
-  # ... and machine-readable form (UNIX-epoch)
-  outUxDate = commands.getoutput("date +%s")
+	# Get the time and date in human-readable form...
+	outDate = commands.getoutput("date '+%F %H:%M:%S'")
+	# ... and machine-readable form (UNIX-epoch)
+	outUxDate = commands.getoutput("date +%s")
 
 
-  # Define output file
-  f = file('/tmp/11-t-cpu.txt', 'a')
-  # Print the data
-  f.write('{0}, {1}, {2}\n'.format(outDate, outUxDate, float(float(outTemp)/1000)) )
-  # Close the file
-  f.close()
+	# Define output file
+	f = file('/tmp/11-t-cpu.txt', 'a')
+	# Print the data
+	f.write('{0}, {1}, {2}\n'.format(outDate, outUxDate, float(float(outTemp)/1000)) )
+	# Close the file
+	f.close()
+
 	return
 
 # Function to search for prime numbers
