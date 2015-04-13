@@ -4,12 +4,10 @@ import sys, commands, time
 
 def main():
   # Everybody! Remember where we parked! -Capt. Kirk
-  orig_stdout = sys.stdout
+  #orig_stdout = sys.stdout
 
-  # Define output file
-  f = file('/tmp/11-t-cpu.csv', 'a')
   # Redefine system output to our file
-  sys.stdout = f
+  #sys.stdout = f
 
   # Read the CPU temperature
   outTemp = commands.getoutput("cat /sys/class/thermal/thermal_zone0/temp")
@@ -24,14 +22,16 @@ def main():
   # ... and machine-readable form (UNIX-epoch)
   outUxDate = commands.getoutput("date +%s")
 
-  # Print the data
-  print '{0}, {1}, {2}'.format(outDate, outUxDate, float(float(outTemp)/1000))
 
+  # Define output file
+  f = file('/tmp/11-t-cpu.csv', 'a')
+  # Print the data
+  f.write('{0}, {1}, {2}\n'.format(outDate, outUxDate, float(float(outTemp)/1000)) )
   # Close the file
   f.close()
 
   # Re-set the stdout
-  sys.stdout = orig_stdout
+  #sys.stdout = orig_stdout
 
 if __name__ == "__main__":
   main()
