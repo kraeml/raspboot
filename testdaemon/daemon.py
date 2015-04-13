@@ -13,11 +13,11 @@ class MyDaemon(Daemon):
 	def run(self):
 		cnt=0
 		limit=3
-		cycleTime = 60
+		cycleTime = 12
 		while True:
 			startTime=time.time()
 
-			#do_work()
+			do_work()
 
 			# Measure and print the elapsed time
 			#count = find_primes(limit)
