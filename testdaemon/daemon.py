@@ -6,32 +6,28 @@
 
 # Adapted by M.Hendrix [2015]
 
-import sys, time, math
+import sys, time, math, commands
 from libdaemon import Daemon
 
 class MyDaemon(Daemon):
 	def run(self):
-		cnt=0
-		limit=3
-		cycleTime = 12
+		Tcpu=range(5)
+		sampleptr = 0
+		sampleTime = 12
+		samples = 5
 		while True:
 			startTime=time.time()
 
-			do_work()
+			Tcpu[sampleptr] = do_work()
+			
+			sampleptr = sampleptr + 1
+			if (sampleptr == samples):
+				do_report(sum(Tcpu[:]) / samples)
+				sampleptr = 0
 
-			# Measure and print the elapsed time
-			#count = find_primes(limit)
-
-			#elapsedTime=time.time()-startTime
-			#f=file('/tmp/testd','a')
-			#f.write('{0}, {1}, {2}, {3}, {4}\n'.format(cnt, limit, startTime, elapsedTime, count))
-			#f.close
-			#cnt = cnt + 1
-			#limit=limit + 100
-
-			waitTime = cycleTime - (time.time() - startTime) - (startTime%cycleTime)
+			waitTime = sampleTime - (time.time() - startTime) - (startTime%sampleTime)
 			while waitTime <= 0:
-				waitTime = waitTime + cycleTime
+				waitTime = waitTime + sampleTime
 
 			time.sleep(waitTime)
 
@@ -44,20 +40,19 @@ def do_work():
 	  outTemp = commands.getoutput("cat /sys/class/thermal/thermal_zone0/temp")
 	  outTemp = float(outTemp) + 0.1
 
+	return outTemp
+
+def do_report(Tc):
 	# Get the time and date in human-readable form...
 	outDate = commands.getoutput("date '+%F %H:%M:%S'")
 	# ... and machine-readable form (UNIX-epoch)
 	outUxDate = commands.getoutput("date +%s")
 
-
-	# Define output file
 	f = file('/tmp/11-t-cpu.txt', 'a')
-	# Print the data
-	f.write('{0}, {1}, {2}\n'.format(outDate, outUxDate, float(float(outTemp)/1000)) )
-	# Close the file
+	f.write('{0}, {1}, {2}\n'.format(outDate, outUxDate, float(float(Tc)/1000)) )
 	f.close()
-
 	return
+
 
 # Function to search for prime numbers
 # within number range
