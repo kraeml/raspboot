@@ -18,8 +18,8 @@ class MyDaemon(Daemon):
 		while True:
 			startTime=time.time()
 
-			Tcpu[sampleptr] = do_work()
-			
+			Tcpu[sampleptr] = int(do_work())
+
 			sampleptr = sampleptr + 1
 			if (sampleptr == samples):
 				do_report(sum(Tcpu[:]) / samples)
