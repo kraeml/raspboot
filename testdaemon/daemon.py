@@ -15,11 +15,16 @@ class MyDaemon(Daemon):
 		sampleptr = 0
 		sampleTime = 12
 		samples = 5
+		startTime=time.time()
+		# sync to whole minute
+		waitTime = 60 - (time.time()%60)
+		time.sleep(waitTime)
 		while True:
 			startTime=time.time()
 
 			Tcpu[sampleptr] = int(do_work())
 
+			# report sample average
 			sampleptr = sampleptr + 1
 			if (sampleptr == samples):
 				do_report(sum(Tcpu[:]) / samples)
