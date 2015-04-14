@@ -16,7 +16,7 @@ class MyDaemon(Daemon):
 		sampleTime = 12
 		samples = 5
 		# sync to whole minute
-		waitTime = time.time() % 60
+		waitTime = (60+sampleTime) - (time.time() % 60)
 		time.sleep(waitTime)
 		while True:
 			startTime=time.time()
