@@ -10,9 +10,9 @@ date
 pushd /home/pi/gitbin
 
 # Boot detection
-if [ ! -e /run/gitbin.reboot ]; then
+if [ ! -e /tmp/gitbin.reboot ]; then
   # Set the flag first to prevent recursive execution
-  whoami > /run/gitbin.reboot
+  whoami > /tmp/gitbin.reboot
   ( ./01-post-boot.sh 2>&1 | tee -a ../post-boot.log | logger -p local7.info -t 01-post-boot ) &
 fi
 

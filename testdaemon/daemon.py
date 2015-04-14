@@ -16,7 +16,7 @@ class MyDaemon(Daemon):
 		sampleTime = 12
 		samples = 5
 		# sync to whole minute
-		waitTime = (60 + sampleTime) - (time.time() % 60)
+		waitTime = (60+sampleTime) - (time.time() % 60)
 		time.sleep(waitTime)
 		while True:
 			startTime=time.time()
@@ -77,7 +77,7 @@ def find_primes(upper_limit):
   return count
 
 if __name__ == "__main__":
-	daemon = MyDaemon('/run/dbin-11.pid')
+	daemon = MyDaemon('/tmp/daemon-example.pid')
 	if len(sys.argv) == 2:
 		if 'start' == sys.argv[1]:
 			daemon.start()
