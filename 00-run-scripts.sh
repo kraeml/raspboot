@@ -17,6 +17,7 @@ if [ ! -e /tmp/gitbin.reboot ]; then
 fi
 
 # Check for new/updated scripts
+# Update the git scripts once every hour
 minute=$(date "+%M")
 if [ $minute -eq "42" ]; then
   ./02-update-scripts.sh
