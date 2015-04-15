@@ -2,7 +2,9 @@
 
 #git fetch origin && git reset --hard origin/master && git clean -f -d
 git fetch origin && \
+#DIFFdmn=$(git --no-pager diff --name-only master -- ./testdaemon/daemon.py) && \
 DIFFdmn=$(git --no-pager diff --name-only dev..origin/dev -- ./testdaemon/daemon.py) && \
+#DIFFlib=$(git --no-pager diff --name-only master -- ./testdaemon/libdaemon.py) && \
 DIFFlib=$(git --no-pager diff --name-only dev..origin/dev -- ./testdaemon/libdaemon.py) && \
 git reset --hard origin/dev && git clean -f -d
 
