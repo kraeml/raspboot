@@ -2,7 +2,7 @@ echo "Removing AVAHI services we don't offer..."
 sudo rm /etc/avahi/services/ftp.service
 sudo rm /etc/avahi/services/samba.service
 
-e# Create mountpoints
+# Create mountpoints
 echo "Creating mountpoints ..."
 sudo mkdir /mnt/backup
 sudo mkdir /mnt/share1
@@ -28,6 +28,8 @@ fi
 
 echo -n "Restore bin - "
 cp -r /mnt/backup/rxbmc/home/pi/bin bin
+# set flag for gitbin
+echo master > /home/pi/bin/gitbin.branch
 
 echo -n "Restore etc - "
 cp -r /mnt/backup/rxbmc/home/pi/etc etc
