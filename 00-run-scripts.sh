@@ -23,9 +23,6 @@ if [ $minute -eq "42" ]; then
   ./02-update-scripts.sh
 fi
 
-# Execute the common scripts in parallel
-./11-get-temp.py & ./12-get-load.py & ./13-get-nettraffic.py & ./14-get-memory.py & ./15-get-logstate.py & wait
-
 # Execute client-specific scripts
 case "$CLNT" in
   rbups )   echo "UPS monitor"
@@ -45,6 +42,7 @@ case "$CLNT" in
             ;;
 esac
 
+sleep 5
 # Create the XML-file last
 ./31-xml-status.sh
 # Upload the data
