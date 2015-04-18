@@ -24,8 +24,8 @@ if [ $minute -eq "42" ]; then
 fi
 
 # Execute the common scripts in parallel
-#./11-get-temp.py & ./12-get-load.py &
-./13-get-nettraffic.py & ./14-get-memory.py & ./15-get-logstate.py & wait
+#./11-get-temp.py & ./12-get-load.py & ./13-get-nettraffic.py &
+./14-get-memory.py & ./15-get-logstate.py & wait
 
 # Execute client-specific scripts
 case "$CLNT" in
