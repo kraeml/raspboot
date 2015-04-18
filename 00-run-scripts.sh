@@ -49,3 +49,4 @@ sleep 5
 ./99-upload-data.sh
 
 date
+popd
