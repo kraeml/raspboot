@@ -206,7 +206,7 @@ def graphs():
   print ""
   pl.close()
   pl.plot(A11,A2,'m.')
-  pl.plot(A11_extrema,fit(A11_extrema),'m-')
+  pl.plot(A11_extrema,fit(A11_extrema),'b-')
   pl.title('BMP183 vs. DS18B20')
   pl.xlabel("T(BMP183) [degC]")
   pl.ylabel("T(DS18B20) [degC]")
