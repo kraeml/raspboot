@@ -42,7 +42,7 @@ def gettelegram():
     if line == "!":
       abort = 1
     if line != "":
-       telegram.append(line)
+      telegram.append(line)
     loops2go = loops2go - 1
     if loops2go < 0:
       abort = 3

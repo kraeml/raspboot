@@ -29,7 +29,7 @@ case "$CLNT" in
             ./16-get-upsstate.py
             ;;
   rbelec )  echo "Electricity monitor"
-            ./17-get-electra.py
+            #./17-get-electra.py
             ;;
   rbian )   echo "Raspberry testbench"
             #./testserial.py
