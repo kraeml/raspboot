@@ -9,6 +9,13 @@ if [ ! -d ~/bin ]; then
   mkdir ~/bin
 fi
 
+# Start daemons, if installed
+if [ -e ~/raspdiagd ]; then
+  pushd ~/raspdiagd
+  ./00-scriptmanager.sh
+  popd
+fi
+
 # Download the contents of the ~/bin directory
 # We use the `.rsyncd.secret` file as a flag.
 # This allows a re-population of this directory in case new/updated binaries
