@@ -1,2 +1,2 @@
 echo "Installing electricity monitor packages..."
-sudo apt-get -yuV install cu python-serial
+sudo apt-get -yuV install picocom python-serial
