@@ -27,7 +27,7 @@ fi
 # Execute client-specific scripts
 case "$CLNT" in
   rbups )   echo "UPS monitor"
-            ./16-get-upsstate.py
+            #./16-get-upsstate.py
             ;;
   rbelec )  echo "Electricity monitor"
             #./17-get-electra.py
