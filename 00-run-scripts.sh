@@ -27,13 +27,10 @@ fi
 # Execute client-specific scripts
 case "$CLNT" in
   rbups )   echo "UPS monitor"
-            #./16-get-upsstate.py
             ;;
   rbelec )  echo "Electricity monitor"
-            #./17-get-electra.py
             ;;
   rbian )   echo "Raspberry testbench"
-            #./testserial.py
             ;;
   rxbmc )   echo "RaspBMC mediacenter"
             ;;
@@ -43,9 +40,11 @@ case "$CLNT" in
             ;;
 esac
 
-sleep 5
 # Create the XML-file last
 ./31-xml-status.sh
+
+
+sleep 4
 # Upload the data
 ./99-upload-data.sh
 
