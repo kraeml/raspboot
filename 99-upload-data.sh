@@ -48,7 +48,7 @@ if [ $? -eq 0 ]; then
 			touch $MOUNTPOINT/$CLNT/client.lock
 
 			# move the data-files
-			if [ -e $MOUNTPOINT/$CLNT/client.lock ]
+			if [ -e $MOUNTPOINT/$CLNT/client.lock ]; then
 				cp /tmp/*.csv $MOUNTPOINT/$CLNT/
 				if [ $? -eq 0 ]; then
 		    	echo OK
@@ -57,7 +57,7 @@ if [ $? -eq 0 ]; then
 			fi
 
 
-			if [ -e $MOUNTPOINT/$CLNT/client.lock ]
+			if [ -e $MOUNTPOINT/$CLNT/client.lock ]; then
 				fun_makexml
 				cp $xml $MOUNTPOINT/$CLNT/
 				if [ $? -eq 0 ]; then
@@ -67,7 +67,7 @@ if [ $? -eq 0 ]; then
 			fi
 
 			# only for rbian; move graphs to server
-			if [ -e $MOUNTPOINT/$CLNT/client.lock ]
+			if [ -e $MOUNTPOINT/$CLNT/client.lock ]; then
 				cp /tmp/*.png $MOUNTPOINT/$CLNT/
 				if [ $? -eq 0 ]; then
 					echo OK
@@ -76,7 +76,7 @@ if [ $? -eq 0 ]; then
 			fi
 
 			# copy error files to server
-			if [ -e $MOUNTPOINT/$CLNT/client.lock ]
+			if [ -e $MOUNTPOINT/$CLNT/client.lock ]; then
 				cp /tmp/*.err $MOUNTPOINT/$CLNT/ 2>/dev/null
 			fi
 
