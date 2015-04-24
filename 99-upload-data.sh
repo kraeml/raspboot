@@ -11,7 +11,6 @@ function fun_makexml {
 	echo "<server>" > $xmlof
 	echo "<name>" >> $xmlof
 	hostname >> $xmlof
-	cat /home/pi/bin/*.branch >> $xmlof
 	echo "</name>" >> $xmlof
 
 	echo "<df>" >> $xmlof
@@ -30,6 +29,10 @@ function fun_makexml {
 	echo "<uptime>" >> $xmlof
 	uptime >> $xmlof
 	uname -a >> $xmlof
+	echo -n "raspdiagd on " >> $xmlof
+	cat /home/pi/bin/raspdiagd.branch >> $xmlof
+	echo -n "gitbin on " >> $xmlof
+	cat /home/pi/bin/gitbin.branch >> $xmlof
 	ps -e -o pcpu,args | awk 'NR>2' | sort -nr | head -6 | sed 's/&/\&amp;/g' | sed 's/>/\&gt;/g'>> $xmlof
 	echo "</uptime>" >> $xmlof
 
@@ -64,11 +67,11 @@ if [ $? -eq 0 ]; then
 
 			if [ -e $MOUNTPOINT/$CLNT/client.lock ]; then
 				fun_makexml
-				cp $xml $MOUNTPOINT/$CLNT/
-				if [ $? -eq 0 ]; then
-					echo OK
-					rm $xml
-				fi
+				#cp $xml $MOUNTPOINT/$CLNT/
+				#if [ $? -eq 0 ]; then
+				#	echo OK
+				#	rm $xml
+				#fi
 			fi
 
 			# only for rbian; move graphs to server
