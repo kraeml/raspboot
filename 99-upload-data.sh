@@ -60,7 +60,6 @@ if [ $? -eq 0 ]; then
 			if [ -e $MOUNTPOINT/$CLNT/client.lock ]; then
 				cp /tmp/*.csv $MOUNTPOINT/$CLNT/
 				if [ $? -eq 0 ]; then
-		    	echo OK
 					rm /tmp/*.csv
 				fi
 			fi
@@ -74,7 +73,6 @@ if [ $? -eq 0 ]; then
 			if [ -e $MOUNTPOINT/$CLNT/client.lock ]; then
 				cp /tmp/*.png $MOUNTPOINT/$CLNT/
 				if [ $? -eq 0 ]; then
-					echo OK
 					rm /tmp/*.png
 				fi
 			fi
