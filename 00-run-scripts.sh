@@ -41,8 +41,8 @@ case "$CLNT" in
 esac
 
 # Create the XML-file last
-./31-xml-status.sh
-
+#./31-xml-status.sh
+date
 
 sleep 4
 # Upload the data

@@ -8,27 +8,32 @@ xml=/tmp/status.xml
 function fun_makexml {
 	xmlof=/tmp/status.txt
 
-	#raspberry
-	echo "  <server>" > $xmlof
-	echo "    <name>" >> $xmlof
+	echo "<server>" > $xmlof
+	echo "<name>" >> $xmlof
 	hostname >> $xmlof
-	echo "    </name>" >> $xmlof
-	echo "    <df>" >> $xmlof
+	cat /home/pi/bin/*.branch >> $xmlof
+	echo "</name>" >> $xmlof
+
+	echo "<df>" >> $xmlof
 	df -h >> $xmlof
-	echo "    </df>" >> $xmlof
-	echo "    <temperature>" >> $xmlof
+	echo "</df>" >> $xmlof
+
+	echo "<temperature>" >> $xmlof
 	/opt/vc/bin/vcgencmd measure_temp >> $xmlof
 	cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq >> $xmlof
-	echo "    </temperature>" >> $xmlof
-	echo "    <memusage>" >> $xmlof
+	echo "</temperature>" >> $xmlof
+
+	echo "<memusage>" >> $xmlof
 	free -h >> $xmlof
-	echo "    </memusage>" >> $xmlof
-	echo "    <uptime>" >> $xmlof
+	echo "</memusage>" >> $xmlof
+
+	echo "<uptime>" >> $xmlof
 	uptime >> $xmlof
 	uname -a >> $xmlof
 	ps -e -o pcpu,args | awk 'NR>2' | sort -nr | head -6 | sed 's/&/\&amp;/g' | sed 's/>/\&gt;/g'>> $xmlof
-	echo "    </uptime>" >> $xmlof
-	echo "  </server>" >> $xmlof
+	echo "</uptime>" >> $xmlof
+
+	echo "</server>" >> $xmlof
 }
 
 # Mount the share containing the data
