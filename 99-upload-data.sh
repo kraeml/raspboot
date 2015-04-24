@@ -68,11 +68,6 @@ if [ $? -eq 0 ]; then
 
 			if [ -e $MOUNTPOINT/$CLNT/client.lock ]; then
 				fun_makexml
-				#cp $xml $MOUNTPOINT/$CLNT/
-				#if [ $? -eq 0 ]; then
-				#	echo OK
-				#	rm $xml
-				#fi
 			fi
 
 			# only for rbian; move graphs to server
