@@ -29,10 +29,11 @@ function fun_makexml {
 	echo "<uptime>" >> $xmlof
 	uptime >> $xmlof
 	uname -a >> $xmlof
-	echo -n "raspdiagd on " >> $xmlof
+	echo -n "- raspdiagd on " >> $xmlof
 	cat /home/pi/bin/raspdiagd.branch >> $xmlof
-	echo -n "gitbin on " >> $xmlof
+	echo -n "- gitbin on " >> $xmlof
 	cat /home/pi/bin/gitbin.branch >> $xmlof
+	echo "Top 6 processes:"
 	ps -e -o pcpu,args | awk 'NR>2' | sort -nr | head -6 | sed 's/&/\&amp;/g' | sed 's/>/\&gt;/g'>> $xmlof
 	echo "</uptime>" >> $xmlof
 
