@@ -6,7 +6,7 @@ CLNT=$(hostname)
 xml=/tmp/status.xml
 
 function fun_makexml {
-	xmlof=/tmp/status.txt
+	xmlof=$MOUNTPOINT/$CLNT/status.xml
 
 	echo "<server>" > $xmlof
 	echo "<name>" >> $xmlof
