@@ -252,10 +252,12 @@ def graphs():
   pl.savefig('/tmp/D56.png')
 
   pl.close()
-  print "Heat Index trends"
+  print "Temperature trends"
   print ""
-  pl.plot(D,A7,'.b')
-  pl.title('Heat Index trend')
+  pl.plot(D,A2, '.y', label='Temperature')
+  pl.plot(D,A7,'.r', label='Heat Index')
+  pl.plot(D,A6,'.b', label='DewPoint')
+  pl.title('Temperature')
   pl.ylabel('T [degC]')
   pl.grid(True)
   pl.gcf().autofmt_xdate()
