@@ -241,6 +241,7 @@ def graphs():
   pl.title('Pressure trend')
   pl.ylabel('Pressure [mbara]')
   pl.grid(True)
+  pl.annotate('⇒⇑⇓⟱⤋⬇︎⇪⇧☟☝︎☞▼▲▶︎◥◢' , xy=(0.1, 0.5), xycoords='axes fraction', size=16 )
   pl.gcf().autofmt_xdate()
   pl.savefig('/tmp/D11.png')
 
