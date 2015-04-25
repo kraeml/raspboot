@@ -219,7 +219,7 @@ def graphs():
   pl.title('Temperature')
   pl.ylabel('T [degC]')
   pl.grid(True)
-  pl.annotate('Text' , xy=(0.5, 0.5), xycoords='axes fraction', size=16 )
+  pl.annotate('Text' , xy=(0.1, 0.5), xycoords='axes fraction', size=16 )
   pl.legend(loc='upper left', prop={'size':8})
   pl.gcf().autofmt_xdate()
   pl.savefig('/tmp/D7.png')
@@ -241,7 +241,9 @@ def graphs():
   pl.title('Pressure trend')
   pl.ylabel('Pressure [mbara]')
   pl.grid(True)
-  pl.annotate('⇒⇑⇓⟱⤋⬇︎⇪⇧☟☝︎☞▼▲▶︎◥◢' , xy=(0.1, 0.5), xycoords='axes fraction', size=16 )
+  # SyntaxError: Non-ASCII character '\xe2' in file /home/pi/gitbin/testgraphs.py
+  # on line 244, but no encoding declared; see http://www.python.org/peps/pep-0263.html for details
+  # pl.annotate('⇒⇑⇓⟱⤋⬇︎⇪⇧☟☝︎☞▼▲▶︎◥◢' , xy=(0.1, 0.5), xycoords='axes fraction', size=16 )
   pl.gcf().autofmt_xdate()
   pl.savefig('/tmp/D11.png')
 
