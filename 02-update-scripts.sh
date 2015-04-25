@@ -1,6 +1,6 @@
 #! /bin/bash
 
-branch=$(cat ~/bin/.gitbin.branch)
+branch=$(cat ~/.gitbin.branch)
 git checkout $branch
 git fetch origin && git reset --hard origin/$branch && git clean -f -d
 
