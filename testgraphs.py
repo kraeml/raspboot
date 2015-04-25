@@ -136,51 +136,13 @@ def graphs():
   D = matplotlib.dates.num2date(C[:,0])
 
   pl.close()
-  #ab = np.polyfit(A1,A2,1)
-  #A12 = np.subtract(A1,A2)
-  #fit = np.poly1d(ab)
-  #r2 = np.corrcoef(A1,A2)[0,1]
-  #print "ATMEGA vs. DS18B20"
-  #a1 = ab[0]
-  #b1 = ab[1]
-  #r21 = r2
-  #print a1, b1, r21
-  #print ""
-  #pl.plot(A1,A2,'r.', label='ATMEGA vs. DS18B20', alpha=0.7)
-  #pl.plot(D,A12,'r.', label='ATMEGA vs. DS18B20', alpha=0.7)
-  #pl.plot(A1_extrema,fit(A1_extrema),'c-')
-  #pl.annotate('{0}'.format(r2) , xy=(min(A1)+0.5,fit(min(A1))), size=6, color='c' )
 
-  #ab = np.polyfit(A3,A2,1)
   A32 = np.subtract(A3,A2)
-  #fit = np.poly1d(ab)
-  #r2 = np.corrcoef(A3,A2)[0,1]
   print "DHT22 vs. DS18B20"
-  #a2 = ab[0]
-  #b2 = ab[1]
-  #r22 = r2
-  #print a2, b2, r22
-  #print ""
-  #pl.plot(A3,A2,'g.', label='DHT22  vs. DB18B20', alpha=0.7)
   pl.plot(D,A32,'g.', label='DHT22  vs. DB18B20', alpha=0.7)
-  #pl.plot(A3_extrema,fit(A3_extrema),'m-')
-  #pl.annotate('{0}'.format(r2) , xy=(min(A3)+0.5,fit(min(A3))), size=6, color='m' )
-
-  #ab = np.polyfit(A9,A2,1)
   A92 = np.subtract(A9,A2)
-  #fit = np.poly1d(ab)
-  #r2 = np.corrcoef(A9,A2)[0,1]
   print "TMP36 vs. DS18B20"
-  #a3 = ab[0]
-  #b3 = ab[1]
-  #r23 = r2
-  #print a3, b3, r23
-  #print ""
-  #pl.plot(A9,A2,'b.', label='TMP36  vs. DS18B20', alpha=0.7)
   pl.plot(D,A92,'b.', label='TMP36  vs. DS18B20', alpha=0.7)
-  #pl.plot(A9_extrema,fit(A9_extrema),'y-')
-  #pl.annotate('{0}'.format(r2) , xy=(min(A9)+0.5,fit(min(A9))), size=6, color='y' )
-
   A112 = np.subtract(A11,A2)
   print "BMP183 vs. DS18B20"
   pl.plot(D,A112,'m.', label='BMP183 vs. DS18B20', alpha=0.7)
@@ -188,9 +150,7 @@ def graphs():
   #print "Sensor correlations graph"
   print "Sensor differences graph"
   print ""
-  #pl.title('Sensor correlations')
   pl.title('Sensor differences')
-  #pl.xlabel("T(x) [degC]")
   pl.ylabel("T(x)-T(DS18B20) [degC]")
   pl.grid(True)
   pl.legend(loc='upper left', prop={'size':8})
@@ -217,7 +177,6 @@ def graphs():
   pl.close()
   print "Temperature trends"
   print ""
-  #pl.plot(D,A1, '.r', label='ATMEGA')
   pl.plot(D,A2, '.y', label='DS18B20')
   pl.plot(D,A3, '.g', label='DHT22')
   pl.plot(D,A9, '.b', label='TMP36')
@@ -260,6 +219,7 @@ def graphs():
   pl.title('Temperature')
   pl.ylabel('T [degC]')
   pl.grid(True)
+  pl.annotate('Text' , xy=(0.5, 0.5), xycoords='axes fraction', size=16 )
   pl.legend(loc='upper left', prop={'size':8})
   pl.gcf().autofmt_xdate()
   pl.savefig('/tmp/D7.png')
@@ -284,16 +244,8 @@ def graphs():
   pl.gcf().autofmt_xdate()
   pl.savefig('/tmp/D11.png')
 
-  #f = file('/tmp/corr.txt', 'a')
-  #od = commands.getoutput("date '+%F %H:%M:%S'")
-  #f.write('{0}, {1}, {2}, {3}, {4}, {5}, {6}, {7}, {8}, {9}\n'.format(od, a1, a2, a3, b1, b2, b3, r21, r22, r23))
-  #f.close()
-
   return
 
 if __name__ == "__main__":
-  # time.sleep(11)
   taildata()
   graphs()
-  #tailcorr()
-  #corrs()
