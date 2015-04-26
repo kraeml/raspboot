@@ -244,7 +244,7 @@ def graphs():
 
   lenD=len(D)
   Pnow = "{0:.1f}mbara ".format(A10[lenD-1])
-  Prain = int(-0.0231 * A10[lenD -1] + 23.612)
+  Prain = int(-2.31 * A10[lenD -1] + 2361.2)
   Ptrend = Pnow + "Neerslagkans: {0}% \n".format(Prain)
 
   if ( lenD > L1 ):
@@ -256,7 +256,7 @@ def graphs():
     if (delta1 < -0.15):
       Tr1=u'\u21D8'
 
-  Ptrend = Ptrend + " | {0:.2f}: ".format(delta1) + Tr1
+  Ptrend = Ptrend + "1h {0:.2f}: ".format(delta1) + Tr1
 
   if ( lenD > L3 ):
     delta3 = float(A10[lenD-1] - A10[lenD-1-L3])
@@ -267,7 +267,7 @@ def graphs():
     if (delta3 < -0.20):
       Tr3=u'\u21D8'
 
-  Ptrend = Ptrend + " | {0:.2f}: ".format(delta3) + Tr3
+  Ptrend = Ptrend + " | 3h {0:.2f}: ".format(delta3) + Tr3
 
   pl.close()
   print "Pressure trend"
