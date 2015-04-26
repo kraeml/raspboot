@@ -255,6 +255,8 @@ def graphs():
       Tr1=u'\u21D8'
 
   Ptrend = Ptrend + " | " + "{0:.2f}".format(delta1) + ":" + Tr1
+  Prain = int(-0.0231 * A10[lenD -1] + 23.612)
+  Ptrend = "Neerslagkans: {0}% \n".format(Prain)
 
   if ( lenD > L3 ):
     delta3 = float(A10[lenD-1] - A10[lenD-1-L3])
@@ -277,7 +279,7 @@ def graphs():
   # SyntaxError: Non-ASCII character '\xe2' in file /home/pi/gitbin/testgraphs.py
   # on line 244, but no encoding declared; see http://www.python.org/peps/pep-0263.html for details
   # Charactercodes: http://www.fileformat.info/info/unicode/block/arrows/utf8test.htm
-  pl.annotate(Ptrend , xy=(0.1, 0.5), xycoords='axes fraction', size=16 )
+  pl.annotate(Ptrend , xy=(0.1, 0.5), xycoords='axes fraction', size=12 )
   pl.gcf().autofmt_xdate()
   pl.savefig('/tmp/D11.png')
 
