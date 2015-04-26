@@ -20,85 +20,6 @@ def taildata():
     fout.write("%s" % (c) )
   fout.close()
 
-def tailcorr():
-  print "Tailing correlation-data"
-  fin = headstails.FileExtremities('/tmp/corr.txt','r')
-  # read last 1200 datapoints
-  F = fin.tail(1200)
-
-  fout = file('/tmp/corrdata.txt','w')
-  for c in F:
-    fout.write("%s" % (c) )
-  fout.close()
-
-def corrs():
-  print "Loading correlation-data"
-  C=np.loadtxt('/tmp/corrdata.txt',delimiter=',',converters={0:strpdate2num("%Y-%m-%d %H:%M:%S")})
-  # 1 = ATMEGA vs DS18B20
-  # 2 = DHT22 vs. DS18B20
-  # 3 = TMP36 vs. DS18B20
-  #
-  # correlation coefficients a,b : f(x) =  a*x + b
-  # r2 : R^2 of data to correlation coefs
-  # 1,2,3 = a  (slope)
-  # 4,5,6 = b  (offset)
-  # 6,7,8 = r2 (R^2)
-
-  A1 = C[:,1]
-  A2 = C[:,2]
-  A3 = C[:,3]
-  B1 = C[:,4]
-  B2 = C[:,5]
-  B3 = C[:,6]
-  R1 = C[:,7]
-  R2 = C[:,8]
-  R3 = C[:,9]
-
-  D = matplotlib.dates.num2date(C[:,0])
-
-  pl.close()
-  print "corr.coef-a- trends"
-  print ""
-  pl.plot(D,A1, '.r', label='ATMEGA')
-  pl.plot(D,A2, '.g', label='DHT22')
-  pl.plot(D,A3, '.b', label='TMP36')
-  pl.title('correlation trends slope (a)')
-  pl.ylabel('a [-]')
-  pl.grid(True)
-  pl.legend(loc='upper left', prop={'size':8})
-  pl.gcf().autofmt_xdate()
-  pl.savefig('/tmp/corr-a.png')
-
-  pl.close()
-  print "corr.coef-b- trends"
-  print ""
-  pl.plot(D,B1, '.r', label='ATMEGA')
-  pl.plot(D,B2, '.g', label='DHT22')
-  pl.plot(D,B3, '.b', label='TMP36')
-  pl.title('correlation trends offset (b)')
-  pl.ylabel('b [-]')
-  pl.grid(True)
-  pl.legend(loc='upper left', prop={'size':8})
-  pl.gcf().autofmt_xdate()
-  pl.savefig('/tmp/corr-b.png')
-
-  pl.close()
-  print "corr.coef-R2- trends"
-  print ""
-  pl.plot(D,R1, '.r', label='ATMEGA')
-  pl.plot(D,R2, '.g', label='DHT22')
-  pl.plot(D,R3, '.b', label='TMP36')
-  pl.title('correlation trends R^2 (r2)')
-  pl.ylabel('r2 [-]')
-  pl.grid(True)
-  pl.legend(loc='upper left', prop={'size':8})
-  pl.gcf().autofmt_xdate()
-  pl.savefig('/tmp/corr-r.png')
-
-  print "Ready..."
-
-  return
-
 def graphs():
   print "Loading sensor-data"
   C=np.loadtxt('/tmp/taildata.txt',delimiter=',',converters={0:strpdate2num("%Y-%m-%d %H:%M:%S")})
@@ -115,20 +36,14 @@ def graphs():
   # 11= BMP183 Temperature
 
   #A1 = C[:,1]
-  #A1_extrema = [min(A1),max(A1)]
   A2 = C[:,2]
-  #A2_extrema = [min(A2),max(A2)]
   A3 = C[:,3]
-  #A3_extrema = [min(A3),max(A3)]
   A4 = C[:,4]
-  #A4_extrema = [min(A4),max(A4)]
   A5 = C[:,5]
-  #A5_extrema = [min(A5),max(A5)]
   A6 = C[:,6]
   A7 = C[:,7]
   A8 = C[:,8]
   A9 = C[:,9]
-  #A9_extrema = [min(A9),max(A9)]
   A10 = C[:,10]
   A11 = C[:,11]
   A11_extrema = [min(A11),max(A11)]
@@ -136,7 +51,6 @@ def graphs():
   D = matplotlib.dates.num2date(C[:,0])
 
   pl.close()
-
   A32 = np.subtract(A3,A2)
   print "DHT22 vs. DS18B20"
   pl.plot(D,A32,'g.', label='DHT22  vs. DB18B20', alpha=0.7)
@@ -149,7 +63,6 @@ def graphs():
 
   #print "Sensor correlations graph"
   print "Sensor differences graph"
-  print ""
   pl.title('Sensor differences')
   pl.ylabel("T(x)-T(DS18B20) [degC]")
   pl.grid(True)
@@ -163,7 +76,6 @@ def graphs():
   r2 = np.corrcoef(A11,A2)[0,1]
   print "BMP183 vs DS18B20"
   print ab[0], ab[1], r2
-  print ""
   pl.close()
   pl.plot(A11,A2,'m.')
   pl.plot(A11_extrema,fit(A11_extrema),'b-')
@@ -176,7 +88,6 @@ def graphs():
 
   pl.close()
   print "Temperature trends"
-  print ""
   pl.plot(D,A2, '.y', label='DS18B20')
   pl.plot(D,A3, '.g', label='DHT22')
   pl.plot(D,A9, '.b', label='TMP36')
@@ -190,7 +101,6 @@ def graphs():
 
   pl.close()
   print "Relative humidity trend"
-  print ""
   pl.plot(D,A4,'.b')
   pl.title('Relative humidity trend')
   pl.ylabel('RH [%]')
@@ -200,7 +110,6 @@ def graphs():
 
   pl.close()
   print "Dewpoint trends"
-  print""
   pl.plot(D,A5,'.r', label='DP1')
   pl.plot(D,A6,'.b', label='DP2')
   pl.title('Dewpoint trends')
@@ -212,7 +121,6 @@ def graphs():
 
   pl.close()
   print "Temperature trends"
-  print ""
   pl.plot(D,A2, '.y', label='Temperature')
   pl.plot(D,A7,'.r', label='Heat Index')
   pl.plot(D,A6,'.b', label='DewPoint')
@@ -226,7 +134,6 @@ def graphs():
 
   pl.close()
   print "Solar charger trend"
-  print""
   pl.plot(D,A8,'.b')
   pl.title('Solar charge trend')
   pl.ylabel('Charge [V]')
@@ -246,6 +153,10 @@ def graphs():
   Pnow = "{0:.1f}mbara ".format(A10[lenD-1])
   Prain = rainchance(A10[lenD -1])
   Ptrend = Pnow + "Neerslagkans: {0}% \n".format(Prain)
+
+  # SyntaxError: Non-ASCII character '\xe2' in file /home/pi/gitbin/testgraphs.py
+  # on line 244, but no encoding declared; see http://www.python.org/peps/pep-0263.html for details
+  # Charactercodes: http://www.fileformat.info/info/unicode/block/arrows/utf8test.htm
 
   if ( lenD > L1 ):
     delta1 = float(A10[lenD-1] - A10[lenD-1-L1])
@@ -271,14 +182,10 @@ def graphs():
 
   pl.close()
   print "Pressure trend"
-  print""
   pl.plot(D,A10,'.b')
   pl.title('Pressure trend')
   pl.ylabel('Pressure [mbara]')
   pl.grid(True)
-  # SyntaxError: Non-ASCII character '\xe2' in file /home/pi/gitbin/testgraphs.py
-  # on line 244, but no encoding declared; see http://www.python.org/peps/pep-0263.html for details
-  # Charactercodes: http://www.fileformat.info/info/unicode/block/arrows/utf8test.htm
   pl.annotate(Ptrend , xy=(0.1, 0.5), xycoords='axes fraction', size=12 )
   pl.gcf().autofmt_xdate()
   pl.savefig('/tmp/D11.png')
@@ -304,7 +211,6 @@ def rainchance(pressure):
   if (pressure < 990):
     Prain = 90
   return Prain
-
 
 if __name__ == "__main__":
   taildata()
