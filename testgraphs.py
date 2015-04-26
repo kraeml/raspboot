@@ -111,8 +111,8 @@ def graphs():
   # 7 = HeatIndex
   # 8 = Voltage
   # 9 = TMP36
-  # 10= BMP183
-  # 11= Pressure
+  # 10= BMP183 Pressure
+  # 11= BMP183 Temperature
 
   #A1 = C[:,1]
   #A1_extrema = [min(A1),max(A1)]
@@ -239,8 +239,9 @@ def graphs():
   L1 = 60/5
   Tr3="?"
   L3 = (60/5)*3
-  if ( len(D) > L1 ):
-    delta1 = D[len(D)-1] D[len(D)-1-L1]
+  lenD=len(D)
+  if ( lenD > L1 ):
+    delta1 = A10[lenD - 1] - A10[lenD - 1 - L1]
     if (delta1 < 0.15 & delta1 > -0.15):
       Tr1=u'\u21D2'
     if (delta1 >= 0.15):
@@ -250,8 +251,8 @@ def graphs():
 
   Ptrend ="{0}".format(delta1)+":"+ Tr1
 
-  if ( len(D) > L3 ):
-    delta3 = D[len(D)-1] D[len(D)-1-L3]
+  if ( lenD > L3 ):
+    delta3 = A10[lenD - 1] - A10[lenD - 1 - L3]
     if (delta3 < 0.2 & delta1 > -0.2):
       Tr3=u'\u21D2'
     if (delta3 >= 0.2):
