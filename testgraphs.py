@@ -243,7 +243,7 @@ def graphs():
   delta3=0
 
   lenD=len(D)
-  Ptrend = "{0}".formatA10[lenD-1]
+  Ptrend = "{0:.1f}".format(A10[lenD-1])
 
   if ( lenD > L1 ):
     delta1 = float(A10[lenD-1] - A10[lenD-1-L1])
