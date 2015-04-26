@@ -247,11 +247,11 @@ def graphs():
 
   if ( lenD > L1 ):
     delta1 = float(A10[lenD-1] - A10[lenD-1-L1])
-    if ((delta1 < 0.15) & (delta1 > -0.15)):
+    if ((delta1 <= 0.15) & (delta1 >= -0.15)):
       Tr1=u'\u21D2'
-    if (delta1 >= 0.15):
+    if (delta1 > 0.15):
       Tr1=u'\u21D7'
-    if (delta1 <= -0.15):
+    if (delta1 < -0.15):
       Tr1=u'\u21D8'
 
   Ptrend = Ptrend + " | " + "{0:.2f}".format(delta1) + ":" + Tr1
@@ -260,11 +260,11 @@ def graphs():
 
   if ( lenD > L3 ):
     delta3 = float(A10[lenD-1] - A10[lenD-1-L3])
-    if ((delta3 < 0.2) & (delta3 > -0.2)):
+    if ((delta3 <= 0.20) & (delta3 >= -0.20)):
       Tr3=u'\u21D2'
-    if (delta3 >= 0.2):
+    if (delta3 > 0.20):
       Tr3=u'\u21D7'
-    if (delta3 <= -0.2):
+    if (delta3 < -0.20):
       Tr3=u'\u21D8'
 
   Ptrend = Ptrend + " | " + "{0:.2f}".format(delta3) + ":" + Tr3
