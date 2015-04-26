@@ -239,28 +239,33 @@ def graphs():
   L1 = 60/5
   Tr3="?"
   L3 = (60/5)*3
+  delta1=0
+  delta3=0
+
   lenD=len(D)
+  Ptrend = "{0}".formatA10[lenD-1]
+
   if ( lenD > L1 ):
-    delta1 = A10[lenD - 1] - A10[lenD - 1 - L1]
-    if (delta1 < 0.15 & delta1 > -0.15):
+    delta1 = float(A10[lenD-1] - A10[lenD-1-L1])
+    if ((delta1 < 0.15) & (delta1 > -0.15)):
       Tr1=u'\u21D2'
     if (delta1 >= 0.15):
       Tr1=u'\u21D7'
     if (delta1 <= -0.15):
       Tr1=u'\u21D8'
 
-  Ptrend ="{0}".format(delta1)+":"+ Tr1
+  Ptrend = Ptrend + " | " + "{0}".format(delta1) + ":" + Tr1
 
   if ( lenD > L3 ):
-    delta3 = A10[lenD - 1] - A10[lenD - 1 - L3]
-    if (delta3 < 0.2 & delta1 > -0.2):
+    delta3 = float(A10[lenD-1] - A10[lenD-1-L3])
+    if ((delta3 < 0.2) & (delta3 > -0.2)):
       Tr3=u'\u21D2'
     if (delta3 >= 0.2):
       Tr3=u'\u21D7'
     if (delta3 <= -0.2):
       Tr3=u'\u21D8'
 
-  Ptrend =Ptrend + " | " + "{0}".format(delta1)+":"+ Tr3
+  Ptrend = Ptrend + " | " + "{0}".format(delta3) + ":" + Tr3
 
   pl.close()
   print "Pressure trend"
