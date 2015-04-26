@@ -234,6 +234,30 @@ def graphs():
   pl.gcf().autofmt_xdate()
   pl.savefig('/tmp/D8.png')
 
+  # calculate pressure trend
+  Tr1="?"
+  L1 = 60/5
+  Tr3="?"
+  L3 = (60/5)*3
+  if ( len(D) > L1 ):
+    delta1 = D[len(D)-1] D[len(D)-1-L1]
+    if (delta1 < 0.15 & delta1 > -0.15):
+      Tr1=":" + u'\u21D2'
+    if (delta1 >= 0.15):
+      Tr1=":" + u'\u21D7'
+    if (delta1 <= -0.15):
+      Tr1=":" + u'\u21D8'
+
+  if ( len(D) > L3 ):
+    delta1 = D[len(D)-1] D[len(D)-1-L3]
+    if (delta1 < 0.2 & delta1 > -0.2):
+      Tr3=":" + u'\u21D2'
+    if (delta1 >= 0.2):
+      Tr3=":" + u'\u21D7'
+    if (delta1 <= -0.2):
+      Tr3=":" + u'\u21D8'
+
+  Ptrend = Tr1 + " " + Tr3
   pl.close()
   print "Pressure trend"
   print""
@@ -243,7 +267,8 @@ def graphs():
   pl.grid(True)
   # SyntaxError: Non-ASCII character '\xe2' in file /home/pi/gitbin/testgraphs.py
   # on line 244, but no encoding declared; see http://www.python.org/peps/pep-0263.html for details
-  pl.annotate(u'\u21D7' + u'\u21D8' u'\u21D2' , xy=(0.1, 0.5), xycoords='axes fraction', size=16 )
+  # Charactercodes: http://www.fileformat.info/info/unicode/block/arrows/utf8test.htm
+  pl.annotate(Ptrend , xy=(0.1, 0.5), xycoords='axes fraction', size=16 )
   pl.gcf().autofmt_xdate()
   pl.savefig('/tmp/D11.png')
 
