@@ -244,7 +244,7 @@ def graphs():
 
   lenD=len(D)
   Pnow = "{0:.1f}mbara ".format(A10[lenD-1])
-  Prain = int(-2.31 * A10[lenD -1] + 2361.2)
+  Prain = rainchance(A10[lenD -1])
   Ptrend = Pnow + "Neerslagkans: {0}% \n".format(Prain)
 
   if ( lenD > L1 ):
@@ -284,6 +284,27 @@ def graphs():
   pl.savefig('/tmp/D11.png')
 
   return
+
+def rainchance(pressure):
+  Prain=10
+  if (pressure < 1030):
+    Prain = 20
+  if (pressure < 1020):
+    Prain = 30
+  if (pressure < 1015):
+    Prain = 40
+  if (pressure < 1010):
+    Prain = 50
+  if (pressure < 1007):
+    Prain = 60
+  if (pressure < 1003):
+    Prain = 70
+  if (pressure < 1000):
+    Prain = 80
+  if (pressure < 990):
+    Prain = 90
+  return Prain
+
 
 if __name__ == "__main__":
   taildata()
