@@ -242,22 +242,25 @@ def graphs():
   if ( len(D) > L1 ):
     delta1 = D[len(D)-1] D[len(D)-1-L1]
     if (delta1 < 0.15 & delta1 > -0.15):
-      Tr1=":" + u'\u21D2'
+      Tr1=u'\u21D2'
     if (delta1 >= 0.15):
-      Tr1=":" + u'\u21D7'
+      Tr1=u'\u21D7'
     if (delta1 <= -0.15):
-      Tr1=":" + u'\u21D8'
+      Tr1=u'\u21D8'
+
+  Ptrend ="{0}".format(delta1)+":"+ Tr1
 
   if ( len(D) > L3 ):
-    delta1 = D[len(D)-1] D[len(D)-1-L3]
-    if (delta1 < 0.2 & delta1 > -0.2):
-      Tr3=":" + u'\u21D2'
-    if (delta1 >= 0.2):
-      Tr3=":" + u'\u21D7'
-    if (delta1 <= -0.2):
-      Tr3=":" + u'\u21D8'
+    delta3 = D[len(D)-1] D[len(D)-1-L3]
+    if (delta3 < 0.2 & delta1 > -0.2):
+      Tr3=u'\u21D2'
+    if (delta3 >= 0.2):
+      Tr3=u'\u21D7'
+    if (delta3 <= -0.2):
+      Tr3=u'\u21D8'
 
-  Ptrend = Tr1 + " " + Tr3
+  Ptrend =Ptrend + " | " + "{0}".format(delta1)+":"+ Tr3
+
   pl.close()
   print "Pressure trend"
   print""
