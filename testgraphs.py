@@ -219,7 +219,7 @@ def graphs():
   pl.title('Temperature')
   pl.ylabel('T [degC]')
   pl.grid(True)
-  pl.annotate('Text' , xy=(0.1, 0.5), xycoords='axes fraction', size=16 )
+  #pl.annotate('Text' , xy=(0.1, 0.5), xycoords='axes fraction', size=16 )
   pl.legend(loc='upper left', prop={'size':8})
   pl.gcf().autofmt_xdate()
   pl.savefig('/tmp/D7.png')
