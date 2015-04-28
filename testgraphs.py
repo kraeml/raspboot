@@ -49,7 +49,7 @@ def graphs():
   A11_extrema = [min(A11),max(A11)]
 
   D = matplotlib.dates.num2date(C[:,0])
-  ahpla = 0.5
+  ahpla = 0.3
 
   pl.close()
   A32 = np.subtract(A3,A2)
