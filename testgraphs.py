@@ -49,17 +49,18 @@ def graphs():
   A11_extrema = [min(A11),max(A11)]
 
   D = matplotlib.dates.num2date(C[:,0])
+  ahpla = 0.5
 
   pl.close()
   A32 = np.subtract(A3,A2)
   print "DHT22 vs. DS18B20"
-  pl.plot(D,A32,'g.', label='DHT22  vs. DB18B20', alpha=0.7)
+  pl.plot(D,A32,'g.', label='DHT22  vs. DB18B20', alpha=ahpla)
   A92 = np.subtract(A9,A2)
   print "TMP36 vs. DS18B20"
-  pl.plot(D,A92,'b.', label='TMP36  vs. DS18B20', alpha=0.7)
+  pl.plot(D,A92,'b.', label='TMP36  vs. DS18B20', alpha=ahpla)
   A112 = np.subtract(A11,A2)
   print "BMP183 vs. DS18B20"
-  pl.plot(D,A112,'m.', label='BMP183 vs. DS18B20', alpha=0.7)
+  pl.plot(D,A112,'m.', label='BMP183 vs. DS18B20', alpha=ahpla)
 
   #print "Sensor correlations graph"
   print "Sensor differences graph"
@@ -77,8 +78,8 @@ def graphs():
   print "BMP183 vs DS18B20"
   print ab[0], ab[1], r2
   pl.close()
-  pl.plot(A11,A2,'m.')
-  pl.plot(A11_extrema,fit(A11_extrema),'b-')
+  pl.plot(A11,A2,'m.', alpha=ahpla)
+  pl.plot(A11_extrema,fit(A11_extrema),'b-', alpha=ahpla)
   pl.title('BMP183 vs. DS18B20')
   pl.xlabel("T(BMP183) [degC]")
   pl.ylabel("T(DS18B20) [degC]")
@@ -88,10 +89,10 @@ def graphs():
 
   pl.close()
   print "Temperature trends"
-  pl.plot(D,A2, '.y', label='DS18B20')
-  pl.plot(D,A3, '.g', label='DHT22')
-  pl.plot(D,A9, '.b', label='TMP36')
-  pl.plot(D,A11, '.m', label='BMP183')
+  pl.plot(D,A2, '.y', label='DS18B20', alpha=ahpla)
+  pl.plot(D,A3, '.g', label='DHT22', alpha=ahpla)
+  pl.plot(D,A9, '.b', label='TMP36', alpha=ahpla)
+  pl.plot(D,A11, '.m', label='BMP183', alpha=ahpla)
   pl.title('Temperature trends')
   pl.ylabel('T [degC]')
   pl.grid(True)
@@ -101,7 +102,7 @@ def graphs():
 
   pl.close()
   print "Relative humidity trend"
-  pl.plot(D,A4,'.b')
+  pl.plot(D,A4,'.b', alpha=ahpla)
   pl.title('Relative humidity trend')
   pl.ylabel('RH [%]')
   pl.grid(True)
@@ -110,8 +111,8 @@ def graphs():
 
   pl.close()
   print "Dewpoint trends"
-  pl.plot(D,A5,'.r', label='DP1')
-  pl.plot(D,A6,'.b', label='DP2')
+  pl.plot(D,A5,'.r', label='DP1', alpha=ahpla)
+  pl.plot(D,A6,'.b', label='DP2', alpha=ahpla)
   pl.title('Dewpoint trends')
   pl.ylabel('T [degC]')
   pl.grid(True)
@@ -121,9 +122,9 @@ def graphs():
 
   pl.close()
   print "Temperature trends"
-  pl.plot(D,A2, '.y', label='Temperature')
-  pl.plot(D,A7,'.r', label='Heat Index')
-  pl.plot(D,A6,'.b', label='DewPoint')
+  pl.plot(D,A2, '.y', label='Temperature', alpha=ahpla)
+  pl.plot(D,A7,'.r', label='Heat Index', alpha=ahpla)
+  pl.plot(D,A6,'.b', label='DewPoint', alpha=ahpla)
   pl.title('Temperature')
   pl.ylabel('T [degC]')
   pl.grid(True)
@@ -134,7 +135,7 @@ def graphs():
 
   pl.close()
   print "Solar charger trend"
-  pl.plot(D,A8,'.b')
+  pl.plot(D,A8,'.b', alpha=ahpla)
   pl.title('Solar charge trend')
   pl.ylabel('Charge [V]')
   pl.grid(True)
@@ -182,7 +183,7 @@ def graphs():
 
   pl.close()
   print "Pressure trend"
-  pl.plot(D,A10,'.b')
+  pl.plot(D,A10,'.b', alpha=ahpla)
   pl.title('Pressure trend')
   pl.ylabel('Pressure [mbara]')
   pl.grid(True)
