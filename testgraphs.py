@@ -110,9 +110,9 @@ def graphs():
   pl.savefig('/tmp/D4.png')
 
   pl.close()
-  print "Dewpoint trends"
-  pl.plot(D,A5,'.r', label='DP1', alpha=ahpla)
-  pl.plot(D,A6,'.b', label='DP2', alpha=ahpla)
+  print "Dewpoint trend"
+  #pl.plot(D,A5,'.r', label='DP1', alpha=ahpla)
+  pl.plot(D,A6,'.b', alpha=ahpla)
   pl.title('Dewpoint trends')
   pl.ylabel('T [degC]')
   pl.grid(True)
