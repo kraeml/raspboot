@@ -34,6 +34,10 @@ def graphs():
   # 9 = TMP36
   # 10= BMP183 Pressure
   # 11= BMP183 Temperature
+  # 12= loopcounter
+  # 13= windspeed (Gilze-Rijen)
+  # 14= winddirection (Gilze-Rijen)
+  # 15= WindChill
 
   #A1 = C[:,1]
   A2 = C[:,2]
@@ -47,35 +51,34 @@ def graphs():
   A10 = C[:,10]
   A11 = C[:,11]
   A11_extrema = [min(A11),max(A11)]
+  A15 = C[:,15]
 
   D = matplotlib.dates.num2date(C[:,0])
   ahpla = 0.3
 
+  #print "Sensor differences graph"
   pl.close()
-  A32 = np.subtract(A3,A2)
-  print "DHT22 vs. DS18B20"
-  pl.plot(D,A32,'g.', label='DHT22  vs. DB18B20', alpha=ahpla)
-  A92 = np.subtract(A9,A2)
-  print "TMP36 vs. DS18B20"
-  pl.plot(D,A92,'b.', label='TMP36  vs. DS18B20', alpha=ahpla)
-  A112 = np.subtract(A11,A2)
-  print "BMP183 vs. DS18B20"
-  pl.plot(D,A112,'m.', label='BMP183 vs. DS18B20', alpha=ahpla)
-
-  #print "Sensor correlations graph"
   print "Sensor differences graph"
   pl.title('Sensor differences')
+  A32 = np.subtract(A3,A2)
+  #print "DHT22 vs. DS18B20"
+  pl.plot(D,A32,'g.', label='DHT22  vs. DB18B20', alpha=ahpla)
+  A92 = np.subtract(A9,A2)
+  #print "TMP36 vs. DS18B20"
+  pl.plot(D,A92,'b.', label='TMP36  vs. DS18B20', alpha=ahpla)
+  A112 = np.subtract(A11,A2)
+  #print "BMP183 vs. DS18B20"
+  pl.plot(D,A112,'m.', label='BMP183 vs. DS18B20', alpha=ahpla)
   pl.ylabel("T(x)-T(DS18B20) [degC]")
   pl.grid(True)
   pl.legend(loc='upper left', prop={'size':8})
   pl.gcf().autofmt_xdate()
   pl.savefig('/tmp/C123.png')
 
-
+  print "BMP183 vs DS18B20"
   ab = np.polyfit(A11,A2,1)
   fit = np.poly1d(ab)
   r2 = np.corrcoef(A11,A2)[0,1]
-  print "BMP183 vs DS18B20"
   print ab[0], ab[1], r2
   pl.close()
   pl.plot(A11,A2,'m.', alpha=ahpla)
@@ -89,9 +92,9 @@ def graphs():
 
   pl.close()
   print "Temperature trends"
-  pl.plot(D,A2, '.y', label='DS18B20', alpha=ahpla)
+  pl.plot(D,A2, '.k', label='DS18B20', alpha=ahpla)
   pl.plot(D,A3, '.g', label='DHT22', alpha=ahpla)
-  pl.plot(D,A9, '.b', label='TMP36', alpha=ahpla)
+  pl.plot(D,A9, '.y', label='TMP36', alpha=ahpla)
   pl.plot(D,A11, '.m', label='BMP183', alpha=ahpla)
   pl.title('Temperature trends')
   pl.ylabel('T [degC]')
@@ -122,13 +125,13 @@ def graphs():
 
   pl.close()
   print "Temperature trends"
-  pl.plot(D,A2, '.y', label='Temperature', alpha=ahpla)
+  pl.plot(D,A2, '.k', label='Temperature', alpha=ahpla)
   pl.plot(D,A7,'.r', label='Heat Index', alpha=ahpla)
-  pl.plot(D,A6,'.b', label='DewPoint', alpha=ahpla)
+  pl.plot(D,A15,'.b', label='WindChill', alpha=ahpla)
+  pl.plot(D,A6,'.y', label='DewPoint', alpha=ahpla)
   pl.title('Temperature')
   pl.ylabel('T [degC]')
   pl.grid(True)
-  #pl.annotate('Text' , xy=(0.1, 0.5), xycoords='axes fraction', size=16 )
   pl.legend(loc='upper left', prop={'size':8})
   pl.gcf().autofmt_xdate()
   pl.savefig('/tmp/D7.png')
