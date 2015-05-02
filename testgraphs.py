@@ -119,7 +119,6 @@ def graphs():
   pl.title('Dewpoint trends')
   pl.ylabel('T [degC]')
   pl.grid(True)
-  pl.legend(loc='upper left', prop={'size':8})
   pl.gcf().autofmt_xdate()
   pl.savefig('/tmp/D56.png')
 
