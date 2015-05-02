@@ -153,8 +153,8 @@ def graphs():
   bars = ax.bar(theta, radii, width=width, bottom=0.0)
 
   # Use custom colors and opacity
-  for r, bar in zip(radii, bars):
-      bar.set_facecolor(pl.cm.jet(r / 10.))
+  for r, bar in zip(range(N), bars):
+      bar.set_facecolor(pl.cm.hot(1-(r / float(N))))
       bar.set_alpha(ahpla)
 
   pl.title('Windroos')
