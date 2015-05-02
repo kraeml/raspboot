@@ -140,10 +140,10 @@ def graphs():
   N = 24
   # direction of bar (0...360deg)
   theta = np.linspace(0.0, 2 * np.pi, N, endpoint=False)
-  theta = C14[len(C14)-N-1:len(C14)-1]
+  theta = A14[len(A14)-N-1:len(A14)-1]
   # length of bar
   radii = 10 * np.random.rand(N)
-  radii = C13[len(C13)-N-1:len(C13)-1]
+  radii = A13[len(A13)-N-1:len(A13)-1]
   # width of bar
   width = np.pi / 4 * np.random.rand(N)
   width = np.pi / 4
