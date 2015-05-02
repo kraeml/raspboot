@@ -137,17 +137,17 @@ def graphs():
   """
 
   # number of datapoints to show
-  N = 48
+  N = 6*24
   f = (1/360.) * np.pi * 2
   # direction of bar (0...360deg)
-  theta = np.linspace(0.0, 2 * np.pi, N, endpoint=False)
+  #theta = np.linspace(0.0, 2 * np.pi, N, endpoint=False)
   theta = [x*f for x in A14[len(A14)-N-1:len(A14)-1]]
   # length of bar
-  radii = 10 * np.random.rand(N)
+  #radii = 10 * np.random.rand(N)
   radii = A13[len(A13)-N-1:len(A13)-1]
   # width of bar
-  width = np.pi / 4 * np.random.rand(N)
-  width = np.pi / 8
+  #width = np.pi / 4 * np.random.rand(N)
+  width = np.pi / 16
 
   ax = pl.subplot(111, polar=True)
   ax.set_theta_zero_location("N")
