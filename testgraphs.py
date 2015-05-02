@@ -124,10 +124,10 @@ def graphs():
 
   pl.close()
   print "Temperature trends"
-  pl.plot(D,A2, '.k', label='Temperature', alpha=ahpla)
   pl.plot(D,A7,'.r', label='Heat Index', alpha=ahpla)
   pl.plot(D,A15,'.b', label='WindChill', alpha=ahpla)
   pl.plot(D,A6,'.y', label='DewPoint', alpha=ahpla)
+  pl.plot(D,A2, '.k', label='Temperature', alpha=ahpla)
   pl.title('Temperature')
   pl.ylabel('T [degC]')
   pl.grid(True)
