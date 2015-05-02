@@ -137,7 +137,7 @@ def graphs():
   """
 
   # number of datapoints to show
-  N = 24
+  N = 48
   # direction of bar (0...360deg)
   theta = np.linspace(0.0, 2 * np.pi, N, endpoint=False)
   theta = A14[len(A14)-N-1:len(A14)-1]
