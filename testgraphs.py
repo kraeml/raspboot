@@ -51,23 +51,21 @@ def graphs():
   A10 = C[:,10]
   A11 = C[:,11]
   A11_extrema = [min(A11),max(A11)]
+  A13 = C[:,13]
+  A14 = C[:,14]
   A15 = C[:,15]
 
   D = matplotlib.dates.num2date(C[:,0])
   ahpla = 0.3
 
-  #print "Sensor differences graph"
   pl.close()
   print "Sensor differences graph"
   pl.title('Sensor differences')
   A32 = np.subtract(A3,A2)
-  #print "DHT22 vs. DS18B20"
   pl.plot(D,A32,'g.', label='DHT22  vs. DB18B20', alpha=ahpla)
   A92 = np.subtract(A9,A2)
-  #print "TMP36 vs. DS18B20"
   pl.plot(D,A92,'b.', label='TMP36  vs. DS18B20', alpha=ahpla)
   A112 = np.subtract(A11,A2)
-  #print "BMP183 vs. DS18B20"
   pl.plot(D,A112,'m.', label='BMP183 vs. DS18B20', alpha=ahpla)
   pl.ylabel("T(x)-T(DS18B20) [degC]")
   pl.grid(True)
@@ -116,11 +114,20 @@ def graphs():
   print "Dewpoint trend"
   #pl.plot(D,A5,'.r', label='DP1', alpha=ahpla)
   pl.plot(D,A6,'.b', alpha=ahpla)
-  pl.title('Dewpoint trends')
+  pl.title('Dewpoint trend')
   pl.ylabel('T [degC]')
   pl.grid(True)
   pl.gcf().autofmt_xdate()
   pl.savefig('/tmp/D56.png')
+
+  pl.close()
+  print "Windspeed trend"
+  pl.plot(D,A13,'.b', alpha=ahpla)
+  pl.title('Windspeed trend')
+  pl.ylabel('v(wind) [m/s]')
+  pl.grid(True)
+  pl.gcf().autofmt_xdate()
+  pl.savefig('/tmp/Dd.png')
 
   pl.close()
   print "Temperature trends"
