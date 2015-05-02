@@ -138,10 +138,10 @@ def graphs():
 
   # number of datapoints to show
   N = 48
-  f = (1/360) * pi * 2
+  f = (1/360.) * np.pi * 2
   # direction of bar (0...360deg)
   theta = np.linspace(0.0, 2 * np.pi, N, endpoint=False)
-  theta = [x*f for x in A14[len(A14)-N-1:len(A14)-1]] 
+  theta = [x*f for x in A14[len(A14)-N-1:len(A14)-1]]
   # length of bar
   radii = 10 * np.random.rand(N)
   radii = A13[len(A13)-N-1:len(A13)-1]
