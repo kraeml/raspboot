@@ -154,7 +154,7 @@ def graphs():
 
   # Use custom colors and opacity
   for r, bar in zip(range(N), bars):
-      bar.set_facecolor(pl.cm.hot(1-(r / float(N))))
+      bar.set_facecolor(pl.cm.hot((r / float(N))))
       bar.set_alpha(ahpla)
 
   pl.title('Windroos')
