@@ -136,18 +136,23 @@ def graphs():
   Demo of bar plot on a polar axis.
   """
 
-  N = 20
+  # number of datapoints to show
+  N = 24
+  # direction of bar (0...360deg)
   theta = np.linspace(0.0, 2 * np.pi, N, endpoint=False)
+  # length of bar
   radii = 10 * np.random.rand(N)
+  # width of bar
   width = np.pi / 4 * np.random.rand(N)
 
   ax = pl.subplot(111, polar=True)
+  ax.set_theta_zero_location("N")
   bars = ax.bar(theta, radii, width=width, bottom=0.0)
 
   # Use custom colors and opacity
   for r, bar in zip(radii, bars):
       bar.set_facecolor(pl.cm.jet(r / 10.))
-      bar.set_alpha(0.5)
+      bar.set_alpha(ahpla)
 
   pl.title('Windroos')
   pl.savefig('/tmp/De.png')
