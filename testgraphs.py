@@ -146,7 +146,7 @@ def graphs():
   radii = A13[len(A13)-N-1:len(A13)-1]
   # width of bar
   width = np.pi / 4 * np.random.rand(N)
-  width = np.pi / 4
+  width = np.pi / 8
 
   ax = pl.subplot(111, polar=True)
   ax.set_theta_zero_location("N")
