@@ -167,6 +167,7 @@ def graphs():
   N = len(radii)
   ax = pl.subplot(111, polar=True)
   ax.set_theta_zero_location("N")
+  ax.set_theta_direction(-1)
   bars = ax.bar(theta, radii, width=width, bottom=0.0)
   # Use custom colors and opacity
   for r, bar in zip(range(N), bars):
