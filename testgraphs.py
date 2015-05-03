@@ -83,12 +83,9 @@ def graphs():
     # http://rosettacode.org/wiki/Averages/Mean_angle
     avg_theta = phase(sum(rect(1, d) for d in B14[x:x+hrsmpls-1])/hrsmpls)
     theta = np.append(theta, avg_theta)
-    w = np.max(B14[x:x+hrsmpls-1]) - np.min(B14[x:x+hrsmpls-1])
-    if (w > np.pi):
-      w = w - np.pi
+    w = (np.pi - abs(np.max(B14[x:x+hrsmpls-1]) - np.min(B14[x:x+hrsmpls-1]) - np.pi))
     width = np.append(width, w)
 
-  print theta
   ahpla = 0.3
 
   pl.close()
