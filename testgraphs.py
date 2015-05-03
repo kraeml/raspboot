@@ -159,34 +159,19 @@ def graphs():
   pl.gcf().autofmt_xdate()
   pl.savefig('/tmp/Dd.png')
 
-
   pl.close()
   print "Windroos"
-  """
-  Demo of bar plot on a polar axis.
-  """
+  # bar plot on a polar axis.
 
   # number of datapoints to show
   N = len(radii)
-  # direction of bar (0...360deg)
-  #theta = np.linspace(0.0, 2 * np.pi, N, endpoint=False)
-  #theta = A14[len(A14)-N-1:len(A14)-1]
-  # length of bar
-  #radii = 10 * np.random.rand(N)
-  #radii = A13[len(A13)-N-1:len(A13)-1]
-  # width of bar
-  #width = np.pi / 4 * np.random.rand(N)
-  #width = np.pi / 180
-
   ax = pl.subplot(111, polar=True)
   ax.set_theta_zero_location("N")
   bars = ax.bar(theta, radii, width=width, bottom=0.0)
-
   # Use custom colors and opacity
   for r, bar in zip(range(N), bars):
       bar.set_facecolor(pl.cm.hot((r / float(N))))
       bar.set_alpha(ahpla)
-
   pl.title('Windroos')
   pl.savefig('/tmp/De.png')
 
