@@ -5,6 +5,7 @@ matplotlib.use("Agg")
 from matplotlib.dates import strpdate2num
 import numpy as np
 import pylab as pl
+from cmath import rect, phase
 import os, time, headstails, commands
 
 os.nice(10)
@@ -77,14 +78,17 @@ def graphs():
   radii=theta=width=np.array([])
   for x in range(0, l-1, hrsmpls):
     radii = np.append(radii, np.mean(B13[x:x+5]))
-    # TO BE DONE
-    # proper averaging of the bearings as per:
+
+    # Averaging of the bearings as per:
     # http://rosettacode.org/wiki/Averages/Mean_angle
-    # for now we just do:
-    theta = np.append(theta, np.mean(B14[x:x+5]))
-    w = np.max(B14[x:x+5]) - np.min(B14[x:x+5])
+    avg_theta = phase(sum(rect(1, d) for d in B14[x:x+hrsmpls-1])/hrsmpls)
+    theta = np.append(theta, avg_theta)
+    w = np.max(B14[x:x+hrsmpls-1]) - np.min(B14[x:x+hrsmpls-1])
+    if (w > np.pi):
+      w = w - np.pi
     width = np.append(width, w)
 
+  print theta
   ahpla = 0.3
 
   pl.close()
