@@ -140,15 +140,15 @@ def graphs():
   pl.gcf().autofmt_xdate()
   pl.savefig('/tmp/D4.png')
 
-  pl.close()
-  print "Dewpoint trend"
+  #pl.close()
+  #print "Dewpoint trend"
   #pl.plot(D,A5,'.r', label='DP1', alpha=ahpla)
-  pl.plot(D,A6,'.b', alpha=ahpla)
-  pl.title('Dewpoint trend')
-  pl.ylabel('T [degC]')
-  pl.grid(True)
-  pl.gcf().autofmt_xdate()
-  pl.savefig('/tmp/D56.png')
+  #pl.plot(D,A6,'.b', alpha=ahpla)
+  #pl.title('Dewpoint trend')
+  #pl.ylabel('T [degC]')
+  #pl.grid(True)
+  #pl.gcf().autofmt_xdate()
+  #pl.savefig('/tmp/D56.png')
 
   pl.close()
   print "Windspeed trend"
