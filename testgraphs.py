@@ -39,23 +39,52 @@ def graphs():
   # 14= winddirection (Gilze-Rijen)
   # 15= WindChill
 
-  #A1 = C[:,1]
-  A2 = C[:,2]
-  A3 = C[:,3]
-  A4 = C[:,4]
-  A5 = C[:,5]
-  A6 = C[:,6]
-  A7 = C[:,7]
-  A8 = C[:,8]
-  A9 = C[:,9]
-  A10 = C[:,10]
-  A11 = C[:,11]
-  A11_extrema = [min(A11),max(A11)]
-  A13 = C[:,13]
-  A14 = C[:,14]
-  A15 = C[:,15]
+  #A1 = np.array(C[:,1])
+  A2 = np.array(C[:,2])
+  A3 = np.array(C[:,3])
+  A4 = np.array(C[:,4])
+  A5 = np.array(C[:,5])
+  A6 = np.array(C[:,6])
+  A7 = np.array(C[:,7])
+  A8 = np.array(C[:,8])
+  A9 = np.array(C[:,9])
+  A10 = np.array(C[:,10])
+  A11 = np.array(C[:,11])
+  A11_extrema = [np.nanmin(A11),np.nanmax(A11)]
+  A13 = np.array(C[:,13])
+  A14 = np.array(C[:,14])
+  A15 = np.array(C[:,15])
 
   D = matplotlib.dates.num2date(C[:,0])
+
+  # First modify the wind data to get a nicer graph
+  d2r = (1/360.) * np.pi * 2
+  # convert degrees to radians
+  A14[:] = [x*d2r for x in A14]
+  hrsmpls=6
+  l=len(A14)
+  last14 = A14[l-1]
+  last13 = A13[l-1]
+  # create intermediate arrays
+  B13=A13
+  B14=A14
+  # make the array-lengths a multiple of <hrsmpls>
+  for x in range(hrsmpls - l % hrsmpls):
+    B13 = np.append(B13,last13)
+    B14 = np.append(B14,last14)
+
+  # Determine average speed and direction per 1-hour-period.
+  radii=theta=width=np.array([])
+  for x in range(0, l-1, hrsmpls):
+    radii = np.append(radii, np.mean(B13[x:x+5]))
+    # TO BE DONE
+    # proper averaging of the bearings as per:
+    # http://rosettacode.org/wiki/Averages/Mean_angle
+    # for now we just do:
+    theta = np.append(theta, np.mean(B14[x:x+5]))
+    w = np.max(B14[x:x+5]) - np.min(B14[x:x+5])
+    width = np.append(width, w)
+
   ahpla = 0.3
 
   pl.close()
@@ -137,17 +166,16 @@ def graphs():
   """
 
   # number of datapoints to show
-  N = 6*24
-  f = (1/360.) * np.pi * 2
+  N = len(radii)
   # direction of bar (0...360deg)
   #theta = np.linspace(0.0, 2 * np.pi, N, endpoint=False)
-  theta = [x*f for x in A14[len(A14)-N-1:len(A14)-1]]
+  #theta = A14[len(A14)-N-1:len(A14)-1]
   # length of bar
   #radii = 10 * np.random.rand(N)
-  radii = A13[len(A13)-N-1:len(A13)-1]
+  #radii = A13[len(A13)-N-1:len(A13)-1]
   # width of bar
   #width = np.pi / 4 * np.random.rand(N)
-  width = np.pi / 180
+  #width = np.pi / 180
 
   ax = pl.subplot(111, polar=True)
   ax.set_theta_zero_location("N")
