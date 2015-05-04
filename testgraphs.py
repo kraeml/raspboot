@@ -62,7 +62,7 @@ def graphs():
   d2r = (1/360.) * np.pi * 2.
   # convert degrees to radians
   startA14=0
-  if (len(A14) > (6*24*2))
+  if (len(A14) > (6*24*2)):
     startA14 = len(A14) - (6*24*2)
   A14[:] = [x*d2r for x in A14]
   hrsmpls=6
