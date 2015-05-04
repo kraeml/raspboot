@@ -82,6 +82,8 @@ def graphs():
     # Averaging of the bearings as per:
     # http://rosettacode.org/wiki/Averages/Mean_angle
     avg_theta = phase(sum(rect(1, d) for d in B14[x:x+hrsmpls-1])/hrsmpls)
+    if (avg_theta < 0):
+      avg_theta = avg_theta + (2 * np.pi)
     theta = np.append(theta, avg_theta)
     w = (np.pi - abs(np.max(B14[x:x+hrsmpls-1]) - np.min(B14[x:x+hrsmpls-1]) - np.pi))
     width = np.append(width, w)
@@ -162,17 +164,22 @@ def graphs():
   pl.close()
   print "Windroos"
   # bar plot on a polar axis.
-
   # number of datapoints to show
   N = len(radii)
   ax = pl.subplot(111, polar=True)
+  # 0deg position at the top
   ax.set_theta_zero_location("N")
+  # 90deg position to the right; show compass bearings
   ax.set_theta_direction(-1)
   bars = ax.bar(theta, radii, width=width, bottom=0.0)
   # Use custom colors and opacity
   for r, bar in zip(range(N), bars):
-      bar.set_facecolor(pl.cm.hot((r / float(N))))
-      bar.set_alpha(ahpla)
+    bar.set_facecolor(pl.cm.hot((r / float(N))))
+    bar.set_alpha(ahpla)
+  # highlight the last bar (most recent value) by giving it a different color
+  bar.set_facecolor(pl.cm.cool(1.))
+  bar.set_alpha(1.)
+  print theta[r], radii[r], width[r]
   pl.title('Windroos')
   pl.savefig('/tmp/De.png')
 
