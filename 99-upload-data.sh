@@ -60,9 +60,9 @@ if grep -qs '/mnt/share1 ' /proc/mounts; then
 		fi
 
 
-		if [ -e $MOUNTPOINT/$CLNT/client.lock ]; then
-			fun_makexml
-		fi
+		#if [ -e $MOUNTPOINT/$CLNT/client.lock ]; then
+		#	fun_makexml
+		#fi
 
 		# only for rbian; move graphs to server
 		if [ -e $MOUNTPOINT/$CLNT/client.lock ]; then
