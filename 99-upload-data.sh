@@ -40,53 +40,51 @@ function fun_makexml {
 	echo "</server>" >> $xmlof
 }
 
-# Mount the share containing the data
-sudo mount $MOUNTDRIVE $MOUNTPOINT
+# Check if the drive is mounted or not
+if grep -qs '/mnt/share1 ' /proc/mounts; then
+	# It's mounted.
 
-if [ $? -eq 0 ]; then
+	# Check for the presence of the 'host.lock' file.
+	# If it exists, do nothing.
+	if [ ! -e $MOUNTPOINT/$CLNT/host.lock ]; then
 
-	# Check if the drive really got mounted or not
-	if grep -qs '/mnt/share1 ' /proc/mounts; then
-		# It's mounted.
+		# Set our lock
+		touch $MOUNTPOINT/$CLNT/client.lock
 
-		# Check for the presence of the 'host.lock' file.
-		# If it exists, do nothing.
-		if [ ! -e $MOUNTPOINT/$CLNT/host.lock ]; then
-
-			# Set our lock
-			touch $MOUNTPOINT/$CLNT/client.lock
-
-			# move the data-files
-			if [ -e $MOUNTPOINT/$CLNT/client.lock ]; then
-				cp /tmp/*.csv $MOUNTPOINT/$CLNT/
-				if [ $? -eq 0 ]; then
-					rm /tmp/*.csv
-				fi
+		# move the data-files
+		if [ -e $MOUNTPOINT/$CLNT/client.lock ]; then
+			cp /tmp/*.csv $MOUNTPOINT/$CLNT/
+			if [ $? -eq 0 ]; then
+				rm /tmp/*.csv
 			fi
-
-
-			if [ -e $MOUNTPOINT/$CLNT/client.lock ]; then
-				fun_makexml
-			fi
-
-			# only for rbian; move graphs to server
-			if [ -e $MOUNTPOINT/$CLNT/client.lock ]; then
-				cp /tmp/*.png $MOUNTPOINT/$CLNT/
-				if [ $? -eq 0 ]; then
-					rm /tmp/*.png
-				fi
-			fi
-
-			# copy error files to server
-			if [ -e $MOUNTPOINT/$CLNT/client.lock ]; then
-				cp /tmp/*.err $MOUNTPOINT/$CLNT/ 2>/dev/null
-			fi
-
-			# remove the lock
-			rm $MOUNTPOINT/$CLNT/client.lock
 		fi
+
+
+		if [ -e $MOUNTPOINT/$CLNT/client.lock ]; then
+			fun_makexml
+		fi
+
+		# only for rbian; move graphs to server
+		if [ -e $MOUNTPOINT/$CLNT/client.lock ]; then
+			cp /tmp/*.png $MOUNTPOINT/$CLNT/
+			if [ $? -eq 0 ]; then
+				rm /tmp/*.png
+			fi
+		fi
+
+		# copy error files to server
+		if [ -e $MOUNTPOINT/$CLNT/client.lock ]; then
+			cp /tmp/*.err $MOUNTPOINT/$CLNT/ 2>/dev/null
+		fi
+
+		# remove the lock
+		rm $MOUNTPOINT/$CLNT/client.lock
 	fi
+else
+	# Mount the share containing the data
+	sudo mount $MOUNTDRIVE $MOUNTPOINT
 fi
 
+
 # Unmount the drive again
-sudo umount $MOUNTPOINT
+#sudo umount $MOUNTPOINT
