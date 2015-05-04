@@ -2,6 +2,8 @@
 
 CLNT=$(hostname)
 
+MOUNTPOINT=/mnt/share1
+
 # Check for the presence of the 'host.lock' file.
 # If it exists, do nothing.
 if [ ! -e $MOUNTPOINT/$CLNT/host.lock ]; then
