@@ -55,7 +55,7 @@ esac
 
 sleep 3
 # Upload the data
-./99-upload-data.sh
+#./99-upload-data.sh
 
 date
 popd
