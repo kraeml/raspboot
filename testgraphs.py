@@ -14,7 +14,7 @@ def taildata():
   print "Tailing sensor-data"
   fin = headstails.FileExtremities('/tmp/testser.txt','r')
   # read last 5(days)*24(hrs/dy)*6(datapoints/hr) datapoints
-  F = fin.tail(2*24*6)
+  F = fin.tail(2*24*12)
 
   fout = file('/tmp/taildata.txt','w')
   for c in F:
@@ -65,8 +65,8 @@ def graphs():
   A14[:] = [x*d2r for x in A14]
   A13[:] = [x*ms2kmh for x in A13]
   startA14=0
-  if (len(A14) > (6*24*2)):
-    startA14 = len(A14) - (6*24*2)
+  if (len(A14) > (12*24*2)):
+    startA14 = len(A14) - (12*24*2)
   hrsmpls=6
   l=len(A14)
   last14 = A14[l-1]
