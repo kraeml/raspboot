@@ -14,7 +14,7 @@ def taildata():
   print "Tailing sensor-data"
   fin = headstails.FileExtremities('/tmp/testser.txt','r')
   # read last 5(days)*24(hrs/dy)*6(datapoints/hr) datapoints
-  F = fin.tail(5*24*6)
+  F = fin.tail(2*24*6)
 
   fout = file('/tmp/taildata.txt','w')
   for c in F:
