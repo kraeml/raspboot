@@ -60,11 +60,13 @@ def graphs():
 
   # First modify the wind data to get a nicer graph
   d2r = (1/360.) * np.pi * 2.
-  # convert degrees to radians
+  ms2kmh = 3.6
+  # convert degrees to radians and m/s to km/hr
+  A14[:] = [x*d2r for x in A14]
+  A13[:] = [x*ms2kmh for x in A13]
   startA14=0
   if (len(A14) > (6*24*2)):
     startA14 = len(A14) - (6*24*2)
-  A14[:] = [x*d2r for x in A14]
   hrsmpls=6
   l=len(A14)
   last14 = A14[l-1]
