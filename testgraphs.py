@@ -14,7 +14,7 @@ def taildata():
   print "Tailing sensor-data"
   fin = headstails.FileExtremities('/tmp/testser.txt','r')
   # read last 5(days)*24(hrs/dy)*6(datapoints/hr) datapoints
-  F = fin.tail(5*24*6)
+  F = fin.tail(2*24*6)
 
   fout = file('/tmp/taildata.txt','w')
   for c in F:
@@ -59,8 +59,11 @@ def graphs():
   D = matplotlib.dates.num2date(C[:,0])
 
   # First modify the wind data to get a nicer graph
-  d2r = (1/360.) * np.pi * 2
+  d2r = (1/360.) * np.pi * 2.
   # convert degrees to radians
+  startA14=0
+  if (len(A14) > (6*24*2)):
+    startA14 = len(A14) - (6*24*2)
   A14[:] = [x*d2r for x in A14]
   hrsmpls=6
   l=len(A14)
