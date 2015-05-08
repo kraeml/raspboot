@@ -1,7 +1,7 @@
 RASPBERRY-DATA
 ==============
 
-Post-install scripts that need to be run after the first boot.
+Post-install scripts that need to be run after the first boot and that are run after every re-boot.
 
 ```
 pi@raspberrypi ~ $ crontab -e
