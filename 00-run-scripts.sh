@@ -1,18 +1,18 @@
 #! /bin/bash
 
-logfile=/tmp/gitbin.err
+logfile=/tmp/raspboot.err
 CLNT=$(hostname)
 
 # Timestamp the logfile
 date
 
 # Change PWD to the binaries directory
-pushd /home/pi/gitbin
+pushd /home/pi/raspboot
 
 # Boot detection
-if [ ! -e /tmp/gitbin.reboot ]; then
+if [ ! -e /tmp/raspboot.reboot ]; then
   # Set the flag first to prevent recursive execution
-  whoami > /tmp/gitbin.reboot
+  whoami > /tmp/raspboot.reboot
   git config core.fileMode false
   ( ./01-post-boot.sh 2>&1 | tee -a ../post-boot.log | logger -p local7.info -t 01-post-boot ) &
 fi

@@ -28,8 +28,8 @@ fi
 
 echo -n "Restore bin - "
 cp -r /mnt/backup/rxbmc/home/pi/bin bin
-# set flag for gitbin
-echo master > /home/pi/bin/gitbin.branch
+# set flag for raspboot
+echo master > /home/pi/bin/raspboot.branch
 
 echo -n "Restore etc - "
 cp -r /mnt/backup/rxbmc/home/pi/etc etc

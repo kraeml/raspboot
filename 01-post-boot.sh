@@ -1,6 +1,6 @@
 #! /bin/bash
 
-# This script only gets executed if `/tmp/gitbin.reboot` is absent...
+# This script only gets executed if `/tmp/raspboot.reboot` is absent...
 # /tmp is in RAMFS, so everytime the server is rebooted, this script is executed.
 
 # Check if the ~/bin directory exists
