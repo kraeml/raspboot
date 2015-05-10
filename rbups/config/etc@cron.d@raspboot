@@ -1,2 +1,2 @@
 # m h dom mon dow user  command
-@reboot   pi      /home/pi/raspboot/00-run-scripts.sh 2>/tmp/raspboot.err 1>&2
+@reboot   pi      sleep 120 && /home/pi/raspboot/00-run-scripts.sh 2>/tmp/raspboot.err 1>&2
