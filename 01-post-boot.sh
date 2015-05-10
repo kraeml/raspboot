@@ -9,13 +9,6 @@ if [ ! -d ~/bin ]; then
   mkdir ~/bin
 fi
 
-# Start daemons, if installed
-if [ -e ~/raspdiagd ]; then
-  pushd ~/raspdiagd
-  ./00-scriptmanager.sh
-  popd
-fi
-
 # Download the contents of the ~/bin directory
 # We use the `.rsyncd.secret` file as a flag.
 # This allows a re-population of this directory in case new/updated binaries
@@ -33,9 +26,17 @@ fi
 echo "Boot detection mail... "$(date)
 /home/pi/bin/bootmail.py
 
+# Start daemons, if installed
+# *** change this to /etc/init.d/... files
+if [ -e ~/raspdiagd ]; then
+  pushd ~/raspdiagd
+  ./00-scriptmanager.sh
+  popd
+fi
+
 # Additional scripts to be executed on the first boot after install.
-# This makes the installer more uniform and easier to maintain regardless of
-# the use.
+# This makes the `raspbian-ua-netinst` installer more uniform and easier
+# to maintain regardless of the use.
 if [ ! -e /home/pi/.firstboot ]; then
   echo -n "First boot detected on "
   date
@@ -70,13 +71,14 @@ if [ ! -e /home/pi/.firstboot ]; then
     sudo cp $f /$g
   done
 
-  # 4. Modify server specific configuration files
+  # 4. Modify existing server specific configuration files
   echo "Additional packages installation..."
   if [ -e ./$clientname/mod-files.sh ]; then
     source ./$clientname/mod-files.sh
   fi
 
-  # Place flag
+
+  # Plant the flag and wrap up
   touch /home/pi/.firstboot
   sudo shutdown -r +1 "Installation completed. Please log off now."
   echo -n "Installation completed on "
