@@ -41,6 +41,14 @@ if [ ! -e /home/pi/.firstboot ]; then
   date
   clientname=$(hostname)
 
+  echo "Install raspdiagd..."
+  #mkdir ~/raspdiagd
+  #echo "Pull sources from github..."
+  git clone -b master https://github.com/Mausy5043/raspdiagd.git ~/raspdiagd
+  chmod -R 0755 ~/raspdiagd
+  # this should be moved to the raspdiagd install script:
+  echo master > ~/.raspdiagd.branch
+
   # 1. Update the system
   echo "Updating..."
   sudo apt-get update
