@@ -17,19 +17,6 @@ pushd /home/pi/raspboot
     ( ./01-post-boot.sh 2>&1 | tee -a ../post-boot.log | logger -p local7.info -t 01-post-boot ) &
   fi
 
-  # the $MOUNTPOINT is in /etc/fstab
-  # in the unlikely event that the mount was lost,
-  # remount it here.
-  MOUNTPOINT=/mnt/share1
-  MOUNTDRIVE=10.0.1.220:/srv/array1/dataspool
-  if grep -qs '/mnt/share1 ' /proc/mounts; then
-  	# It's mounted.
-    echo "mounted"
-  else
-  	# Mount the share containing the data
-  	sudo mount $MOUNTDRIVE $MOUNTPOINT
-  fi
-
   # Execute client-specific scripts
   case "$CLNT" in
     rbups )   echo "UPS monitor"
