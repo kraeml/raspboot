@@ -17,13 +17,6 @@ if [ ! -e /tmp/raspboot.reboot ]; then
   ( ./01-post-boot.sh 2>&1 | tee -a ../post-boot.log | logger -p local7.info -t 01-post-boot ) &
 fi
 
-# Check for new/updated scripts
-# Update the git scripts once every hour
-minute=$(date "+%M")
-if [ $minute -eq "42" ]; then
-  ./02-update-scripts.sh
-fi
-
 # the $MOUNTPOINT is in /etc/fstab
 # in the unlikely event that the mount was lost,
 # remount it here.
