@@ -30,7 +30,7 @@ echo "Boot detection mail... "$(date)
 # *** change this to /etc/init.d/... files
 if [ -e ~/raspdiagd ]; then
   pushd ~/raspdiagd
-  ./00-scriptmanager.sh
+    ./00-scriptmanager.sh
   popd
 fi
 
@@ -42,18 +42,10 @@ if [ ! -e /home/pi/.firstboot ]; then
   date
   clientname=$(hostname)
 
-  echo "Install raspdiagd..."
-  #mkdir ~/raspdiagd
-  #echo "Pull sources from github..."
-  git clone -b master https://github.com/Mausy5043/raspdiagd.git ~/raspdiagd
-  chmod -R 0755 ~/raspdiagd
-  # this should be moved to the raspdiagd install script:
-  echo master > ~/.raspdiagd.branch
-
   # 1. Update the system
   echo "Updating..."
   sudo apt-get update
-  echo "Upgrading..."
+  #echo "Upgrading..."
   #sudo apt-get -yuV upgrade
 
   # 2. Install server specific-packages
@@ -77,6 +69,13 @@ if [ ! -e /home/pi/.firstboot ]; then
     source ./$clientname/mod-files.sh
   fi
 
+  echo "Install raspdiagd..."
+  git clone -b master https://github.com/Mausy5043/raspdiagd.git ~/raspdiagd
+  # set permissions
+  chmod -R 0755 ~/raspdiagd
+  pushd ~/raspdiagd
+    ./install.py
+  popd
 
   # Plant the flag and wrap up
   touch /home/pi/.firstboot

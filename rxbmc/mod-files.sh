@@ -1,3 +1,5 @@
+# `rxbmc` requires more set-up because it is not spawned from raspbian-ua-netinst
+
 echo "Removing AVAHI services we don't offer..."
 sudo rm /etc/avahi/services/ftp.service
 sudo rm /etc/avahi/services/samba.service
