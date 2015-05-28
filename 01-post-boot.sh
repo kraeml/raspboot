@@ -28,11 +28,11 @@ echo "Boot detection mail... "$(date)
 
 # Start daemons, if installed
 # *** change this to /etc/init.d/... files
-if [ -e ~/raspdiagd ]; then
-  pushd ~/raspdiagd
-    ./00-scriptmanager.sh
-  popd
-fi
+#if [ -e ~/raspdiagd ]; then
+#  pushd ~/raspdiagd
+#    ./00-scriptmanager.sh
+#  popd
+#fi
 
 # Additional scripts to be executed on the first boot after install.
 # This makes the `raspbian-ua-netinst` installer more uniform and easier
