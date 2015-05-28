@@ -74,7 +74,7 @@ if [ ! -e /home/pi/.firstboot ]; then
   # set permissions
   chmod -R 0755 ~/raspdiagd
   pushd ~/raspdiagd
-    ./install.py
+    ./install.sh
   popd
 
   # Plant the flag and wrap up
