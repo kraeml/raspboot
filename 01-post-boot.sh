@@ -79,7 +79,7 @@ if [ ! -e /home/pi/.firstboot ]; then
 
   # Plant the flag and wrap up
   touch /home/pi/.firstboot
-  sudo shutdown -r +1 "Installation completed. Please log off now."
-  echo -n "Installation completed on "
+  sudo shutdown -r +1 "First boot installation completed. Please log off now."
+  echo -n "First boot installation completed on "
   date
 fi
