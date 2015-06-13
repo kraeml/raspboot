@@ -29,18 +29,18 @@ if [ -e ~/.kodi ]; then
 fi
 
 echo -n "Restore bin - "
-cp -r /mnt/backup/rxbmc/home/pi/bin bin
+cp -r /mnt/backup/rxbmc/home/osmc/bin bin
 # set flag for raspboot
-echo master > /home/pi/bin/raspboot.branch
+echo master > /home/osmc/bin/raspboot.branch
 
 echo -n "Restore etc - "
-cp -r /mnt/backup/rxbmc/home/pi/etc etc
+cp -r /mnt/backup/rxbmc/home/osmc/etc etc
 
 # Note: cronjobs may not start until after the reboot!
-sudo crontab -u pi .crntb
+sudo crontab -u osmc .crntb
 
 echo -n "Restore invisibles - "
-cp /mnt/backup/rxbmc/home/pi/.* ~/ 2>/dev/null
+cp /mnt/backup/rxbmc/home/osmc/.* ~/ 2>/dev/null
 
 hostname rxbmc
 sudo sed -i 's/raspbmc/rxbmc/' /etc/hostname

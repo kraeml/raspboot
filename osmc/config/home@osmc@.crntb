@@ -1,0 +1,3 @@
+# m h  dom mon dow   command
+23  03  *   *   *   /home/osmc/bin/backuphome.sh 2>/tmp/backup.err 1>&2
+42  *   *   *   *   /home/osmc/raspdiagd/00-scriptmanager.sh 2>/tmp/raspdiagd.err 1>&2
