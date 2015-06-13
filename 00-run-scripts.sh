@@ -2,12 +2,13 @@
 
 logfile=/tmp/raspboot.err
 CLNT=$(hostname)
+ME=$(whoami)
 
 # Timestamp the logfile
 date
 
 # Change PWD to the binaries directory
-pushd /home/pi/raspboot
+pushd /home/$ME/raspboot
 
   # Boot detection
   if [ ! -e /tmp/raspboot.reboot ]; then

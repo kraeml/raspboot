@@ -3,6 +3,8 @@
 # This script only gets executed if `/tmp/raspboot.reboot` is absent...
 # /tmp is in RAMFS, so everytime the server is rebooted, this script is executed.
 
+ME=$(whoami)
+
 # Check if the ~/bin directory exists
 if [ ! -d ~/bin ]; then
   echo "Create ~/bin ..."
@@ -24,7 +26,7 @@ if [ ! -e ~/bin/.rsyncd.secret ]; then
 fi
 
 echo "Boot detection mail... "$(date)
-/home/pi/bin/bootmail.py
+/home/$ME/bin/bootmail.py
 
 # Start daemons, if installed
 # *** change this to /etc/init.d/... files
@@ -37,7 +39,7 @@ echo "Boot detection mail... "$(date)
 # Additional scripts to be executed on the first boot after install.
 # This makes the `raspbian-ua-netinst` installer more uniform and easier
 # to maintain regardless of the use.
-if [ ! -e /home/pi/.firstboot ]; then
+if [ ! -e /home/$ME/.firstboot ]; then
   echo -n "First boot detected on "
   date
   clientname=$(hostname)
@@ -78,7 +80,7 @@ if [ ! -e /home/pi/.firstboot ]; then
   popd
 
   # Plant the flag and wrap up
-  touch /home/pi/.firstboot
+  touch /home/$ME/.firstboot
   sudo shutdown -r +1 "First boot installation completed. Please log off now."
   echo -n "First boot installation completed on "
   date
