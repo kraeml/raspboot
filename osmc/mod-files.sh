@@ -40,3 +40,5 @@ sudo crontab -u osmc .crntb
 
 echo -n "Restore invisibles - "
 cp /mnt/backup/osmc/home/osmc/.* ~/ 2>/dev/null
+
+sudo usermod -a -G systemd-journal osmc
