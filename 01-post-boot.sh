@@ -11,6 +11,13 @@ if [ ! -d ~/bin ]; then
   mkdir ~/bin
 fi
 
+# /var/log is on tmpfs so recreate lastlog now
+if [ ! -e /var/log/lastlog ]; then
+  sudo touch /var/log/lastlog
+  sudo chgrp utmp /var/log/lastlog
+  sudo chmod 664 /var/log/lastlog
+fi
+
 # Download the contents of the ~/bin directory
 # We use the `.rsyncd.secret` file as a flag.
 # This allows a re-population of this directory in case new/updated binaries
