@@ -1,2 +1,3 @@
 # m h dom mon dow user  command
 @reboot           osmc   sleep 120 && /home/pi/raspboot/00-run-scripts.sh 2>/tmp/raspboot.err 1>&2
+42  * *   *   *   osmc    /home/osmc/raspdiagd/00-scriptmanager.sh 2>/tmp/raspdiagd.err 1>&2

@@ -7,4 +7,4 @@ echo "kodi PID = "$killem
 
 echo "Installing packages..."
 sudo apt-get update
-sudo apt-get install rsync htop screen
+sudo apt-get install rsync htop screen cron
