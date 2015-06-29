@@ -9,7 +9,7 @@ date
 
 # Change PWD to the binaries directory
 pushd /home/$ME/raspboot
-
+  ./02-update-scripts.sh
   # Boot detection
   if [ ! -e /tmp/raspboot.reboot ]; then
     # Set the flag first to prevent recursive execution
