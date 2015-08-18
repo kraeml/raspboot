@@ -1,6 +1,5 @@
 #! /bin/bash
 
-logfile=/tmp/raspboot.err
 CLNT=$(hostname)
 ME=$(whoami)
 
