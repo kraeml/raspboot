@@ -30,7 +30,7 @@ if [ -e ~/.kodi ]; then
 fi
 
 # set flag for raspboot
-echo master > /home/osmc/.raspboot.branch
+echo "master" > /home/osmc/.raspboot.branch
 
 echo -n "Restore etc - "
 cp -r /mnt/backup/osmc/home/osmc/etc/* ~/etc/
