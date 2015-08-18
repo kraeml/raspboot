@@ -1,2 +1,2 @@
 # m h  dom mon dow   command
-23  03  *   *   *   /home/osmc/bin/backuphome.sh 2>/tmp/backup.err 1>&2
+23  03  *   *   *   /home/osmc/bin/backuphome.sh 2>&1 | logger -p info -t backuphome
