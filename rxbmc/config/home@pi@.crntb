@@ -1,3 +1,3 @@
 # m h  dom mon dow   command
-23  03 * * * /home/pi/bin/backuphome.sh 2>/tmp/backup.err 1>&2
-42  * * * * /home/pi/raspdiagd/00-scriptmanager.sh 2>/tmp/raspdiagd.err 1>&2
+23  03 * * * /home/pi/bin/backuphome.sh 2>&1 | logger -p info -t backuphome
+42  * * * * /home/pi/raspdiagd/00-scriptmanager.sh 2>&1 | logger -p info -t raspdiagd
