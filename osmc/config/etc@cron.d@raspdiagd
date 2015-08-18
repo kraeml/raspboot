@@ -1,0 +1,6 @@
+# NOTE: This file should be added by raspdiagd, however, that repo isn't
+# ready for osmc yet!
+
+# m h dom mon dow user  command
+42  * *   *   *   osmc    /home/osmc/raspdiagd/00-scriptmanager.sh 2>&1 | logger -p info -t raspdiagd
+@reboot           osmc    /home/osmc/raspdiagd/00-scriptmanager.sh 2>&1 | logger -p info -t raspdiagd
