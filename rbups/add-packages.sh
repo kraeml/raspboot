@@ -12,5 +12,6 @@ sudo apt-get -yuV install cups-pdf cups-driver-gutenprint
 echo "Pausing... (3/4) "
 sleep 60
 sudo apt-get -yuV install python-cups python-daemon python-pkg-resources
+sudo apt-get -yuV install python-mysqldb
 echo "Pausing... (4/4)"
 sleep 60

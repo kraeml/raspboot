@@ -11,6 +11,7 @@ sudo apt-get -yuV install picocom
 echo "Installing additional Python packages..."
 sudo apt-get -yuV install python-dev python-setuptools python-serial
 sudo apt-get -yuV install python-matplotlib python-bs4 python-lxml
+sudo apt-get -yuV install python-mysqldb
 
 # Retrieve and install Arduino support files
 echo "Installing Arduino support..."

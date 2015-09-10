@@ -8,3 +8,4 @@ sudo systemctl stop mediacenter
 echo "Installing packages..."
 sudo apt-get update
 sudo apt-get install rsync htop screen cron
+sudo apt-get -yuV install python-mysqldb
