@@ -81,6 +81,7 @@
 [upsmon_local]
         password  = local_pass
         upsmon master
+        
 [upsmon_remote]
         password  = remote_pass
         upsmon slave
