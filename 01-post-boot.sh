@@ -79,6 +79,9 @@ if [ ! -e /home/$ME/.firstboot ]; then
   popd
 
   # Plant the flag and wrap up
+  if [ -e /bin/journalctl ]; then
+    sudo usermod -a -G systemd-journal $ME
+  fi
   touch /home/$ME/.firstboot
   sudo shutdown -r +1 "First boot installation completed. Please log off now."
   echo -n "First boot installation completed on "
