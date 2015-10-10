@@ -2,7 +2,7 @@ echo "Installing UPS monitor packages..."
 sudo apt-get -yuV install nut-client nut-server
 
 echo "Installing CUPS packages..."
-sudo apt-get -yuV install cups cifs-utils
+sudo apt-get -yuV install cups cifs-utils smb-client
 echo "Pausing... (1/4) "
 sleep 60
 sudo apt-get -yuV install hplip-cups openprinting-ppds
