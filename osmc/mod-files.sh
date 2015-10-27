@@ -13,9 +13,9 @@ mkdir etc
 # Add mountpoints to /etc/fstab
 echo "Adding mountpoints to /etc/fstab ..."
 echo '# mountpoint for NFS on /media'  | sudo tee --append /etc/fstab
-echo '10.0.1.220:/srv/array1/video    /mnt/media     nfs  _netdev,defaults,user,noatime,intr,x-systemd.automount,noauto    0    0'  | sudo tee --append /etc/fstab
+echo 'boson.lan:/srv/array1/video    /mnt/media     nfs  _netdev,defaults,user,noatime,intr,x-systemd.automount,noauto    0    0'  | sudo tee --append /etc/fstab
 echo '# mountpoint for systemlogs and backups'  | sudo tee --append /etc/fstab
-echo '10.0.1.220:/srv/array1/backup   /mnt/backup    nfs  nouser,atime,rw,dev,exec,suid,noauto    0    0'  | sudo tee --append /etc/fstab
+echo 'boson.lan:/srv/array1/backup   /mnt/backup    nfs  nouser,atime,rw,dev,exec,suid,noauto    0    0'  | sudo tee --append /etc/fstab
 echo 'tmpfs    /tmp        tmpfs    nodev,nosuid,size=64M,mode=1777    0    0'  | sudo tee --append /etc/fstab
 echo 'tmpfs    /var/log    tmpfs    defaults,noatime,nosuid,mode=0755,size=96M    0    0'  | sudo tee --append /etc/fstab
 
