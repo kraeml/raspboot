@@ -21,6 +21,6 @@ pushd /home/$ME
   git clone https://github.com/Mausy5043/arduino.git
   chmod -R 744 arduino/
   pushd arduino/ino
-    python setup.py
+    python setup.py install
   popd
 popd
