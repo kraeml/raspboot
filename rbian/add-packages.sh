@@ -1,6 +1,8 @@
 #echo "Installing WIFI support..."
 #sudo apt-get -yuV install iw wireless-tools wpasupplicant
 
+ME=$(whoami)
+
 echo "Installing Arduino support..."
 sudo apt-get -yuV install arduino
 
@@ -15,8 +17,10 @@ sudo apt-get -yuV install python-mysqldb
 
 # Retrieve and install Arduino support files
 echo "Installing Arduino support..."
-git clone https://github.com/Mausy5043/arduino.git
-chmod -R 744 arduino/
-pushd arduino/ino
-  python setup.py
+pushd /home/$ME
+  git clone https://github.com/Mausy5043/arduino.git
+  chmod -R 744 arduino/
+  pushd arduino/ino
+    python setup.py
+  popd
 popd
