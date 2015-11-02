@@ -5,10 +5,10 @@
 
 ME=$(whoami)
 
-# Check if the ~/bin directory exists
-if [ ! -d ~/bin ]; then
-  echo "Create ~/bin ..."
-  mkdir ~/bin
+# Check if the /home/$ME/bin directory exists
+if [ ! -d /home/$ME/bin ]; then
+  echo "Create /home/$ME/bin ..."
+  mkdir /home/$ME/bin
 fi
 
 # /var/log is on tmpfs so recreate lastlog now
@@ -18,18 +18,18 @@ if [ ! -e /var/log/lastlog ]; then
   sudo chmod 664 /var/log/lastlog
 fi
 
-# Download the contents of the ~/bin directory
+# Download the contents of the /home/$ME/bin directory
 # We use the `.rsyncd.secret` file as a flag.
 # This allows a re-population of this directory in case new/updated binaries
 # need to be installed.
-if [ ! -e ~/bin/.rsyncd.secret ]; then
-  echo "Populate ~/bin ..."
+if [ ! -e /home/$ME/bin/.rsyncd.secret ]; then
+  echo "Populate /home/$ME/bin ..."
   sudo mount /mnt/backup
-  cp -r /mnt/backup/rbmain/bin/. ~/bin
+  cp -r /mnt/backup/rbmain/bin/. /home/$ME/bin
   sudo umount /mnt/backup
   # Set permissions
-  chmod -R 0755 ~/bin
-  chmod    0740 ~/bin/.rsyncd.secret
+  chmod -R 0755 /home/$ME/bin
+  chmod    0740 /home/$ME/bin/.rsyncd.secret
 fi
 
 echo "Boot detection mail... "$(date)
@@ -71,10 +71,10 @@ if [ ! -e /home/$ME/.firstboot ]; then
   fi
 
   echo "Install raspdiagd..."
-  git clone -b master https://github.com/Mausy5043/raspdiagd.git ~/raspdiagd
+  git clone -b master https://github.com/Mausy5043/raspdiagd.git /home/$ME/raspdiagd
   # set permissions
-  chmod -R 0755 ~/raspdiagd
-  pushd ~/raspdiagd
+  chmod -R 0755 /home/$ME/raspdiagd
+  pushd /home/$ME/raspdiagd
     ./install.sh
   popd
 
