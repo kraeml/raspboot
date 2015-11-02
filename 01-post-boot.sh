@@ -3,6 +3,7 @@
 # This script only gets executed if `/tmp/raspboot.reboot` is absent...
 # /tmp is in RAMFS, so everytime the server is rebooted, this script is executed.
 
+CLNT=$(hostname)
 ME=$(whoami)
 
 # Check if the /home/$ME/bin directory exists
@@ -41,7 +42,6 @@ echo "Boot detection mail... "$(date)
 if [ ! -e /home/$ME/.firstboot ]; then
   echo -n "First boot detected on "
   date
-  clientname=$(hostname)
 
   # 1. Update the system
   echo "Updating..."
@@ -51,13 +51,13 @@ if [ ! -e /home/$ME/.firstboot ]; then
 
   # 2. Install server specific-packages
   echo "Additional packages installation..."
-  if [ -e ./$clientname/add-packages.sh ]; then
-    source ./$clientname/add-packages.sh
+  if [ -e ./$CLNT/add-packages.sh ]; then
+    source ./$CLNT/add-packages.sh
   fi
 
   # 3. Install server specific configuration files
   echo "Copy configuration files..."
-  for f in ./$clientname/config/*; do
+  for f in ./$CLNT/config/*; do
     g=$(echo $(basename $f) | sed 's/@/\//g')
     echo $f " --> " $g
     # path must already exist for this to work:
@@ -66,8 +66,8 @@ if [ ! -e /home/$ME/.firstboot ]; then
 
   # 4. Modify existing server specific configuration files
   echo "Additional packages installation..."
-  if [ -e ./$clientname/mod-files.sh ]; then
-    source ./$clientname/mod-files.sh
+  if [ -e ./$CLNT/mod-files.sh ]; then
+    source ./$CLNT/mod-files.sh
   fi
 
   echo "Install raspdiagd..."
