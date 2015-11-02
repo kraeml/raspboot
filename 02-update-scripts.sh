@@ -1,6 +1,9 @@
 #! /bin/bash
 
-branch=$(cat ~/.raspboot.branch)
+
+ME=$(whoami)
+
+branch=$(cat /home/$ME/.raspboot.branch)
 git pull
 git fetch origin
 git checkout $branch && git reset --hard origin/$branch && git clean -f -d
