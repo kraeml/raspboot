@@ -65,7 +65,7 @@ if [ ! -e /home/$ME/.firstboot ]; then
   done
 
   # 4. Modify existing server specific configuration files
-  echo "Additional packages installation..."
+  echo "Modify installation..."
   if [ -e ./$CLNT/mod-files.sh ]; then
     source ./$CLNT/mod-files.sh
   fi
