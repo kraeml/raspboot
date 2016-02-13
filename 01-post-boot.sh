@@ -87,3 +87,5 @@ if [ ! -e $HOME/.firstboot ]; then
   echo -n "First boot installation completed on "
   date
 fi
+
+sudo cat /dev/random | rngtest -c 5000
