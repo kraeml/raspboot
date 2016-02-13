@@ -7,7 +7,7 @@ ME=$(whoami)
 date
 
 # Change PWD to the binaries directory
-pushd /home/$ME/raspboot
+pushd $HOME/raspboot
   ./02-update-scripts.sh
   # Boot detection
   if [ ! -e /tmp/raspboot.reboot ]; then

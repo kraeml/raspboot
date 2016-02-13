@@ -6,10 +6,10 @@
 CLNT=$(hostname)
 ME=$(whoami)
 
-# Check if the /home/$ME/bin directory exists
-if [ ! -d /home/$ME/bin ]; then
-  echo "Create /home/$ME/bin ..."
-  mkdir /home/$ME/bin
+# Check if the $HOME/bin directory exists
+if [ ! -d $HOME/bin ]; then
+  echo "Create $HOME/bin ..."
+  mkdir $HOME/bin
 fi
 
 # /var/log is on tmpfs so recreate lastlog now
@@ -19,27 +19,27 @@ if [ ! -e /var/log/lastlog ]; then
   sudo chmod 664 /var/log/lastlog
 fi
 
-# Download the contents of the /home/$ME/bin directory
+# Download the contents of the $HOME/bin directory
 # We use the `.rsyncd.secret` file as a flag.
 # This allows a re-population of this directory in case new/updated binaries
 # need to be installed.
-if [ ! -e /home/$ME/bin/.rsyncd.secret ]; then
-  echo "Populate /home/$ME/bin ..."
+if [ ! -e $HOME/bin/.rsyncd.secret ]; then
+  echo "Populate $HOME/bin ..."
   sudo mount /mnt/backup
-  cp -r /mnt/backup/rbmain/bin/. /home/$ME/bin
+  cp -r /mnt/backup/rbmain/bin/. $HOME/bin
   sudo umount /mnt/backup
   # Set permissions
-  chmod -R 0755 /home/$ME/bin
-  chmod    0740 /home/$ME/bin/.rsyncd.secret
+  chmod -R 0755 $HOME/bin
+  chmod    0740 $HOME/bin/.rsyncd.secret
 fi
 
 echo "Boot detection mail... "$(date)
-/home/$ME/bin/bootmail.py
+$HOME/bin/bootmail.py
 
 # Additional scripts to be executed on the first boot after install.
 # This makes the `raspbian-ua-netinst` installer more uniform and easier
 # to maintain regardless of the use.
-if [ ! -e /home/$ME/.firstboot ]; then
+if [ ! -e $HOME/.firstboot ]; then
   echo -n "First boot detected on "
   date
 
@@ -71,10 +71,10 @@ if [ ! -e /home/$ME/.firstboot ]; then
   fi
 
   echo "Install raspdiagd..."
-  git clone -b master https://github.com/Mausy5043/raspdiagd.git /home/$ME/raspdiagd
+  git clone -b master https://github.com/Mausy5043/raspdiagd.git $HOME/raspdiagd
   # set permissions
-  chmod -R 0755 /home/$ME/raspdiagd
-  pushd /home/$ME/raspdiagd
+  chmod -R 0755 $HOME/raspdiagd
+  pushd $HOME/raspdiagd
     ./install.sh
   popd
 
@@ -82,7 +82,7 @@ if [ ! -e /home/$ME/.firstboot ]; then
   if [ -e /bin/journalctl ]; then
     sudo usermod -a -G systemd-journal $ME
   fi
-  touch /home/$ME/.firstboot
+  touch $HOME/.firstboot
   sudo shutdown -r +1 "First boot installation completed. Please log off now."
   echo -n "First boot installation completed on "
   date
