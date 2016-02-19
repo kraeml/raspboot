@@ -83,9 +83,10 @@ if [ ! -e $HOME/.firstboot ]; then
     sudo usermod -a -G systemd-journal $ME
   fi
   touch $HOME/.firstboot
+
+  sudo cat /dev/random | rngtest -c 5000
+  
   sudo shutdown -r +1 "First boot installation completed. Please log off now."
   echo -n "First boot installation completed on "
   date
 fi
-
-sudo cat /dev/random | rngtest -c 5000
