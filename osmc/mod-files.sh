@@ -5,10 +5,10 @@ sudo rm /etc/avahi/services/sftp.service
 
 # Create mountpoints
 echo "Creating mountpoints ..."
-sudo mkdir /mnt/backup
-sudo mkdir /mnt/media
-sudo mkdir /mnt/share1
-mkdir etc
+sudo mkdir -p /mnt/backup
+sudo mkdir -p /mnt/media
+sudo mkdir -p /mnt/share1
+mkdir -p etc
 
 # Add mountpoints to /etc/fstab
 echo "Adding mountpoints to /etc/fstab ..."
