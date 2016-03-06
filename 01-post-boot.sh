@@ -26,7 +26,8 @@ fi
 if [ ! -e $HOME/bin/.rsyncd.secret ]; then
   echo "Populate $HOME/bin ..."
   sudo mount /mnt/backup
-  cp -r /mnt/backup/rbmain/bin/. $HOME/bin
+  cp -r  /mnt/backup/rbmain/bin/.   $HOME/bin
+  cp -r  /mnt/backup/rbmain/.my.cnf $HOME/
   sudo umount /mnt/backup
   # Set permissions
   chmod -R 0755 $HOME/bin
@@ -85,7 +86,7 @@ if [ ! -e $HOME/.firstboot ]; then
   touch $HOME/.firstboot
 
   sudo cat /dev/random | rngtest -c 5000
-  
+
   sudo shutdown -r +1 "First boot installation completed. Please log off now."
   echo -n "First boot installation completed on "
   date
