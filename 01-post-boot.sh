@@ -29,12 +29,14 @@ if [ ! -e $HOME/bin/.rsyncd.secret ]; then
   sudo mount    /mnt/backup
   cp -rv  /mnt/backup/rbmain/bin/.   $HOME/bin
   cp -rv  /mnt/backup/rbmain/.my.cnf $HOME/
+  cp -rv  /mnt/backup/rbmain/.netrc  $HOME/
   sudo umount   /mnt/backup
   # Set permissions
   chmod -R 0755 $HOME/bin
   chmod    0740 $HOME/bin/.rsyncd.secret
   chmod    0740 $HOME/bin/.smbcifs
   chmod    0740 $HOME/.my.cnf
+  chmod    0600 $HOME/.netrc
 fi
 
 echo "Boot detection mail... "$(date)
