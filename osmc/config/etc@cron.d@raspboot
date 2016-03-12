@@ -1,2 +1,2 @@
 # m h dom mon dow user  command
-@reboot           osmc   sleep 120 && /home/pi/raspboot/00-run-scripts.sh 2>&1 | logger -p info -t raspboot
+@reboot           osmc   sleep 120 && /home/osmc/raspboot/00-run-scripts.sh 2>&1 | logger -p info -t raspboot
