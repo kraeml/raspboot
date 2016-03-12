@@ -16,7 +16,7 @@ fi
 # Set the flag for `raspboot`
 echo "master" > $HOME/.raspboot.branch
 # Note: cronjobs may not start until after the reboot!
-sudo crontab -u osmc $HOME.crntb
+sudo crontab -u osmc $HOME/.crntb
 
 sudo usermod -a -G systemd-journal osmc
 
@@ -27,7 +27,7 @@ sudo mkdir -p /mnt/media
 sudo mkdir -p /mnt/share1
 
 # Creating a number of directories
-echo "Create other directories"
+echo "Create other directories..."
 mkdir -m 0700 -p $HOME/.ssh
 mkdir -m 0755 -p $HOME/bin
 

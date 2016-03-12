@@ -25,8 +25,6 @@ pushd $HOME/raspboot
               ;;
     rbian )   echo "Raspberry testbench"
               ;;
-    rxbmc )   echo "RaspBMC mediacenter"
-              ;;
     osmc )    echo "OSMC Media Center"
               ;;
     * )       echo "!! undefined client !!"
