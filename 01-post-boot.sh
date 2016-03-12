@@ -6,17 +6,17 @@
 CLNT=$(hostname)
 ME=$(whoami)
 
-# Check if the $HOME/bin directory exists
-if [ ! -d $HOME/bin ]; then
-  echo "Create $HOME/bin ..."
-  mkdir $HOME/bin
-fi
-
 # /var/log is on tmpfs so recreate lastlog now
 if [ ! -e /var/log/lastlog ]; then
   sudo touch /var/log/lastlog
   sudo chgrp utmp /var/log/lastlog
   sudo chmod 664 /var/log/lastlog
+fi
+
+# Check if the $HOME/bin directory exists
+if [ ! -d $HOME/bin ]; then
+  echo "Create $HOME/bin ..."
+  mkdir -p $HOME/bin
 fi
 
 # Download the contents of the $HOME/bin directory
@@ -25,13 +25,16 @@ fi
 # need to be installed.
 if [ ! -e $HOME/bin/.rsyncd.secret ]; then
   echo "Populate $HOME/bin ..."
-  sudo mount /mnt/backup
-  cp -r  /mnt/backup/rbmain/bin/.   $HOME/bin
-  cp -r  /mnt/backup/rbmain/.my.cnf $HOME/
-  sudo umount /mnt/backup
+  sudo mkdir -p /mnt/backup
+  sudo mount    /mnt/backup
+  cp -rv  /mnt/backup/rbmain/bin/.   $HOME/bin
+  cp -rv  /mnt/backup/rbmain/.my.cnf $HOME/
+  sudo umount   /mnt/backup
   # Set permissions
   chmod -R 0755 $HOME/bin
   chmod    0740 $HOME/bin/.rsyncd.secret
+  chmod    0740 $HOME/bin/.smbcifs
+  chmod    0740 $HOME/.my.cnf
 fi
 
 echo "Boot detection mail... "$(date)

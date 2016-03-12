@@ -7,5 +7,5 @@ sudo systemctl stop mediacenter
 
 echo "Installing packages..."
 sudo apt-get update
-sudo apt-get -yuV install rsync htop screen cron
+sudo apt-get -yuV install bc rsync htop screen git cron wireless-tools wavemon usbutils
 sudo apt-get -yuV install python-mysqldb
