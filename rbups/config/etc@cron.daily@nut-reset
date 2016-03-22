@@ -7,4 +7,4 @@
 #     Mar 03 19:14:04 rbups upsmon[429]: Poll UPS [ups@localhost] failed - Data stale
 #
 
-systemctl restart nut-driver.service
+# systemctl restart nut-driver.service
