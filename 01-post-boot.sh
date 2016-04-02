@@ -70,6 +70,12 @@ if [ ! -e $HOME/.firstboot ]; then
     sudo cp $f /$g
   done
 
+  echo "Set-up cron job(s)..."
+  $minit=$(echo $RANDOM/555 |bc)
+  echo "$minit 23 * * * /$HOME/bin/backuphome.sh" >> $HOME/cron.tmp
+  /usr/bin/crontab -u $ME $HOME/cron.tmp
+  rm $HOME/cron.tmp
+
   # 4. Modify existing server specific configuration files
   echo "Modify installation..."
   if [ -e ./$CLNT/mod-files.sh ]; then
