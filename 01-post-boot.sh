@@ -71,8 +71,9 @@ if [ ! -e $HOME/.firstboot ]; then
   done
 
   echo "Set-up cron job(s)..."
-  $minit=$(echo $RANDOM/555 |bc)
-  echo "$minit 23 * * * /$HOME/bin/backuphome.sh" >> $HOME/cron.tmp
+  minit=$(echo $RANDOM/555 |bc)
+  echo "MINIT = "$minit
+  echo "$minit 23 * * * $HOME/bin/backuphome.sh" >> $HOME/cron.tmp
   /usr/bin/crontab -u $ME $HOME/cron.tmp
   rm $HOME/cron.tmp
 
