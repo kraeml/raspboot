@@ -91,6 +91,14 @@ if [ ! -e $HOME/.firstboot ]; then
     ./install.sh
   popd
 
+  echo "Install lnxdiagd..."
+  git clone -b master https://github.com/Mausy5043/lnxdiagd.git $HOME/lnxdiagd
+  # set permissions
+  chmod -R 0755 $HOME/lnxdiagd
+  pushd $HOME/lnxdiagd
+    ./install.sh
+  popd
+
   # Plant the flag and wrap up
   if [ -e /bin/journalctl ]; then
     sudo usermod -a -G systemd-journal $ME

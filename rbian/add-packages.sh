@@ -13,7 +13,7 @@ ME=$(whoami)
 echo "Installing additional Python packages..."
 #sudo apt-get -yuV install python-dev python-setuptools python-serial
 #sudo apt-get -yuV install python-matplotlib python-bs4 python-lxml
-sudo apt-get -yuV install python-mysqldb
+sudo apt-get -yuV install python-mysqldb gnuplot gnuplot-nox mysql-client
 
 # Retrieve and install Arduino support files
 #echo "Installing Arduino support..."

@@ -1,7 +1,7 @@
 echo "Installing UPS monitor packages..."
 sudo apt-get -yuV install nut-client nut-server
 
-sudo apt-get -yuV install python-mysqldb
+sudo apt-get -yuV install python-mysqldb gnuplot gnuplot-nox mysql-client
 
 #echo "Installing CUPS packages..."
 #sudo apt-get -yuV install cups cifs-utils smb-client
