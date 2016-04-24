@@ -1,7 +1,9 @@
 echo "Installing WIFI support..."
 sudo apt-get -yuV install wavemon usbutils
 
-echo "Installing additional Python packages..."
-#sudo apt-get -yuV install python-dev python-setuptools python-serial
-#sudo apt-get -yuV install python-matplotlib python-bs4 python-lxml
+echo "Installing additional packages..."
+sudo apt-get -yuV install build-essential python-dev python-setuptools python-rpi.gpio
+# sudo apt-get -yuV install wiringpi
+# gpio readall
+
 sudo apt-get -yuV install python-mysqldb gnuplot gnuplot-nox mysql-client
