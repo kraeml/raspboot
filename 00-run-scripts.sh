@@ -19,6 +19,9 @@ pushd $HOME/raspboot
 
   # Execute client-specific scripts
   case "$CLNT" in
+    rbagain ) echo "Weather monitor"
+              # install domosd
+              ;;
     rbups )   echo "UPS monitor"
               ;;
     rbelec )  echo "Electricity monitor"
