@@ -21,13 +21,3 @@ pushd /usr/src
 popd
 
 # SPI
-
-# update the kernel to 4.4.8
-# Linux rbian 4.4.8+ #880 Fri Apr 22 21:27:42 BST 2016 armv6l GNU/Linux
-# tested stable commit:
-# https://github.com/Hexxeh/rpi-firmware/commit/6d158adcc0cfa03afa17665715706e6e5f0750d2
-#sudo rpi-update 6d158adcc0cfa03afa17665715706e6e5f0750d2
-
-#sudo sed -i 's/kernel=/#kernel=/' /boot/config.txt
-#sudo sed -i 's/initramfs/#initramfs/' /boot/config.txt
-#echo 'dtoverlay=w1-gpio'  | sudo tee --append /boot/config.txt
