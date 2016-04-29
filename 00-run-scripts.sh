@@ -20,7 +20,7 @@ pushd $HOME/raspboot
   # Execute client-specific scripts
   case "$CLNT" in
     rbagain ) echo "Weather monitor"
-              # sudo pigpiod
+              sudo pigpiod
               ;;
     rbups )   echo "UPS monitor"
               ;;
