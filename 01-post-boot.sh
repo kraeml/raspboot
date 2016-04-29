@@ -92,7 +92,7 @@ if [ ! -e $HOME/.firstboot ]; then
   popd
 
   echo "Install lnxdiagd..."
-  git clone -b master https://github.com/Mausy5043/lnxdiagd.git $HOME/lnxdiagd
+  git clone -b v2_0 https://github.com/Mausy5043/lnxdiagd.git $HOME/lnxdiagd
   # set permissions
   chmod -R 0755 $HOME/lnxdiagd
   pushd $HOME/lnxdiagd
