@@ -16,7 +16,6 @@ pushd /usr/src
   pushd pigpio
     sudo make -j4
     sudo make install
-    sudo ./x_pigpio
   popd
 popd
 
