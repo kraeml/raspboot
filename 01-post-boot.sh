@@ -52,8 +52,6 @@ if [ ! -e $HOME/.firstboot ]; then
   # 1. Update the system
   echo "Updating..."
   sudo apt-get update
-  #echo "Upgrading..."
-  #sudo apt-get -yuV upgrade
 
   # 2. Install server specific-packages
   echo "Additional packages installation..."
