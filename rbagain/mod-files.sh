@@ -1,5 +1,8 @@
 echo "Modifying installation..."
 
+chown pi:pi /home/pi/domod.sh
+chmod +x    /home/pi/domod.sh
+
 # Enable 1-wire
 echo "Installing 1-wire support..."
 # ref: http://domoticx.com/raspberry-pi-temperatuur-sensor-ds18b20-uitlezen/
