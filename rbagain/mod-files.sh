@@ -1,6 +1,6 @@
 echo "Modifying installation..."
 
-chown pi:pi /home/pi/domod.sh
+sudo chown pi:pi /home/pi/domod.sh
 chmod +x    /home/pi/domod.sh
 
 # Enable 1-wire
