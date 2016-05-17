@@ -8,5 +8,3 @@ sudo systemctl stop mediacenter
 echo "Installing packages..."
 sudo apt-get update
 sudo apt-get -yuV install bc rsync htop screen git cron wavemon
-sudo apt-get -yuV install python-mysqldb gnuplot gnuplot-nox mysql-client
-sudo apt-get -yuV install lftp
