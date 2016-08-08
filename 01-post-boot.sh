@@ -104,7 +104,8 @@ if [ ! -e $HOME/.firstboot ]; then
   fi
   touch $HOME/.firstboot
 
-  sudo cat /dev/random | rngtest -c 5000
+  # Uncomment the next line if you want to run a test on the hardware RNG.
+  # sudo cat /dev/random | rngtest -c 5000
 
   sudo shutdown -r +1 "First boot installation completed. Please log off now."
   echo -n "First boot installation completed on "
