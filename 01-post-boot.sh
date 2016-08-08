@@ -82,16 +82,16 @@ if [ ! -e $HOME/.firstboot ]; then
     source ./$CLNT/mod-files.sh
   fi
 
-  echo "Install raspdiagd..."
-  git clone -b master https://github.com/Mausy5043/raspdiagd.git $HOME/raspdiagd
+  # echo "Install raspdiagd..."
+  # git clone -b master https://github.com/Mausy5043/raspdiagd.git $HOME/raspdiagd
   # set permissions
-  chmod -R 0755 $HOME/raspdiagd
-  pushd $HOME/raspdiagd
-    ./install.sh
-  popd
+  # chmod -R 0755 $HOME/raspdiagd
+  # pushd $HOME/raspdiagd
+  #   ./install.sh
+  # popd
 
   echo "Install lnxdiagd..."
-  git clone -b v2_0 https://github.com/Mausy5043/lnxdiagd.git $HOME/lnxdiagd
+  git clone -b v3_0 https://github.com/Mausy5043/lnxdiagd.git $HOME/lnxdiagd
   # set permissions
   chmod -R 0755 $HOME/lnxdiagd
   pushd $HOME/lnxdiagd
