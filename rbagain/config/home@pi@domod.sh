@@ -23,7 +23,7 @@ pushd $HOME
   echo 'dtoverlay=w1-gpio'  | sudo tee --append /boot/config.txt
 
   git clone https://github.com/Mausy5043/domod.git
-  echo "v0" > "$HOME/.domod.branch"
+  echo "v3" > "$HOME/.domod.branch"
   pushd domod
     ./install.sh
   popd
