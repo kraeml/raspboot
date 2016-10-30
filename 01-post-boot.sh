@@ -13,29 +13,12 @@ if [ ! -e /var/log/lastlog ]; then
   sudo chmod 664 /var/log/lastlog
 fi
 
-# Check if the $HOME/bin directory exists
-if [ ! -d $HOME/bin ]; then
-  echo "Create $HOME/bin ..."
-  mkdir -p $HOME/bin
-fi
-
-# Download the contents of the $HOME/bin directory
-# We use the `.rsyncd.secret` file as a flag.
-# This allows a re-population of this directory in case new/updated binaries
-# need to be installed.
-if [ ! -e $HOME/bin/.rsyncd.secret ]; then
-  echo "Populate $HOME/bin ..."
-  sudo mkdir -p /mnt/backup
-  sudo mount    /mnt/backup
-  cp -rv  /mnt/backup/rbmain/bin/.   $HOME/bin
-  cp -rv  /mnt/backup/rbmain/.my.cnf $HOME/
-  cp -rv  /mnt/backup/rbmain/.netrc  $HOME/
-  sudo umount   /mnt/backup
-  # Set permissions
-  chmod -R 0755 $HOME/bin
-  chmod    0740 $HOME/bin/.rsyncd.secret
-  chmod    0740 $HOME/bin/.smbcifs
+if [ ! -f $HOME/.my.cnf ]; then
+  cp -rv  $HOME/bin/.my.cnf $HOME/
   chmod    0740 $HOME/.my.cnf
+fi
+if [ ! -f $HOME/.netrc ]; then
+  cp -rv  $HOME/bin/.netrc  $HOME/
   chmod    0600 $HOME/.netrc
 fi
 
@@ -68,27 +51,11 @@ if [ ! -e $HOME/.firstboot ]; then
     sudo cp $f /$g
   done
 
-  # The cronjob has been migrated to /etc/cron.d/backuphome
-  #echo "Set-up cron job(s)..."
-  #minit=$(echo $RANDOM/555 |bc)
-  #echo "MINIT = "$minit
-  #echo "$minit 23 * * * $HOME/bin/backuphome.sh" >> $HOME/cron.tmp
-  #/usr/bin/crontab -u $ME $HOME/cron.tmp
-  #rm $HOME/cron.tmp
-
-  # 4. Modify existing server specific configuration files
+  # 3. Modify existing server specific configuration files
   echo "Modify installation..."
   if [ -e ./$CLNT/mod-files.sh ]; then
     source ./$CLNT/mod-files.sh
   fi
-
-  # echo "Install raspdiagd..."
-  # git clone -b master https://github.com/Mausy5043/raspdiagd.git $HOME/raspdiagd
-  # set permissions
-  # chmod -R 0755 $HOME/raspdiagd
-  # pushd $HOME/raspdiagd
-  #   ./install.sh
-  # popd
 
   echo "Install lnxdiagd..."
   git clone -b v3_0 https://github.com/Mausy5043/lnxdiagd.git $HOME/lnxdiagd
