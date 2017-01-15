@@ -71,8 +71,10 @@ if [ ! -e $HOME/.firstboot ]; then
   fi
   touch $HOME/.firstboot
 
-  # Uncomment the next line if you want to run a test on the hardware RNG.
-  # sudo cat /dev/random | rngtest -c 5000
+  # The next line is used to run a test on the hardware RNG.
+  date; sudo cat /dev/random | rngtest -c 5000 | logger -t rngtest; date
+  # The next line is used to run a speedtest of openSSL.
+  date; openssl speed | logger -t openssl-speed; date
 
   sudo shutdown -r +1 "First boot installation completed. Please log off now."
   echo -n "First boot installation completed on "
