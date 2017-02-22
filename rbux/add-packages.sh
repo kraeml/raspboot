@@ -27,8 +27,6 @@ install_package "logrotate"
 install_package "raspi-copies-and-fills"
 install_package "rsync"
 install_package "lsb-release"
-install_package "nfs-common"
-install_package "f2fs-tools"
 
 install_package "bc"
 install_package "dieharder"
