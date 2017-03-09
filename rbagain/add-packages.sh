@@ -1,9 +1,35 @@
+
+install_package()
+{
+  # See if packages are installed and install them.
+  package=$1
+  echo "*********************************************************"
+  echo "* Requesting $package"
+  status=$(dpkg-query -W -f='${Status} ${Version}\n' $package 2>/dev/null | wc -l)
+  if [ "$status" -eq 0 ]; then
+    echo "* Installing $package"
+    echo "*********************************************************"
+    sudo apt-get -yuV install $package
+  else
+    echo "* Already installed !!!"
+    echo "*********************************************************"
+  fi
+}
+
 echo "Installing WIFI support..."
-sudo apt-get -yuV install wavemon usbutils
+install_package "wavemon"
+install_package "usbutils"
 
 echo "Installing additional packages..."
-sudo apt-get -yuV install python3 build-essential python3-dev python3-setuptools python3-rpi.gpio
-sudo apt-get -yuV install wiringpi
+install_package "python3"
+install_package "build-essential"
+install_package "python3-dev"
+install_package "python3-setuptools"
+install_package "python3-rpi.gpio"
+install_package "wiringpi"
 gpio readall
 
-sudo apt-get -yuV install rpi-update avahi-daemon
+install_package "rpi-update"
+install_package "avahi-daemon"
+
+install_package "graphviz"
