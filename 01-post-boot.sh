@@ -57,8 +57,18 @@ if [ ! -e $HOME/.firstboot ]; then
     source ./$CLNT/mod-files.sh
   fi
 
+  echo "Install common python functions..."
+  pushd /tmp
+    git clone https://github.com/Mausy5043/mausy5043-common-python.git
+    # set permissions
+    chmod -R 0755 /tmp/mausy5043-common-python
+    pushd /tmp/mausy5043-common-python
+      sudo ./setup install
+    popd
+  popd
+
   echo "Install lnxdiagd..."
-  git clone -b v3_0 https://github.com/Mausy5043/lnxdiagd.git $HOME/lnxdiagd
+  git clone https://github.com/Mausy5043/lnxdiagd.git $HOME/lnxdiagd
   # set permissions
   chmod -R 0755 $HOME/lnxdiagd
   pushd $HOME/lnxdiagd
