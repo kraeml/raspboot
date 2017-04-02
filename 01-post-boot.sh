@@ -63,7 +63,7 @@ if [ ! -e $HOME/.firstboot ]; then
     # set permissions
     chmod -R 0755 /tmp/mausy5043-common-python
     pushd /tmp/mausy5043-common-python
-      sudo ./setup install
+      sudo ./setup.py install
     popd
   popd
 
