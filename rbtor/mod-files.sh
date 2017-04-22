@@ -16,10 +16,15 @@ echo "over_voltage_min=0"       | sudo tee -a /boot/config.txt
 echo ""                         | sudo tee -a /boot/config.txt
 echo "force_turbo=0"            | sudo tee -a /boot/config.txt
 echo "temp_limit=70"            | sudo tee -a /boot/config.txt
-echo "..[OK]"
+echo "[OK]"
 
 echo "Add mountpoint for external HDD "
 sudo mkdir -p /mnt/icybox
 echo "/dev/sda1 /mnt/icybox ext4 defaults  0   2"       | sudo tee -a /etc/fstab
 
 echo "[OK]"
+
+deluged
+sudo pkill deluged
+rm -rf ~/.config/deluge
+ln -s /mnt/icybox/.config/deluge/ ~/.config/deluge
