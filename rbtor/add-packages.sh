@@ -18,4 +18,6 @@ install_package()
 
 echo "Installing additional Python packages..."
 install_package "graphviz"
-install_package "deluge-torrent"
+install_package "deluge"
+install_package "deluged"
+install_package "deluge-web"
