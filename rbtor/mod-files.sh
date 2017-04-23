@@ -20,14 +20,14 @@ echo "[OK]"
 echo "Add mountpoint for external HDD "
 sudo mkdir -p /mnt/icybox
 echo "/dev/sda1 /mnt/icybox ext4 defaults  0   2"       | sudo tee -a /etc/fstab
-
+sudo mount /mnt/icybox
 echo
 
 echo "Configuring Deluge"
 # add user pi to the Deluge group
 sudo adduser pi debian-deluged
 # set permissions for the new services
-sudo chmod 755 /etc/systemd/system/deluge*
+sudo chmod 644 /etc/systemd/system/deluge*
 # make link to config files on HDD
 sudo -u debian-deluged mkdir /var/lib/deluged/.config
 sudo chmod 774 /var/lib/deluged/.config
