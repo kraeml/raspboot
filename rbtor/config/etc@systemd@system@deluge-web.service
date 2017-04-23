@@ -3,8 +3,8 @@ Description=Deluge Bittorrent Client Web Interface
 After=network-online.target
 [Service]
 Type=simple
-User=deluge
-Group=deluge
+User=debian-deluged
+Group=debian-deluged
 UMask=022
 # ExecStart=/usr/bin/deluge-web
 ExecStart=/usr/bin/deluge-web -l /mnt/icybox/log/deluge-web.log -L warning
