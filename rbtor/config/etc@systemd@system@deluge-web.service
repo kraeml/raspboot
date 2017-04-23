@@ -7,7 +7,7 @@ User=debian-deluged
 Group=debian-deluged
 UMask=022
 # ExecStart=/usr/bin/deluge-web
-ExecStart=/usr/bin/deluge-web -l /mnt/icybox/log/deluge-web.log -L warning
+ExecStart=/usr/bin/deluge-web -l /mnt/icybox/log/deluge-web.log -L info
 Restart=on-failure
 [Install]
 WantedBy=multi-user.target
