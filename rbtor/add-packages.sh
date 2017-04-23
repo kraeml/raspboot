@@ -16,7 +16,6 @@ install_package()
   fi
 }
 
-echo "Installing additional Python packages..."
 install_package "graphviz"
 #install_package "deluge"
 install_package "deluged"
