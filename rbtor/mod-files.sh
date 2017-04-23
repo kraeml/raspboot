@@ -49,10 +49,10 @@ sudo rm /etc/init.d/deluged
 sudo update-rc.d deluged remove
 
 # Enable, Start and Check the daemon
-# sudo systemctl enable /etc/systemd/system/deluged.service
-# sudo systemctl start deluged
-# sudo systemctl status deluged
-#
+sudo systemctl enable /etc/systemd/system/deluged.service
+sudo systemctl start deluged
+sudo systemctl status deluged
+
 # sudo systemctl enable /etc/systemd/system/deluge-web.service
 # sudo systemctl start deluge-web
 # sudo systemctl status deluge-web
