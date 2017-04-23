@@ -28,11 +28,14 @@ echo "Configuring Deluge"
 sudo adduser pi debian-deluged
 # set permissions for the new services
 sudo chmod 644 /etc/systemd/system/deluge*
-# make link to config files on HDD
-sudo -u debian-deluged mkdir /var/lib/deluged/.config
-sudo chmod 774 /var/lib/deluged/.config
-sudo -u debian-deluged ln -s /mnt/icybox/config/deluge/ /var/lib/deluged/.config/deluge
-sudo chmod 774 /var/lib/deluged/.config/deluge
+# create the .config directory
+sudo mkdir /var/lib/deluged/.config
+# copy the configuration files
+sudo cp -R /mnt/icybox/config/* /var/lib/deluged/.config/
+# own the files...
+sudo chown -R debian-deluged:debian-deluged /var/lib/deluged/.config
+# ...and set permissions
+sudo chmod -R 774 /var/lib/deluged/.config
 
 # ref: http://dev.deluge-torrent.org/wiki/UserGuide/Service/systemd
 # Next line is already executed by the package installer
