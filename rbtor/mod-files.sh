@@ -30,10 +30,16 @@ echo "Configuring Deluge"
 # sudo chmod 664 /etc/systemd/system/deluge*
 # ln -s /mnt/icybox/.config/deluge/ ~/.config/deluge
 # sudo ln -s /mnt/icybox/.config/deluge/ /var/lib/deluge/.config/deluge
+# sudo chmod 774 /var/lib/deluge/.config/deluge
+# sudo chown deluge:deluge /var/lib/deluge/.config/deluge
 #
 # # ref: http://dev.deluge-torrent.org/wiki/UserGuide/Service/systemd
 # sudo adduser --system  --gecos "Deluge Service" --disabled-password --group --home /var/lib/deluge deluge
 # sudo adduser pi deluge
+#
+# #sudo mkdir -p /mnt/icybox/log/deluge
+# #sudo chown -R deluge:deluge /mnt/icybox/log/deluge
+# #sudo chmod -R 750 /mnt/icybox/log/deluge
 #
 # sudo /etc/init.d/deluged stop
 # sudo rm /etc/init.d/deluged
@@ -46,10 +52,6 @@ echo "Configuring Deluge"
 # sudo systemctl enable /etc/systemd/system/deluge-web.service
 # sudo systemctl start deluge-web
 # sudo systemctl status deluge-web
-#
-# #sudo mkdir -p /mnt/icybox/log/deluge
-# #sudo chown -R deluge:deluge /mnt/icybox/log/deluge
-# #sudo chmod -R 750 /mnt/icybox/log/deluge
 #
 # sudo systemctl restart deluged
 # sudo systemctl restart deluge-web
