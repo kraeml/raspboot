@@ -53,11 +53,13 @@ sudo systemctl enable /etc/systemd/system/deluged.service
 sudo systemctl start deluged
 sudo systemctl status deluged
 
-# sudo systemctl enable /etc/systemd/system/deluge-web.service
-# sudo systemctl start deluge-web
-# sudo systemctl status deluge-web
-#
-# sudo systemctl restart deluged
-# sudo systemctl restart deluge-web
+# Enable, Start and Check the web-daemon
+sudo systemctl enable /etc/systemd/system/deluge-web.service
+sudo systemctl start deluge-web
+sudo systemctl status deluge-web
+
+# Restart the daemons
+sudo systemctl restart deluged
+sudo systemctl restart deluge-web
 
 echo
