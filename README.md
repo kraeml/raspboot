@@ -1,15 +1,13 @@
 RASPBOOT
 ========
 
-Post-install scripts that need to be run after the first boot and that are run after every re-boot.
+Post-install scripts that need to be run after the first boot and/or that are run after every re-boot.
 
-Cronjob stored in `/etc/cron.d/raspboot` by `raspbian-ua-netinst` and `raspberrypi-ua-netinst` via `mod-raspbian-ua-netinst` resp. `mod-raspberrypi-ua-netinst` :
+## Requirements
+This repository aswell as a `cron` job in `/etc/cron.d/raspboot` is installed by `raspbian-ua-netinst` and `raspberrypi-ua-netinst` via `mod-raspbian-ua-netinst` resp. `mod-raspberrypi-ua-netinst`. It looks something like this:
 ```
 */1 *   * * *   pi  /home/pi/raspboot/00-run-scripts.sh 2>/tmp/raspboot.err 1>&2
 ```
-and modified by `raspboot` upon first boot.
+This makes sure that a script is run at first boot.
 
-For the boot-detection to work properly the Raspberry Pi needs to have `/tmp` mounted on `tmpfs`. This requires an entry in `/etc/fstab` that looks like this:
-```
-tmpfs /tmp     tmpfs nodev,nosuid,mode=1777,size=30M              0 0
-```
+For the boot-detection to work properly the Raspberry Pi needs to have `/tmp` mounted on `tmpfs`. 

@@ -1,0 +1,18 @@
+[Unit]
+Description=Deluge Bittorrent Client Daemon
+After=network-online.target mnt-icybox.mount
+Requires=mnt-icybox.mount
+# Unit is stopped when any of these mounts disappear.
+BindsTo=mnt-icybox.mount
+[Service]
+Type=simple
+User=debian-deluged
+Group=debian-deluged
+UMask=003
+#ExecStart=/usr/bin/deluged -d
+ExecStart=/usr/bin/deluged -d -l /mnt/icybox/log/deluge.log -L info
+Restart=on-failure
+# Configures the time to wait before service is stopped forcefully.
+TimeoutStopSec=300
+[Install]
+WantedBy=multi-user.target
